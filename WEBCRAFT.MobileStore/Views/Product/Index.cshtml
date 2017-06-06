@@ -1,0 +1,28 @@
+﻿@model WEBCRAFT.MobileStore.ViewModels.ProductsHomeViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Products </h2>
+
+
+@Html.ActionLink("New Product", "Edit", "Product")
+<hr />
+<br />
+<br />
+<table class="table table-responsive table-bordered table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+
+    @foreach (var p in Model.Products)
+    {
+        <tr>
+            <th>@p.Id</th>
+            <th>@p.Name</th>
+            <th>@p.SellPrice</th>
+        </tr>
+    }
+</table>
