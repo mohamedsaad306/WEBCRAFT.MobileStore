@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WEBCRAFT.MobileStore.Models
 {
-    class PartModel
+   public class PartModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

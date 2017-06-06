@@ -178,6 +178,10 @@
     <Compile Include="Migrations\201706011202247_ProductInitial.Designer.cs">
       <DependentUpon>201706011202247_ProductInitial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706061324159_Brand_PartModel.cs" />
+    <Compile Include="Migrations\201706061324159_Brand_PartModel.Designer.cs">
+      <DependentUpon>201706061324159_Brand_PartModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Brand.cs" />
@@ -255,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706011202247_ProductInitial.resx">
       <DependentUpon>201706011202247_ProductInitial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061324159_Brand_PartModel.resx">
+      <DependentUpon>201706061324159_Brand_PartModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
