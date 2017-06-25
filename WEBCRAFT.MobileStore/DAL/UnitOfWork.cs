@@ -12,6 +12,8 @@ namespace WEBCRAFT.MobileStore.DAL
 
         public IProductRepository Products { get { return new ProductRepository(_context); } }
 
+        public IBrandrepository Brand { get {return new BrandRepository(_context) ;}}
+
         private readonly ApplicationDbContext _context; 
          public UnitOfWork(ApplicationDbContext context)
         {

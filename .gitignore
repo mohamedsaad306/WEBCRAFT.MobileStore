@@ -154,3 +154,5 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+WEBCRAFT.MobileStore/App_Data/aspnet-WEBCRAFT.MobileStore-20170530010941_log.ldf
+.vs/config/applicationhost.config

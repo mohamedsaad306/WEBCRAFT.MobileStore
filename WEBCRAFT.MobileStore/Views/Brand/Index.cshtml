@@ -1,0 +1,23 @@
+﻿@model WEBCRAFT.MobileStore.ViewModels.BrandsHomeViewModel
+@{
+    ViewBag.Title = "Brands";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Brands</h2>
+<h3>@Html.ActionLink("+ Add new brand ", "")</h3>
+<table class="table table-responsive table-bordered table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+    </tr>
+
+    @foreach (var b in Model.Brands)
+    {
+        <tr>
+            <td>@b.Id</td>
+            <td>@b.Name</td>
+        </tr>
+    }
+</table>
+
