@@ -182,12 +182,20 @@
     <Compile Include="Migrations\201706061324159_Brand_PartModel.Designer.cs">
       <DependentUpon>201706061324159_Brand_PartModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706242354397_InvoiceEntity.cs" />
+    <Compile Include="Migrations\201706242354397_InvoiceEntity.Designer.cs">
+      <DependentUpon>201706242354397_InvoiceEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\PartModel.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ProductViewModels.cs" />
@@ -262,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706061324159_Brand_PartModel.resx">
       <DependentUpon>201706061324159_Brand_PartModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706242354397_InvoiceEntity.resx">
+      <DependentUpon>201706242354397_InvoiceEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

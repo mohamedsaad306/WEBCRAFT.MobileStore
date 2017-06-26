@@ -8,19 +8,20 @@ namespace WEBCRAFT.MobileStore.DAL
 {
     public class ProductRepository:Repository<Product>,IProductRepository
     {
-
-        public IEnumerable<Product> GetBestSeller ()
-        {
-           return AppContext.Products.ToList();
-        }
-
-        public ApplicationDbContext AppContext { get { return Context as ApplicationDbContext; } }
+       public ApplicationDbContext AppContext { get { return Context as ApplicationDbContext; } }
         public ProductRepository(ApplicationDbContext context)
             :base(context)
         {
             
         }
         
+        public IEnumerable<Product> GetBestSeller ()
+        {
+           return AppContext.Products.ToList();
+             
+        }
+
+ 
 
 
 

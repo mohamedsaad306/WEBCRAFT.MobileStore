@@ -25,8 +25,7 @@ namespace WEBCRAFT.MobileStore.DAL
         }
         public IEnumerable<TEntity> GetPagination(int Page = 0, int CountPerPage = 10)
         {
-            return Context.Set<TEntity>().Skip(Page * CountPerPage).Take(CountPerPage).ToList();
-            
+            return Context.Set<TEntity>().Skip(Page * CountPerPage).Take(CountPerPage).ToList();   
         }
 
         public IEnumerable<TEntity> Find(System.Linq.Expressions.Expression<Func<TEntity, bool>> predecate)
