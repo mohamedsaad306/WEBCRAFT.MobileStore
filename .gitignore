@@ -159,3 +159,7 @@ WEBCRAFT.MobileStore/App_Data/aspnet-WEBCRAFT.MobileStore-20170530010941_log.ldf
 *.ldf
 WEBCRAFT.MobileStore/App_Data/aspnet-WEBCRAFT.MobileStore-20170530010941.mdf
 WEBCRAFT.MobileStore/App_Data/aspnet-WEBCRAFT.MobileStore-20170530010941.mdf
+WEBCRAFT.MobileStore/WEBCRAFT.MobileStore.csproj
+*.mdf
+WEBCRAFT.MobileStore/App_Data/aspnet-WEBCRAFT.MobileStore-20170530010941.mdf
+*.ldf
