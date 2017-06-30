@@ -31,5 +31,9 @@ namespace WEBCRAFT.MobileStore.Controllers
         {
             return View();
         }
+        public ActionResult Edit2(int id)
+        {
+            return View();
+        }
     }
 }
