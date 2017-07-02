@@ -4,19 +4,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Brands</h2>
-<h3>@Html.ActionLink("+ Add new brand ", "")</h3>
+<h2>Brands</h2>'
+<h3>@Html.ActionLink("+ Add new brand ", "Create")</h3>
 <table class="table table-responsive table-bordered table-hover">
     <tr>
         <th>Id</th>
         <th>Name</th>
+        <th></th>
     </tr>
 
-    @foreach (var b in Model.Brands)
+    @foreach (var brand in Model.Brands)
     {
         <tr>
-            <td>@b.Id</td>
-            <td>@b.Name</td>
+            <td>@brand.Id</td>
+            <td>@brand.Name</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = brand.Id })
+                |
+                @Html.ActionLink("Delete", "Delete", new { id = brand.Id })
+            </td>
         </tr>
     }
 </table>

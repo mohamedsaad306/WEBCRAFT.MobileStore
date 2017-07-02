@@ -194,6 +194,10 @@
     <Compile Include="Migrations\201706242354397_InvoiceEntity.Designer.cs">
       <DependentUpon>201706242354397_InvoiceEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706302248312_updated.cs" />
+    <Compile Include="Migrations\201706302248312_updated.Designer.cs">
+      <DependentUpon>201706302248312_updated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -259,7 +263,7 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Brand\Index.cshtml" />
-    <Content Include="Views\Brand\Edit.cshtml" />
+    <Content Include="Views\Brand\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -287,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706242354397_InvoiceEntity.resx">
       <DependentUpon>201706242354397_InvoiceEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706302248312_updated.resx">
+      <DependentUpon>201706302248312_updated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

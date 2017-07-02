@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Edit";
 }
-    <h2>Create Or Edit Product </h2>
+<h2>Create Or Edit Product </h2>
 
 @using (Html.BeginForm("Save", "Product", "post"))
 {
@@ -11,10 +11,10 @@
         @Html.TextBoxFor(p => p.product.Name, new { @class = "form-control" })
     </div>
     <div class="form-group">
-    @Html.LabelFor(p => p.product.SellPrice)
-    @Html.TextBoxFor(p => p.product.SellPrice, new { @class = "form-control" })
-    </div> 
-    
+        @Html.LabelFor(p => p.product.SellPrice)
+        @Html.TextBoxFor(p => p.product.SellPrice, new { @class = "form-control" })
+    </div>
+
     @Html.HiddenFor(p => p.product.Id)
-    <input type="submit" name="name" value="submit"  class="btn btn-primary" />
+    <input type="submit" name="name" value="submit" class="btn btn-primary" />
 }

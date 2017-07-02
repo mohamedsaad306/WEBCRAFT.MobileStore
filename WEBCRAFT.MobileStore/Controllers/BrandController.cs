@@ -12,7 +12,7 @@ namespace WEBCRAFT.MobileStore.Controllers
     public class BrandController : Controller
     {
         public BrandController()
-        :this(new UnitOfWork(new ApplicationDbContext()))
+        : this(new UnitOfWork(new ApplicationDbContext()))
         {
         }
         public BrandController(UnitOfWork u)
@@ -27,17 +27,43 @@ namespace WEBCRAFT.MobileStore.Controllers
             var viewModel = new BrandsHomeViewModel { Brands = brands.ToList() };
             return View(viewModel);
         }
-        public ActionResult Edit(int id)
+
+        public ActionResult Create(int? id)
         {
-            return View();
+            if (id == 0)
+            {
+                ViewBag.Mode = "Create";
+            }
+            else
+            {
+                ViewBag.Mode = "Edit";
+            }
+                return View();
         }
-        public ActionResult Edit3(int id)
+        [HttpPost]
+        public ActionResult Create(Brand brand)
         {
-            return View();
+            if (brand.Id == 0)
+            {
+                Uow.Brand.Add(brand);
+            }
+            else
+            {         
+                Brand BrandToUpdate = Uow.Brand.Get(brand.Id);
+                BrandToUpdate.Name = brand.Name;
+            }
+
+            Uow.Complete();
+            Uow.Dispose();
+            return RedirectToAction("Index");
         }
-        public ActionResult Edit2(int id)
+        public ActionResult Delete(int id)
         {
-            return View();
+            Brand brand = Uow.Brand.Get(id);
+            Uow.Brand.Remove(brand);
+            Uow.Complete();
+            Uow.Dispose();
+            return RedirectToAction("Index");
         }
     }
 }
