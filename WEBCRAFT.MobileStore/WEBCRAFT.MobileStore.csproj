@@ -194,10 +194,6 @@
     <Compile Include="Migrations\201706242354397_InvoiceEntity.Designer.cs">
       <DependentUpon>201706242354397_InvoiceEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706302248312_updated.cs" />
-    <Compile Include="Migrations\201706302248312_updated.Designer.cs">
-      <DependentUpon>201706302248312_updated.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -291,9 +287,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706242354397_InvoiceEntity.resx">
       <DependentUpon>201706242354397_InvoiceEntity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706302248312_updated.resx">
-      <DependentUpon>201706302248312_updated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
