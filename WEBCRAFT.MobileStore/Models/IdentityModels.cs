@@ -13,9 +13,18 @@ namespace WEBCRAFT.MobileStore.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<PartModel> PartModels { get; set; }
+
         public DbSet<Customer> Customers { get; set; }
+
         public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<InvoiceType> InvoiceTypes { get; set; }
+
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<AccountType> AccountTypes { get; set; }
+
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<TransactionType> TransactionTypes { get; set; }
+
 
         public ApplicationDbContext()
             : base("DefaultConnection")
