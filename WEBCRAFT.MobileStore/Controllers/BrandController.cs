@@ -28,27 +28,28 @@ namespace WEBCRAFT.MobileStore.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Create(int? id)
+        public ActionResult Manage(int? id)
         {
-            if (id == 0)
-            {
-                ViewBag.Mode = "Create";
-            }
-            else
+            Brand b = null;
+            ViewBag.Mode = "Create";
+            if (id != null)
             {
                 ViewBag.Mode = "Edit";
+                b = Uow.Brand.Get((int)id);
             }
-                return View();
+                BrandVeiwModels bVM = new BrandVeiwModels { Brand = b};
+                Uow.Dispose();
+            return View("Create", bVM );
         }
         [HttpPost]
-        public ActionResult Create(Brand brand)
+        public ActionResult Manage(Brand brand)
         {
             if (brand.Id == 0)
             {
                 Uow.Brand.Add(brand);
             }
             else
-            {         
+            {      
                 Brand BrandToUpdate = Uow.Brand.Get(brand.Id);
                 BrandToUpdate.Name = brand.Name;
             }

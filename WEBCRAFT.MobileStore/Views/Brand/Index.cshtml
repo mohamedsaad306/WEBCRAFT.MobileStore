@@ -5,7 +5,7 @@
 }
 
 <h2>Brands</h2>'
-<h3>@Html.ActionLink("+ Add new brand ", "Create")</h3>
+<h3>@Html.ActionLink("+ Add new brand ", "Manage")</h3>
 <table class="table table-responsive table-bordered table-hover">
     <tr>
         <th>Id</th>
@@ -19,7 +19,7 @@
             <td>@brand.Id</td>
             <td>@brand.Name</td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = brand.Id })
+                @Html.ActionLink("Edit", "Manage", new { id = brand.Id })
                 |
                 @Html.ActionLink("Delete", "Delete", new { id = brand.Id })
             </td>
