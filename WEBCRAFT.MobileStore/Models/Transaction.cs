@@ -11,11 +11,15 @@ namespace WEBCRAFT.MobileStore.Models
         public Account Account { get; set; }
         public int FK_AccountId { get; set; } 
         public Decimal Ammount { get; set; }
+
         public TransactionType Type { get; set; }
         public DateTime CreatedAt { get; set; }
 
 
     }
+
+
+    // incomming to account || outgoing from account 
     public class TransactionType
     {
         public int Id { get; set; }

@@ -17,8 +17,10 @@ namespace WEBCRAFT.MobileStore.Models
         public InvoiceType Type { get; set; }
         public DateTime CreatedAt { get; set; }
 
+        // list of Related items 
 
     }
+    // sales invoice || procurement invoice 
     public class InvoiceType
     {
         public int Id { get; set; }

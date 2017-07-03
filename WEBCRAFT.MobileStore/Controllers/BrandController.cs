@@ -20,6 +20,7 @@ namespace WEBCRAFT.MobileStore.Controllers
             Uow = u;
         }
         public UnitOfWork Uow { get; set; }
+
         // GET: Brand
         public ActionResult Index()
         {
