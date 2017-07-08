@@ -1,0 +1,37 @@
+﻿@model PartModelHomeViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Models</h2>
+
+@Html.ActionLink("Add New Model", "Manage")
+<hr />
+<br />
+<br />
+<table class="table table-responsive table-bordered table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Brand</th>
+        <th></th>
+    </tr>
+
+    @foreach (var m in Model.PartModel)
+    {
+        <tr>
+            <td>@m.Id</td>
+            <td>@m.Name</td>
+            <td></td>
+            <td>
+                @Html.ActionLink("Edit", "Manage", new { id = m.Id })
+                |
+                @Html.ActionLink("Delete", "Delete", new { id = m.Id })
+            </td>
+        </tr>
+    }
+</table>
+
+
+

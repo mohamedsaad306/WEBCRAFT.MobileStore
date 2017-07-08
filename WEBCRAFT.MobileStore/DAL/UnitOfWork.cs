@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using WEBCRAFT.MobileStore.DAL;
+using WEBCRAFT.MobileStore.DAL.Repositories;
 using WEBCRAFT.MobileStore.Models;
 
 namespace WEBCRAFT.MobileStore.DAL
@@ -13,6 +14,8 @@ namespace WEBCRAFT.MobileStore.DAL
         public IProductRepository Products { get { return new ProductRepository(_context); } }
 
         public IBrandrepository Brand { get { return new BrandRepository(_context); } }
+
+        public IPartModelRepository PartModel { get { return new PartModelRepository(_context); } }
 
         private readonly ApplicationDbContext _context;
         public UnitOfWork(ApplicationDbContext context)
