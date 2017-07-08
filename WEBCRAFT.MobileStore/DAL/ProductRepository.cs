@@ -9,6 +9,8 @@ namespace WEBCRAFT.MobileStore.DAL
     public class ProductRepository : Repository<Product>, IProductRepository
     {
         public ApplicationDbContext AppContext { get { return Context as ApplicationDbContext; } }
+
+
         public ProductRepository(ApplicationDbContext context)
             : base(context)
         {
@@ -19,7 +21,7 @@ namespace WEBCRAFT.MobileStore.DAL
         public IEnumerable<Product> GetBestSeller()
         {
             return AppContext.Products.ToList();
-
+            
         }
 
 

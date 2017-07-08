@@ -14,6 +14,6 @@ namespace WEBCRAFT.MobileStore.Models
         public Brand Brand { get; set; }
         public PartModel PartModel { get; set; }
         public decimal SellPrice { get; set; }
-
+ 
     }
 }

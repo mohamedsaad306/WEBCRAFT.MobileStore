@@ -6,20 +6,24 @@ using System.Web.Mvc;
 using WEBCRAFT.MobileStore.DAL;
 using WEBCRAFT.MobileStore.Models;
 using WEBCRAFT.MobileStore.ViewModels;
+//using WEBCRAFT.MobileStore.ViewModels;
 
 namespace WEBCRAFT.MobileStore.Controllers
 {
     public class ProductController : Controller
     {
         public ProductController()
-        :this(new UnitOfWork(new ApplicationDbContext()))
+      //  :this(new UnitOfWork(new ApplicationDbContext()))
         {
         }
-        public ProductController(UnitOfWork u )
-        {
-            Uow = u;
-        }
-        public UnitOfWork Uow { get; set; }
+
+        //public ProductController(UnitOfWork u )
+        //{
+        //    Uow = u;
+        //}
+        public UnitOfWork Uow = new UnitOfWork(new ApplicationDbContext ());// { get; set; }
+
+
         //
         // GET: /Product/
         public ActionResult Index()

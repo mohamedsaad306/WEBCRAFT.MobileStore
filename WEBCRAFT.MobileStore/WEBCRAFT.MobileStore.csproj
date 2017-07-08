@@ -199,10 +199,14 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\ExtraFeesType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\PartModel.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\ServiceBalance.cs" />
+    <Compile Include="Models\ServiceType.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
