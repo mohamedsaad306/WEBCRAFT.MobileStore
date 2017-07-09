@@ -50,7 +50,7 @@ namespace WEBCRAFT.MobileStore.Controllers
             {
                 var pToUpdate = Uow.Products.Get(partModel.Id);
                 pToUpdate.Name = partModel.Name;
-                pToUpdate.Brand = Uow.Brand.Get((int)partModel.Fk_BrandId);
+               // pToUpdate.Brand = Uow.Brand.Get((int)partModel.Fk_BrandId);
             }
             else
             {
