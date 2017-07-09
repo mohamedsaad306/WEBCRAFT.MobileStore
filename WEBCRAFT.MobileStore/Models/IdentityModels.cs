@@ -24,7 +24,10 @@ namespace WEBCRAFT.MobileStore.Models
 
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<TransactionType> TransactionTypes { get; set; }
-
+        public DbSet<Service>Services { get; set; }
+        public DbSet<ServiceBalance> ServicesBalance { get; set; }
+        public DbSet<ServiceType> ServiceTypes { get; set; }
+        public DbSet<ExtraFeesType> ExtraFeesTypes { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection")

@@ -179,7 +179,9 @@
     <Compile Include="DAL\Repositories\PartModelRepository.cs" />
     <Compile Include="DAL\Repositories\ProductRepository.cs" />
     <Compile Include="DAL\IPartModelRepository.cs" />
+    <Compile Include="DAL\IServiceRepository.cs" />
     <Compile Include="DAL\Repository.cs" />
+    <Compile Include="DAL\ServiceRepository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
