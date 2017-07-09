@@ -16,4 +16,13 @@ namespace WEBCRAFT.MobileStore.Models
         public decimal SellPrice { get; set; }
  
     }
+    public class InvoicableProduct
+    {
+        public int Id { get; set; }
+        public Product Product { get; set; }
+        public int ProductId { get; set; }
+        public int Count { get; set; }
+        public decimal SellPrice { get; set; }
+
+    }
 }

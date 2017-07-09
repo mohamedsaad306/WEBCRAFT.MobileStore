@@ -11,14 +11,14 @@ namespace WEBCRAFT.MobileStore.ViewModels
     {
         public Product product{ get; set; }
 
-        [Required]
-        [Display(Name="Product Name")]
-        public string ProductName { get; set; }
+        //[Required]
+        //[Display(Name="Product Name")]
+        //public string ProductName { get; set; }
 
-        [Required]
-        [Display(Name = "Sell Price")]
+        //[Required]
+        //[Display(Name = "Sell Price")]
 
-        public decimal sellPrice { get; set; }
+        //public decimal sellPrice { get; set; }
     }
     public class ProductsHomeViewModel
     {

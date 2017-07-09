@@ -1,0 +1,48 @@
+﻿@model CustomerIndexViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Customers</h2>
+ 
+<a href="#" id="new-customer-link">New Customer</a>
+<hr />
+<div id="new-customer"></div> @*partialView should Be rendered here*@ 
+<br />
+
+<table class="table table-responsive table-bordered table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th></th>
+    </tr>
+
+    @foreach (var customer in Model.Customers)
+    {
+        <tr>
+            <td>@customer.Id</td>
+            <td>@customer.Name</td>
+            <td>
+                @Html.ActionLink("Edit", "Manage", new { id = customer.Id })
+                |
+                @Html.ActionLink("Delete", "Delete", new { id = customer.Id })
+            </td>
+        </tr>
+    }
+</table>
+
+@section scripts{
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#new-customer-link').on('click', function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            $.get('@Url.Action("New","Customer")', { id: id }, function (result) {
+                $('#new-customer').html(result);
+            });
+        });
+    });
+</script>
+ }
