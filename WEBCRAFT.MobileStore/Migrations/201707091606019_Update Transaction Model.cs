@@ -13,7 +13,7 @@ namespace WEBCRAFT.MobileStore.Migrations
             AlterColumn("dbo.Transactions", "Account_Id", c => c.Int(nullable: false));
             CreateIndex("dbo.Transactions", "Account_Id1");
             AddForeignKey("dbo.Transactions", "Account_Id1", "dbo.Accounts", "Id");
-            DropColumn("dbo.Transactions", "Transation_Id");
+            //DropColumn("dbo.Transactions", "Transation_Id");
         }
         
         public override void Down()
