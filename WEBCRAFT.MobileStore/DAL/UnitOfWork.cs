@@ -14,6 +14,8 @@ namespace WEBCRAFT.MobileStore.DAL
         public IProductRepository Products { get { return new ProductRepository(_context); } }
 
         public IBrandrepository Brand { get { return new BrandRepository(_context); } }
+       
+       // public IServiceRepository Services { get { return new ServiceRepository(_context); } }
 
         public IPartModelRepository PartModel { get { return new PartModelRepository(_context); } }
 
