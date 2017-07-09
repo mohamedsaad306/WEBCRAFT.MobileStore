@@ -264,6 +264,7 @@
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\BrandAndModelViewModel.cs" />
     <Compile Include="ViewModels\BrandVeiwModels.cs" />
     <Compile Include="ViewModels\CustomerViewModels.cs" />
     <Compile Include="ViewModels\PartModelViewModel.cs" />

@@ -24,7 +24,8 @@ namespace WEBCRAFT.MobileStore.Controllers
         public ActionResult Index()
         {
             var partModels = Uow.PartModel.GetAll();
-            PartModelHomeViewModel vm = new PartModelHomeViewModel { PartModel = partModels.ToList() };
+            var brands = Uow.Brand.GetAll();
+            PartModelHomeViewModel vm = new PartModelHomeViewModel { PartModel = partModels.ToList() , Brand= brands.ToList()};
             return View(vm);
         }
 
@@ -50,7 +51,7 @@ namespace WEBCRAFT.MobileStore.Controllers
             {
                 var pToUpdate = Uow.PartModel.Get(partModel.Id);
                 pToUpdate.Name = partModel.Name;
-               // pToUpdate.Brand = Uow.Brand.Get((int)partModel.Fk_BrandId);
+                pToUpdate.Fk_BrandId = partModel.Fk_BrandId;
             }
             else
             {
@@ -58,7 +59,7 @@ namespace WEBCRAFT.MobileStore.Controllers
             }
             Uow.Complete();
             Uow.Dispose();
-            return RedirectToAction("index");
+            return RedirectToAction("index", "Brand");
         }
         public ActionResult Delete(int id)
         {
