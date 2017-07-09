@@ -13,7 +13,11 @@ namespace WEBCRAFT.MobileStore.Models
         public bool HasExtraFees { get; set; }
         public string Comment { get; set; }
         public int FK_ExtraFeesId { get; set; }
+        public ExtraFeesType ExtraFeesType { get; set; }
         public int FK_ServiceTypId { get; set; }
+        public ServiceType ServiceType { get; set; }
         public int FK_ServiceBalenceId { get; set; }
+        public ServiceBalance ServiceBalance { get; set; }
+
     }
 }
