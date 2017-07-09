@@ -19,6 +19,7 @@ namespace WEBCRAFT.MobileStore.ViewModels
     }
     public class PartModelHomeViewModel
     {
-      public   List<PartModel> PartModel { get; set; }
+        public List<Brand> Brand { get; set; }
+        public List<PartModel> PartModel { get; set; }
     }
 }
