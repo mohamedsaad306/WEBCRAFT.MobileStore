@@ -59,7 +59,7 @@ namespace WEBCRAFT.MobileStore.Controllers
             }
             Uow.Complete();
             Uow.Dispose();
-            return RedirectToAction("index");
+            return RedirectToAction("index", "Brand");
         }
         public ActionResult Delete(int id)
         {
