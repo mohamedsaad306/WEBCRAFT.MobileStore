@@ -9,7 +9,7 @@ namespace WEBCRAFT.MobileStore.Models
     {
         public int Id { get; set; }
         public string BalanceName { set; get; }
-        public double Balance { get; set; }
+        public decimal Balance { get; set; }
 
     }
 }
