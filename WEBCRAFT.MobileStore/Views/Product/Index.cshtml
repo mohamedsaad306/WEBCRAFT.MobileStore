@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Index";
 }
-    
+
 <h2>Products </h2>
 
 
@@ -14,15 +14,43 @@
     <tr>
         <th>Id</th>
         <th>Name</th>
+        <th>Brand</th>
+        <th>Model</th>
         <th>Price</th>
     </tr>
+
 
     @foreach (var p in Model.Products)
     {
         <tr>
-            <th>@p.Id</th>
-            <th>@p.Name</th>
-            <th>@p.SellPrice</th>
+
+            <td>@p.Id</td>
+            <td>@p.Name</td>
+            @foreach (var brand in Model.Brands)
+            {
+                if (p.FK_BrandId == brand.Id)
+                {
+                    <td>@brand.Name</td>
+                }
+            }
+            @foreach (var m in Model.PartModels)
+            {
+                if (p.FK_PartModelId == m.Id)
+                {
+                    <td>@m.Name</td>
+                }
+            }
+
+
+            <td>@p.SellPrice</td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = p.Id})
+                |
+                @Html.ActionLink("Delete", "Delete", new { id = p.Id })
+
+            </td>
         </tr>
     }
+
 </table>

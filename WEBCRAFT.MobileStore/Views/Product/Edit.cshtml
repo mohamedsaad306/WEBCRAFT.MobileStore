@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Edit";
 }
-<h2>Create Or Edit Product </h2>
+<h2>@ViewBag.Mode</h2>
 
 @using (Html.BeginForm("Save", "Product", "post"))
 {
@@ -14,7 +14,15 @@
         @Html.LabelFor(p => p.product.SellPrice)
         @Html.TextBoxFor(p => p.product.SellPrice, new { @class = "form-control" })
     </div>
+    <div class="form-group">
+        @Html.DropDownListFor(p => p.product.FK_BrandId, new SelectList(Model.Brands, "Id", "Name"), "Select Brand", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.DropDownListFor(p => p.product.FK_PartModelId, new SelectList(Model.PartModels, "Id", "Name"), "Select Model", new { @class = "form-control" })
+    </div>
 
     @Html.HiddenFor(p => p.product.Id)
-    <input type="submit" name="name" value="submit" class="btn btn-primary" />
+    <input type="submit" name="name" value="@ViewBag.Mode" class="btn btn-primary" />
+    <input type="button" name="cancel" value="Cancel" class="btn btn-primary"  onclick=""/>
+
 }
