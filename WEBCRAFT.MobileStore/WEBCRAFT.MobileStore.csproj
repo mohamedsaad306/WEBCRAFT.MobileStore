@@ -250,6 +250,10 @@
     <Compile Include="Migrations\201707091851284_CustomerUpdate.Designer.cs">
       <DependentUpon>201707091851284_CustomerUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707180931589_ParentAccount.cs" />
+    <Compile Include="Migrations\201707180931589_ParentAccount.Designer.cs">
+      <DependentUpon>201707180931589_ParentAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -388,6 +392,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707091851284_CustomerUpdate.resx">
       <DependentUpon>201707091851284_CustomerUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707180931589_ParentAccount.resx">
+      <DependentUpon>201707180931589_ParentAccount.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
