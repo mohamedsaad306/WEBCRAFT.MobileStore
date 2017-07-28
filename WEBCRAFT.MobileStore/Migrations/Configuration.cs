@@ -4,6 +4,7 @@ namespace WEBCRAFT.MobileStore.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<WEBCRAFT.MobileStore.Models.ApplicationDbContext>
     {
@@ -26,6 +27,13 @@ namespace WEBCRAFT.MobileStore.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.AccountTypes.AddOrUpdate(
+                at => at.Name, 
+                new AccountType { Name = "Sales" },
+                new AccountType { Name = "Purchases" },
+                new AccountType { Name = "Customers" }
+            );
+ 
         }
     }
 }

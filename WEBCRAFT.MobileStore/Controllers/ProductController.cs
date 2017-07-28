@@ -13,15 +13,15 @@ namespace WEBCRAFT.MobileStore.Controllers
     public class ProductController : Controller
     {
         public ProductController()
-      //  :this(new UnitOfWork(new ApplicationDbContext()))
+          : this(new UnitOfWork(new ApplicationDbContext()))
         {
         }
 
-        //public ProductController(UnitOfWork u )
-        //{
-        //    Uow = u;
-        //}
-        public UnitOfWork Uow = new UnitOfWork(new ApplicationDbContext ());// { get; set; }
+        public ProductController(UnitOfWork u)
+        {
+            Uow = u;
+        }
+        public UnitOfWork Uow = new UnitOfWork(new ApplicationDbContext());// { get; set; }
 
 
         //
@@ -29,29 +29,40 @@ namespace WEBCRAFT.MobileStore.Controllers
         public ActionResult Index()
         {
             var products = Uow.Products.GetAll();
-            ProductsHomeViewModel vm = new ProductsHomeViewModel { Products = products.ToList() };
+            var brands = Uow.Brand.GetAll();
+            var partModels = Uow.PartModel.GetAll();
+            ProductsHomeViewModel vm = new ProductsHomeViewModel { Products = products.ToList(), Brands = brands.ToList(), PartModels = partModels.ToList() };
             return View(vm);
         }
 
-        public ActionResult Edit(int?  id)
+        public ActionResult Edit(int? id)
         {
             Product p = null;
+            ViewBag.Mode = "Create";
+            var brands = Uow.Brand.GetAll();
+            var partModel = Uow.PartModel.GetAll();
+
             if (id != null)
-            { p = Uow.Products.Get((int)id); }
-            
-            ProductViewModels vm = new ProductViewModels { product = p };
-            Uow.Dispose();            
-            return View("Edit",vm);
+            {
+                ViewBag.Mode = "Edit";
+                p = Uow.Products.Get((int)id);
+            }
+
+            ProductViewModels vm = new ProductViewModels { product = p , Brands = brands.ToList() , PartModels = partModel.ToList()};
+            Uow.Dispose();
+            return View("Edit", vm);
         }
 
         [HttpPost]
         public ActionResult Save(Product product)
         {
-            if (product.Id!=0)
+            if (product.Id != 0)
             {
-                var pToUpdate= Uow.Products.Get(product.Id);
+                var pToUpdate = Uow.Products.Get(product.Id);
                 pToUpdate.Name = product.Name;
                 pToUpdate.SellPrice = product.SellPrice;
+                pToUpdate.FK_BrandId = product.FK_BrandId;
+                pToUpdate.FK_PartModelId = product.FK_PartModelId;
             }
             else
             {
@@ -61,7 +72,14 @@ namespace WEBCRAFT.MobileStore.Controllers
             Uow.Dispose();
             return RedirectToAction("index");
         }
-
+        public ActionResult Delete(int id)
+        {
+            Product p = Uow.Products.Get(id);
+            Uow.Products.Remove(p);
+            Uow.Complete();
+            Uow.Dispose();
+            return RedirectToAction("Index");
+        }
 
     }
 }

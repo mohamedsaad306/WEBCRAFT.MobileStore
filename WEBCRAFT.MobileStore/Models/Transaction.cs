@@ -11,13 +11,9 @@ namespace WEBCRAFT.MobileStore.Models
         public Account Account { get; set; }
         public int AccountId { get; set; } 
         public Decimal Ammount { get; set; }
-
+        public DateTime CreatedAt { get; set; }
         public int TypeId { get; set; }
         public TransactionType Type { get; set; }
-
-        public DateTime CreatedAt { get; set; }
-
-
     }
 
 
