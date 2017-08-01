@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WEBCRAFT.MobileStore", "WEBCRAFT.MobileStore\WEBCRAFT.MobileStore.csproj", "{89A566B9-4069-42AD-B3CD-600D9EA5A429}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADVENSCO.Demos.CodeFirstFromDB", "ADVENSCO.Demos.CodeFirstFromDB\ADVENSCO.Demos.CodeFirstFromDB.csproj", "{5968CA42-2C55-459D-A709-C7F8CB068E14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{89A566B9-4069-42AD-B3CD-600D9EA5A429}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89A566B9-4069-42AD-B3CD-600D9EA5A429}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89A566B9-4069-42AD-B3CD-600D9EA5A429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5968CA42-2C55-459D-A709-C7F8CB068E14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5968CA42-2C55-459D-A709-C7F8CB068E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5968CA42-2C55-459D-A709-C7F8CB068E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5968CA42-2C55-459D-A709-C7F8CB068E14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
