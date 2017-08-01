@@ -1,4 +1,5 @@
-﻿@model WEBCRAFT.MobileStore.ViewModels.ProductViewModels
+﻿@using WEBCRAFT.MobileStore.Helper;
+@model WEBCRAFT.MobileStore.ViewModels.ProductViewModels
 @{
     ViewBag.Title = "Edit";
 }
@@ -15,15 +16,62 @@
         @Html.TextBoxFor(p => p.product.SellPrice, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.DropDownListFor(p => p.product.FK_BrandId, new SelectList(Model.Brands, "Id", "Name"), "Select Brand", new { @class = "form-control" })
+        @*@Html.DropDownListFor(p => p.product.FK_BrandId, new SelectList(Model.Brands, "Id", "Name"), "Select Brand", new { @class = "form-control" })*@
+        @Html.DropDownListWithAttributesFor(
+        p => p.product.FK_BrandId,
+          new HtmlSelectListModel<Brand>
+          {
+              DataObjects = Model.Brands,
+              EmptyValueText = "- Select a Brand-",
+              SelectAttributes = new Dictionary<string, string>
+              {
+              { "Id", "selected-barand" }, { "Name", "product.FK_BrandId" }, { "class", "form-control" }
+              },
+              OptionAttributes = new Dictionary<string, string>
+                                    {
+                                        { "value", "Id" }, { "inner-text", "Name" }, { "data-selectedBrandId", "Id" }
+                                    }
+          })
     </div>
     <div class="form-group">
-        @Html.DropDownListFor(p => p.product.FK_PartModelId, new SelectList(Model.PartModels, "Id", "Name"), "Select Model", new { @class = "form-control" })
+        @*@Html.DropDownListFor(p => p.product.FK_PartModelId, new SelectList(Model.PartModels, "Id", "Name"), "Select Model", new { @class = "form-control" })*@
+
+        @Html.DropDownListWithAttributesFor(x => x.product.FK_PartModelId, new HtmlSelectListModel<PartModel>
+   {
+       DataObjects=Model.PartModels,
+       EmptyValueText="-Select Part Model-",
+       SelectAttributes= new Dictionary<string, string>
+       {
+           {"Id","selected-partModel" },{"Name","product.FK_PartModel" },{"class","form-control" }
+       },
+       OptionAttributes= new Dictionary<string, string>
+       {
+           {"value","Id" }, {"inner-text","Name" }, {"data-brandId","Fk_BrandId" }
+       }
+   })
+        
     </div>
 
     @Html.HiddenFor(p => p.product.Id)
     <input type="submit" name="name" value="@ViewBag.Mode" class="btn btn-primary" />
-    <input type="button" name="cancel" value="Cancel" class="btn btn-primary"  onclick=""/>
-  
+    <input type="button" name="cancel" value="Cancel" class="btn btn-primary" onclick="" />
 
+
+}
+@section scripts {
+    <script>
+        $('#selected-partModel').find('option').css('display', 'none');
+        $('#selected-barand').change(function () {
+
+            console.log(this.value);
+            $('#selected-partModel').val([0]);
+            $('#selected-partModel').prop('selectedIndex', 0)
+            $('#selected-partModel').find('option').css('display', 'none');
+            $('option[data-brandId=' + this.value + ']').css("display", "");
+
+            //$('#selected-customer').find('option').css('display', 'none');
+            //$('option[data-logicalEntity=' + this.value + ']').css("display", "");
+            //$('#selected-customer').val();
+        });
+    </script>
 }
