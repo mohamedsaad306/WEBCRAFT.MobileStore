@@ -31,9 +31,15 @@ namespace WEBCRAFT.MobileStore.Migrations
                 at => at.Name, 
                 new AccountType { Name = "Sales" },
                 new AccountType { Name = "Purchases" },
-                new AccountType { Name = "Customers" }
+                new AccountType { Name = "Customers" },
+                new AccountType { Name="Expenses"}
             );
- 
+            context.Accounts.AddOrUpdate(
+                new Account { Name = "Sales" },
+                new Account { Name = "Purchases" },
+                new Account { Name = "Customers" },
+                new Account { Name = "Expenses" }
+                );
         }
     }
 }

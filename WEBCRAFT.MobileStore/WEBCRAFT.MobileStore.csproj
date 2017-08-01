@@ -161,12 +161,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="BLL\CustomersBLL.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PartModelController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="DAL\IAccountRepository.cs" />
+    <Compile Include="DAL\IAccountTypeRepository.cs" />
+    <Compile Include="DAL\Repositories\AccountRepository.cs" />
+    <Compile Include="DAL\Repositories\AccountTypesRepository.cs" />
     <Compile Include="DAL\Repositories\BrandRepository.cs" />
     <Compile Include="DAL\IBrandrepository.cs" />
     <Compile Include="DAL\IInvoiceRepository.cs" />
@@ -255,6 +260,14 @@
     <Compile Include="Migrations\201707180931589_ParentAccount.cs" />
     <Compile Include="Migrations\201707180931589_ParentAccount.Designer.cs">
       <DependentUpon>201707180931589_ParentAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708011140350_PartnerId_Added_To_Account.cs" />
+    <Compile Include="Migrations\201708011140350_PartnerId_Added_To_Account.Designer.cs">
+      <DependentUpon>201708011140350_PartnerId_Added_To_Account.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708011153409_PartnerId_Added_To_Account1.cs" />
+    <Compile Include="Migrations\201708011153409_PartnerId_Added_To_Account1.Designer.cs">
+      <DependentUpon>201708011153409_PartnerId_Added_To_Account1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -398,10 +411,25 @@
     <EmbeddedResource Include="Migrations\201707180931589_ParentAccount.resx">
       <DependentUpon>201707180931589_ParentAccount.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708011140350_PartnerId_Added_To_Account.resx">
+      <DependentUpon>201708011140350_PartnerId_Added_To_Account.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708011153409_PartnerId_Added_To_Account1.resx">
+      <DependentUpon>201708011153409_PartnerId_Added_To_Account1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'XX|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

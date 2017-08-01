@@ -5,7 +5,6 @@
 
 <h2>Products </h2>
 
-
 @Html.ActionLink("New Product", "Edit", "Product")
 <hr />
 <br />
@@ -17,6 +16,7 @@
         <th>Brand</th>
         <th>Model</th>
         <th>Price</th>
+        <th>Actions </th>
     </tr>
 
 
@@ -26,31 +26,36 @@
 
             <td>@p.Id</td>
             <td>@p.Name</td>
-            @foreach (var brand in Model.Brands)
-            {
-                if (p.FK_BrandId == brand.Id)
+            @{var pBrand = (p.FK_BrandId != 0) ? Model.Brands.Where(b => b.Id == p.FK_BrandId).FirstOrDefault().Name : "---";}
+            @{var pModel = (p.FK_PartModelId != 0) ? Model.PartModels.Where(m => m.Id == p.FK_PartModelId).FirstOrDefault().Name : "---"; }
+            <td>@pBrand</td>
+            <td>@pModel</td>
+
+            @*@foreach (var brand in Model.Brands)
                 {
-                    <td>@brand.Name</td>
-                }
-            }
-            @foreach (var m in Model.PartModels)
-            {
-                if (p.FK_PartModelId == m.Id)
+                    if (p.FK_BrandId == brand.Id)
+                    {
+                        <td>@brand.Name</td>
+                    }
+                }*@
+            @*@foreach (var m in Model.PartModels)
                 {
-                    <td>@m.Name</td>
-                }
-            }
+                    if (p.FK_PartModelId == m.Id)
+                    {
+                        <td>@m.Name</td>
+                    }
+                }*@
 
 
             <td>@p.SellPrice</td>
 
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = p.Id})
+                @Html.ActionLink("Edit", "Edit", new { id = p.Id })
                 |
                 @Html.ActionLink("Delete", "Delete", new { id = p.Id })
 
             </td>
         </tr>
-    }
+                }
 
 </table>

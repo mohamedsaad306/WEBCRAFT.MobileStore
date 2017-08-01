@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WEBCRAFT.MobileStore.BLL;
 using WEBCRAFT.MobileStore.DAL;
 using WEBCRAFT.MobileStore.Models;
 using WEBCRAFT.MobileStore.ViewModels;
@@ -32,14 +33,8 @@ namespace WEBCRAFT.MobileStore.Controllers
         [HttpPost]
         public ActionResult Save(Customer Customer)
         {
-            Customer newCustomer = new Customer
-            {
-                Name = Customer.Name
-            };
+            int CustomerID = CustomersBLL.AddNewCustomer(uow, Customer);
 
-            uow.Customers.Add(newCustomer);
-            uow.Complete();
-            uow.Dispose();
 
             return RedirectToAction("index");
         }

@@ -20,6 +20,10 @@ namespace WEBCRAFT.MobileStore.DAL
         public IPartModelRepository PartModel { get { return new PartModelRepository(_context); } }
         public ICustomerRepository Customers { get { return new CustomerRepository(_context); } }
 
+        public IAccountRepository Accounts { get { return new AccountRepository(_context); } }
+        public IAccountTypeRepository AccountTypes { get { return new AccountTypesRepository(_context); } }
+
+
         private readonly ApplicationDbContext _context;
         public UnitOfWork(ApplicationDbContext context)
         {
