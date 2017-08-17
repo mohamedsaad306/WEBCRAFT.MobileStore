@@ -161,15 +161,19 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="BLL\CustomersBLL.cs" />
+    <Compile Include="BLL\BLL.cs" />
+    <Compile Include="BLL\ProductBLL.cs" />
+    <Compile Include="BLL\ServiceBLL.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PartModelController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="DAL\IAccountRepository.cs" />
     <Compile Include="DAL\IAccountTypeRepository.cs" />
+    <Compile Include="DAL\IServiceBalanceRepository.cs" />
     <Compile Include="DAL\Repositories\AccountRepository.cs" />
     <Compile Include="DAL\Repositories\AccountTypesRepository.cs" />
     <Compile Include="DAL\Repositories\BrandRepository.cs" />
@@ -186,7 +190,8 @@
     <Compile Include="DAL\IPartModelRepository.cs" />
     <Compile Include="DAL\IServiceRepository.cs" />
     <Compile Include="DAL\Repository.cs" />
-    <Compile Include="DAL\ServiceRepository.cs" />
+    <Compile Include="DAL\Repositories\ServiceRepository.cs" />
+    <Compile Include="DAL\Repositories\ServiceBalanceRepository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -289,6 +294,7 @@
     <Compile Include="ViewModels\CustomerViewModels.cs" />
     <Compile Include="ViewModels\PartModelViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModels.cs" />
+    <Compile Include="ViewModels\ServiceViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootsrap-lumen.css" />
@@ -348,6 +354,8 @@
     <Content Include="Views\PartModel\Manage.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\_New.cshtml" />
+    <Content Include="Views\Service\Index.cshtml" />
+    <Content Include="Views\Service\_ServiceBalnce.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -417,6 +425,9 @@
     <EmbeddedResource Include="Migrations\201708011153409_PartnerId_Added_To_Account1.resx">
       <DependentUpon>201708011153409_PartnerId_Added_To_Account1.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

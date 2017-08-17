@@ -9,8 +9,9 @@ namespace WEBCRAFT.MobileStore.DAL
 {
     public class ServiceRepository:Repository<Service>,IServiceRepository
     {
-        public ApplicationDbContext AppContext { get { return Context as ApplicationDbContext; } }
-
+        public ServiceRepository():this(new ApplicationDbContext ())
+        {
+        }
 
         public ServiceRepository(ApplicationDbContext context)
             : base(context)
@@ -20,9 +21,11 @@ namespace WEBCRAFT.MobileStore.DAL
         public IEnumerable<Service> GetServices()
         {
             return AppContext.Services.ToList();
-
         }
 
-
+        public ServiceBalance AddServiceBalance (ServiceBalance ServiceBalance)
+        {
+            return uow.ServiceBalances.Add(ServiceBalance);
+        }
     }
 }

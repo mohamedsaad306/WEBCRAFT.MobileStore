@@ -1,0 +1,35 @@
+﻿@model WEBCRAFT.MobileStore.ViewModels.IndexServiceViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Products </h2>
+
+@Html.ActionLink("New Service Balance ", "NewServiceBalance", "Service")
+<hr />
+<br />
+<br />
+<table class="table table-responsive table-bordered table-hover">
+    <tr>
+        <th>Name</th>
+        <th>Service Type</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Price</th>
+        <th>Actions </th>
+    </tr>
+
+    @*@foreach (var s in Model.Services)
+    {
+        <thead>
+            <tr>
+                <td>@s.ServiceName</td>
+                <td>@s.ServiceType</td>
+                <td>@s.ServiceBalance.Balance</td>
+            <td>@s.Amount</td>
+        </tr>
+    </thead>
+    }*@
+
+</table>

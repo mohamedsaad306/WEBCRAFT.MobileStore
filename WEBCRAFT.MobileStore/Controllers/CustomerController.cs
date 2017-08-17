@@ -19,6 +19,13 @@ namespace WEBCRAFT.MobileStore.Controllers
 
         private UnitOfWork uow;
 
+        public CustomerRepository CustomerRepository
+        {
+            get
+            {
+                return new CustomerRepository();
+            }
+        }
         // GET: Customer
         public ActionResult Index()
         {
@@ -30,17 +37,20 @@ namespace WEBCRAFT.MobileStore.Controllers
             return View("_New");
         }
 
+
         [HttpPost]
         public ActionResult Save(Customer Customer)
         {
-            int CustomerID = CustomersBLL.AddNewCustomer(uow, Customer);
-
-
+            Customer NewCustomer = CustomerRepository.AddNewCustomer(Customer);
+            if (Customer != null)
+                TempData["info"] = "Account Created With account id =" + Customer.Id;
+            else
+                TempData["info"] = "Error Occured While Creating Account ";
             return RedirectToAction("index");
         }
         public ActionResult Delete(int id)
         {
-            Customer customerToDelete= uow.Customers.Get(id);
+            Customer customerToDelete = uow.Customers.Get(id);
             uow.Customers.Remove(customerToDelete);
             uow.Complete();
             uow.Dispose();

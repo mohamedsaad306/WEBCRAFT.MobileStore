@@ -3,13 +3,23 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using WEBCRAFT.MobileStore.Models;
 
 namespace WEBCRAFT.MobileStore.DAL
 {
     public class Repository<TEntity> :IRepository<TEntity> where TEntity:class
     {
         protected readonly DbContext Context;
+        public ApplicationDbContext AppContext { get { return Context as ApplicationDbContext; } }
 
+        private UnitOfWork _uow;
+        public UnitOfWork uow { get
+            {
+                if (_uow == null)
+                    _uow = new UnitOfWork(AppContext);
+                return _uow;
+            }
+        }
 
         public Repository(DbContext _context)
         {

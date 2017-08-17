@@ -10,8 +10,7 @@ namespace WEBCRAFT.MobileStore.DAL
     public class PartModelRepository : Repository<PartModel> , IPartModelRepository
     {
 
-        public ApplicationDbContext AppContext { get { return Context as ApplicationDbContext; } }
-
+        
         public PartModelRepository(ApplicationDbContext context)
             :base (context)
         {

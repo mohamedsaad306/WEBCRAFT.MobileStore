@@ -1,0 +1,39 @@
+﻿@model ServiceBalanceIndex
+
+<h2>Services Balances </h2>
+
+@using (Html.BeginForm("NewServiceBalance", "Service", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(b => b.ServiceBalance.BalanceName)
+        @Html.TextBoxFor(b => b.ServiceBalance.BalanceName, new {@class= "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(b => b.ServiceBalance.Balance)
+        @Html.TextBoxFor(b => b.ServiceBalance.Balance,new {@class= "form-control" })
+    </div>
+        @*@Html.HiddenFor(p => p.Customer.Id)*@
+        <input type="submit" value="submit" class="btn btn-primary" />
+}
+<br />
+<hr />
+<br />
+@if (Model.ServiceBalances.Count > 0)
+{
+    <table class="table table-hover table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Ammount</th>
+            </tr>
+            @{
+                foreach (var r in Model.ServiceBalances)
+                {
+                   <tr>
+                       <td>@r.BalanceName</td>
+                       <td>@r.Balance</td>
+                   </tr>
+                }
+            }
+        </table>
+}

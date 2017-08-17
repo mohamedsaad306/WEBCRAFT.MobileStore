@@ -54,14 +54,14 @@ namespace WEBCRAFT.MobileStore.Helper
 
             if (optionsBuilder == null) { optionsBuilder = new StringBuilder(); }
             optionsBuilder.Append("<option ");
-            bool defaultValueFound = false;
+            //bool defaultValueFound = false;
             foreach (var attribute in optionAttributes)
             {
                 optionsBuilder.Append(string.Format("{0}=\"{1}\" ", attribute.Key, attribute.Value));
                 if (attribute.Value == selectedValue)
                 {
                     optionsBuilder.Append("selected=\"selected\" ");
-                    defaultValueFound = true;
+                    //defaultValueFound = true;
                 }
             }
             optionsBuilder.Append(">" + innerText + "</option>");

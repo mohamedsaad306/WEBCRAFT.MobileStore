@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
+using System.Web;
 using WEBCRAFT.MobileStore.Models;
 
 namespace WEBCRAFT.MobileStore.DAL
 {
-    public interface IServiceRepository:IRepository<Service>
+    public interface IServiceBalanceRepository : IRepository<ServiceBalance>
     {
+   
     }
 }
