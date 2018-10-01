@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using WEBCRAFT.MobileStore.Models;
 
-namespace WEBCRAFT.MobileStore.DAL.Repositories
+namespace WEBCRAFT.MobileStore.DAL
 {
-   public  interface IPartModelRepository : IRepository<PartModel>
+   public interface ICategoryepository:IRepository<Category>
     {
+
     }
 }

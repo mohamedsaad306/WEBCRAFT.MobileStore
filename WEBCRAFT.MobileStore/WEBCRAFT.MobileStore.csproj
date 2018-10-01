@@ -176,8 +176,8 @@
     <Compile Include="DAL\IServiceBalanceRepository.cs" />
     <Compile Include="DAL\Repositories\AccountRepository.cs" />
     <Compile Include="DAL\Repositories\AccountTypesRepository.cs" />
-    <Compile Include="DAL\Repositories\BrandRepository.cs" />
-    <Compile Include="DAL\IBrandrepository.cs" />
+    <Compile Include="DAL\Repositories\CategoryRepository.cs" />
+    <Compile Include="DAL\ICategoryepository.cs" />
     <Compile Include="DAL\IInvoiceRepository.cs" />
     <Compile Include="DAL\Repositories\CustomerRepository.cs" />
     <Compile Include="DAL\ICustomerRepository.cs" />
@@ -185,9 +185,9 @@
     <Compile Include="DAL\IRepository.cs" />
     <Compile Include="DAL\IUnitOfWork.cs" />
     <Compile Include="DAL\IProductRepository.cs" />
-    <Compile Include="DAL\Repositories\PartModelRepository.cs" />
+    <Compile Include="DAL\Repositories\SubcategoryRepository.cs" />
     <Compile Include="DAL\Repositories\ProductRepository.cs" />
-    <Compile Include="DAL\IPartModelRepository.cs" />
+    <Compile Include="DAL\ISubcategoryRepository.cs" />
     <Compile Include="DAL\IServiceRepository.cs" />
     <Compile Include="DAL\Repository.cs" />
     <Compile Include="DAL\Repositories\ServiceRepository.cs" />
@@ -274,15 +274,27 @@
     <Compile Include="Migrations\201708011153409_PartnerId_Added_To_Account1.Designer.cs">
       <DependentUpon>201708011153409_PartnerId_Added_To_Account1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810011837400_Change_brand_to_Category.cs" />
+    <Compile Include="Migrations\201810011837400_Change_brand_to_Category.Designer.cs">
+      <DependentUpon>201810011837400_Change_brand_to_Category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810011851270_Change_Category_refactor.cs" />
+    <Compile Include="Migrations\201810011851270_Change_Category_refactor.Designer.cs">
+      <DependentUpon>201810011851270_Change_Category_refactor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810011902578_Add_SubcategoriesTOIdentity.cs" />
+    <Compile Include="Migrations\201810011902578_Add_SubcategoriesTOIdentity.Designer.cs">
+      <DependentUpon>201810011902578_Add_SubcategoriesTOIdentity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\ExtraFeesType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Invoice.cs" />
-    <Compile Include="Models\PartModel.cs" />
+    <Compile Include="Models\Subcategory.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\ServiceBalance.cs" />
@@ -290,9 +302,9 @@
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\BrandVeiwModels.cs" />
+    <Compile Include="ViewModels\CategoryVeiwModels.cs" />
     <Compile Include="ViewModels\CustomerViewModels.cs" />
-    <Compile Include="ViewModels\PartModelViewModel.cs" />
+    <Compile Include="ViewModels\SubcategoryViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModels.cs" />
     <Compile Include="ViewModels\ServiceViewModels.cs" />
   </ItemGroup>
@@ -424,6 +436,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708011153409_PartnerId_Added_To_Account1.resx">
       <DependentUpon>201708011153409_PartnerId_Added_To_Account1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810011837400_Change_brand_to_Category.resx">
+      <DependentUpon>201810011837400_Change_brand_to_Category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810011851270_Change_Category_refactor.resx">
+      <DependentUpon>201810011851270_Change_Category_refactor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810011902578_Add_SubcategoriesTOIdentity.resx">
+      <DependentUpon>201810011902578_Add_SubcategoriesTOIdentity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using WEBCRAFT.MobileStore.Models;
 
-namespace WEBCRAFT.MobileStore.DAL
+namespace WEBCRAFT.MobileStore.DAL.Repositories
 {
-   public interface IBrandrepository:IRepository<Brand>
+   public  interface ISubcategoryRepository : IRepository<Subcategory>
     {
-
     }
 }

@@ -7,11 +7,11 @@ using WEBCRAFT.MobileStore.Models;
 
 namespace WEBCRAFT.MobileStore.DAL
 {
-    public class PartModelRepository : Repository<PartModel> , IPartModelRepository
+    public class SubcategoryRepository : Repository<Subcategory> , ISubcategoryRepository
     {
 
         
-        public PartModelRepository(ApplicationDbContext context)
+        public SubcategoryRepository(ApplicationDbContext context)
             :base (context)
         {
 

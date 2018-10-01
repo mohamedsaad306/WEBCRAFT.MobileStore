@@ -25,33 +25,33 @@ namespace WEBCRAFT.MobileStore.Controllers
         {
             var partModels = Uow.PartModel.GetAll();
             var brands = Uow.Brand.GetAll();
-            PartModelHomeViewModel vm = new PartModelHomeViewModel { PartModel = partModels.ToList() , Brand= brands.ToList()};
+            SubcategoryHomeViewModel vm = new SubcategoryHomeViewModel { Subcategory = partModels.ToList() , Category= brands.ToList()};
             return View(vm);
         }
 
         public ActionResult Manage(int? id)
         {
             ViewBag.Mode = "Create";
-            PartModel p = null;
+            Subcategory p = null;
             if (id != null)
             {
                 ViewBag.Mode = "Edit";
                 p = Uow.PartModel.Get((int)id);
             }
             var brands = Uow.Brand.GetAll();
-            PartModelViewModel vm = new PartModelViewModel { PartModel = p , Brands = brands.ToList()};
+            SubcategoryViewModel vm = new SubcategoryViewModel { PartModel = p , Categories = brands.ToList()};
             Uow.Dispose();
             return View("Manage", vm);
         }
 
         [HttpPost]
-        public ActionResult Manage(PartModel partModel)
+        public ActionResult Manage(Subcategory partModel)
         {
             if (partModel.Id != 0)
             {
                 var pToUpdate = Uow.PartModel.Get(partModel.Id);
                 pToUpdate.Name = partModel.Name;
-                pToUpdate.Fk_BrandId = partModel.Fk_BrandId;
+                pToUpdate.Fk_CategoryId = partModel.Fk_CategoryId;
             }
             else
             {
@@ -63,7 +63,7 @@ namespace WEBCRAFT.MobileStore.Controllers
         }
         public ActionResult Delete(int id)
         {
-            PartModel partModel = Uow.PartModel.Get(id);
+            Subcategory partModel = Uow.PartModel.Get(id);
             Uow.PartModel.Remove(partModel);
             Uow.Complete();
             Uow.Dispose();

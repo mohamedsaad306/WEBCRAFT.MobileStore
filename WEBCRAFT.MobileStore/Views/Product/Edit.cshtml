@@ -18,8 +18,8 @@
     <div class="form-group">
         @*@Html.DropDownListFor(p => p.product.FK_BrandId, new SelectList(Model.Brands, "Id", "Name"), "Select Brand", new { @class = "form-control" })*@
         @Html.DropDownListWithAttributesFor(
-        p => p.product.FK_BrandId,
-          new HtmlSelectListModel<Brand>
+        p => p.product.FK_CategoryId,
+          new HtmlSelectListModel<Category>
           {
               DataObjects = Model.Brands,
               EmptyValueText = "- Select a Brand-",
@@ -36,7 +36,7 @@
     <div class="form-group">
         @*@Html.DropDownListFor(p => p.product.FK_PartModelId, new SelectList(Model.PartModels, "Id", "Name"), "Select Model", new { @class = "form-control" })*@
 
-        @Html.DropDownListWithAttributesFor(x => x.product.FK_PartModelId, new HtmlSelectListModel<PartModel>
+        @Html.DropDownListWithAttributesFor(x => x.product.FK_SubcategoryId, new HtmlSelectListModel<Subcategory>
    {
        DataObjects=Model.PartModels,
        EmptyValueText="-Select Part Model-",

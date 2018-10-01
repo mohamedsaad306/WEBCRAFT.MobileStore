@@ -6,10 +6,10 @@ using WEBCRAFT.MobileStore.Models;
 
 namespace WEBCRAFT.MobileStore.DAL
 {
-    public class BrandRepository:Repository<Brand>,IBrandrepository
+    public class CategoryRepository:Repository<Category>,ICategoryepository
     {
         public ApplicationDbContext AppContext { get { return Context as ApplicationDbContext; } }
-        public BrandRepository(ApplicationDbContext context)
+        public CategoryRepository(ApplicationDbContext context)
             :base(context)
         {
 

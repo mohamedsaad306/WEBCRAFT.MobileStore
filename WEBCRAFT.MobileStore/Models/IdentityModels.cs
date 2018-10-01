@@ -11,8 +11,8 @@ namespace WEBCRAFT.MobileStore.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Product> Products { get; set; }
-        public DbSet<Brand> Brands { get; set; }
-        public DbSet<PartModel> PartModels { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Subcategory> Subcategory { get; set; }
 
         public DbSet<Customer> Customers { get; set; }
 

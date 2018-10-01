@@ -1,11 +1,11 @@
-﻿@model PartModelHomeViewModel
+﻿@model SubcategoryHomeViewModel
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Models</h2>
+<h2>Sub Category</h2>
 
 @Html.ActionLink("Add New Model", "Manage")
 <hr />
@@ -15,17 +15,17 @@
     <tr>
         <th>Id</th>
         <th>Name</th>
-        <th>Brand</th>
+        <th>Category</th>
     </tr>
 
-    @foreach (var m in Model.PartModel)
+    @foreach (var m in Model.Subcategory)
     {
         <tr>
             <td>@m.Id</td>
             <td>@m.Name</td>
-            @foreach (var b in Model.Brand)
+            @foreach (var b in Model.Category)
             {
-                if (m.Fk_BrandId == b.Id)
+                if (m.Fk_CategoryId== b.Id)
                 {
                     <td>@b.Name</td>
                 }

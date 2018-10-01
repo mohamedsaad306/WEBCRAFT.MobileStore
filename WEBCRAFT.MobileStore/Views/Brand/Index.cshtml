@@ -1,9 +1,9 @@
-﻿@model BrandsHomeViewModel
+﻿@model CategoriesHomeViewModel
 @{
     ViewBag.Title = "Brands";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Brands</h2>'
+<h2>Category</h2>'
 @Html.ActionLink("Add new brand ", "Manage")
 <hr />
 <br />
@@ -15,15 +15,15 @@
         <th>Name</th>
     </tr>
 
-    @foreach (var brand in Model.Brands)
+    @foreach (var category in Model.Categories)
     {
         <tr>
-            <td>@brand.Id</td>
-            <td>@brand.Name</td>
+            <td>@category.Id</td>
+            <td>@category.Name</td>
             <td>
-                @Html.ActionLink("Edit", "Manage", new { id = brand.Id })
+                @Html.ActionLink("Edit", "Manage", new { id = category.Id })
                 |
-                @Html.ActionLink("Delete", "Delete", new { id = brand.Id })
+                @Html.ActionLink("Delete", "Delete", new { id = category.Id })
             </td>
         </tr>
     }

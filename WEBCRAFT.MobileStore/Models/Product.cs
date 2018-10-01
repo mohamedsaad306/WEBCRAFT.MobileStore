@@ -8,13 +8,12 @@ namespace WEBCRAFT.MobileStore.Models
     public class Product
     {
         public int Id { get; set; }
-        public String Name { get; set; }
-        public int FK_BrandId { get; set; }
-        public int FK_PartModelId { get; set; }
-        public Brand Brand { get; set; }
-        public PartModel PartModel { get; set; }
+        public string Name { get; set; }
+        public int FK_CategoryId { get; set; }
+        public int FK_SubcategoryId { get; set; }
+        public Category Category { get; set; }
+        public Subcategory Subcategory { get; set; }
         public decimal SellPrice { get; set; }
- 
     }
     public class InvoicableProduct
     {
@@ -23,6 +22,5 @@ namespace WEBCRAFT.MobileStore.Models
         public int ProductId { get; set; }
         public int Count { get; set; }
         public decimal SellPrice { get; set; }
-
     }
 }

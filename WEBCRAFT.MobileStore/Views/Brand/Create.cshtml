@@ -1,4 +1,4 @@
-﻿@model BrandVeiwModels
+﻿@model CategoryVeiwModels
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,10 +10,10 @@
 {
     <div>
         <div class="form-group">
-            @Html.LabelFor(b => b.BrandName)
-            @Html.TextBoxFor(b => b.Brand.Name, new { @Class = "form-control" })
+            @Html.LabelFor(b => b.CategoryName)
+            @Html.TextBoxFor(b => b.Category.Name, new { @Class = "form-control" })
         </div>
-        @Html.HiddenFor(b => b.Brand.Id)
+        @Html.HiddenFor(b => b.Category.Id)
 
         <div class="form-group">
             <input type="submit" value="@ViewBag.Mode" class="btn btn-primary" />

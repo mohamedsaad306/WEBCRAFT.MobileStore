@@ -7,19 +7,19 @@ using WEBCRAFT.MobileStore.Models;
 
 namespace WEBCRAFT.MobileStore.ViewModels
 {
-    public class PartModelViewModel
+    public class SubcategoryViewModel
     {
-        public PartModel PartModel { get; set; }
+        public Subcategory PartModel { get; set; }
 
 
         [Required]
         [Display(Name = "Model Name")]
         public string ModelName { get; set; }
-        public List<Brand> Brands { get; set; }
+        public List<Category> Categories { get; set; }
     }
-    public class PartModelHomeViewModel
+    public class SubcategoryHomeViewModel
     {
-        public List<Brand> Brand { get; set; }
-        public List<PartModel> PartModel { get; set; }
+        public List<Category> Category { get; set; }
+        public List<Subcategory> Subcategory { get; set; }
     }
 }
