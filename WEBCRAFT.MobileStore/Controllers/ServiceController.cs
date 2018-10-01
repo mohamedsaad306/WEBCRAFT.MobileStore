@@ -64,6 +64,6 @@ namespace WEBCRAFT.MobileStore.Controllers
         public ActionResult Index()
         {
             return View();  
-        }
+        }   
     }
 }

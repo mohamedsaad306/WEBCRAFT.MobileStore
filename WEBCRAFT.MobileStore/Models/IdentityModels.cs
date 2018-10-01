@@ -33,5 +33,10 @@ namespace WEBCRAFT.MobileStore.Models
             : base("DefaultConnection")
         {
         }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+                
+        }
     }
 }

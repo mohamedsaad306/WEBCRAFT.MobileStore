@@ -63,9 +63,11 @@ namespace WEBCRAFT.MobileStore.Controllers
                 pToUpdate.SellPrice = product.SellPrice;
                 pToUpdate.FK_BrandId = product.FK_BrandId;
                 pToUpdate.FK_PartModelId = product.FK_PartModelId;
+                
             }
             else
             {
+                product.Brand = new Brand { Id = product.FK_BrandId };
                 Uow.Products.Add(product);
             }
             Uow.Complete();
