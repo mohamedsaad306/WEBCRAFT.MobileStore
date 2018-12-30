@@ -185,6 +185,8 @@
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="DAL\IAccountRepository.cs" />
     <Compile Include="DAL\IAccountTypeRepository.cs" />
+    <Compile Include="DAL\IInventoryProductRepository.cs" />
+    <Compile Include="DAL\IInventoryRepository.cs" />
     <Compile Include="DAL\IServiceBalanceRepository.cs" />
     <Compile Include="DAL\Repositories\AccountRepository.cs" />
     <Compile Include="DAL\Repositories\AccountTypesRepository.cs" />
@@ -193,6 +195,8 @@
     <Compile Include="DAL\IInvoiceRepository.cs" />
     <Compile Include="DAL\Repositories\CustomerRepository.cs" />
     <Compile Include="DAL\ICustomerRepository.cs" />
+    <Compile Include="DAL\Repositories\InventoryProductRepository.cs" />
+    <Compile Include="DAL\Repositories\InventoryRepository.cs" />
     <Compile Include="DAL\Repositories\InvoiceRepository.cs" />
     <Compile Include="DAL\IRepository.cs" />
     <Compile Include="DAL\IUnitOfWork.cs" />
@@ -298,6 +302,46 @@
     <Compile Include="Migrations\201810011902578_Add_SubcategoriesTOIdentity.Designer.cs">
       <DependentUpon>201810011902578_Add_SubcategoriesTOIdentity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812301525401_Update-product.cs" />
+    <Compile Include="Migrations\201812301525401_Update-product.Designer.cs">
+      <DependentUpon>201812301525401_Update-product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301543138_create-Inventory-with-m-to-m-Product.cs" />
+    <Compile Include="Migrations\201812301543138_create-Inventory-with-m-to-m-Product.Designer.cs">
+      <DependentUpon>201812301543138_create-Inventory-with-m-to-m-Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301553300_Add-Amount-into-m-to-m.cs" />
+    <Compile Include="Migrations\201812301553300_Add-Amount-into-m-to-m.Designer.cs">
+      <DependentUpon>201812301553300_Add-Amount-into-m-to-m.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301559087_Update-Amount-into-m-to-m.cs" />
+    <Compile Include="Migrations\201812301559087_Update-Amount-into-m-to-m.Designer.cs">
+      <DependentUpon>201812301559087_Update-Amount-into-m-to-m.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301604004_Update-Amount-into-m-to-m-after-delete.cs" />
+    <Compile Include="Migrations\201812301604004_Update-Amount-into-m-to-m-after-delete.Designer.cs">
+      <DependentUpon>201812301604004_Update-Amount-into-m-to-m-after-delete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301630583_Create-m-to-m-inventory-product.cs" />
+    <Compile Include="Migrations\201812301630583_Create-m-to-m-inventory-product.Designer.cs">
+      <DependentUpon>201812301630583_Create-m-to-m-inventory-product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301632032_Create-m-to-m-inventory-product2.cs" />
+    <Compile Include="Migrations\201812301632032_Create-m-to-m-inventory-product2.Designer.cs">
+      <DependentUpon>201812301632032_Create-m-to-m-inventory-product2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301652554_create-new-relation.cs" />
+    <Compile Include="Migrations\201812301652554_create-new-relation.Designer.cs">
+      <DependentUpon>201812301652554_create-new-relation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301654460_create-new-relation2.cs" />
+    <Compile Include="Migrations\201812301654460_create-new-relation2.Designer.cs">
+      <DependentUpon>201812301654460_create-new-relation2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301700236_create-new-relation3.cs" />
+    <Compile Include="Migrations\201812301700236_create-new-relation3.Designer.cs">
+      <DependentUpon>201812301700236_create-new-relation3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -305,6 +349,7 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\ExtraFeesType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Inventory.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\Subcategory.cs" />
     <Compile Include="Models\Product.cs" />
@@ -459,6 +504,36 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810011902578_Add_SubcategoriesTOIdentity.resx">
       <DependentUpon>201810011902578_Add_SubcategoriesTOIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301525401_Update-product.resx">
+      <DependentUpon>201812301525401_Update-product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301543138_create-Inventory-with-m-to-m-Product.resx">
+      <DependentUpon>201812301543138_create-Inventory-with-m-to-m-Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301553300_Add-Amount-into-m-to-m.resx">
+      <DependentUpon>201812301553300_Add-Amount-into-m-to-m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301559087_Update-Amount-into-m-to-m.resx">
+      <DependentUpon>201812301559087_Update-Amount-into-m-to-m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301604004_Update-Amount-into-m-to-m-after-delete.resx">
+      <DependentUpon>201812301604004_Update-Amount-into-m-to-m-after-delete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301630583_Create-m-to-m-inventory-product.resx">
+      <DependentUpon>201812301630583_Create-m-to-m-inventory-product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301632032_Create-m-to-m-inventory-product2.resx">
+      <DependentUpon>201812301632032_Create-m-to-m-inventory-product2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301652554_create-new-relation.resx">
+      <DependentUpon>201812301652554_create-new-relation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301654460_create-new-relation2.resx">
+      <DependentUpon>201812301654460_create-new-relation2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301700236_create-new-relation3.resx">
+      <DependentUpon>201812301700236_create-new-relation3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
