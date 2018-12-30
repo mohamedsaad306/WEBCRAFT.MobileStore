@@ -42,7 +42,7 @@ namespace WEBCRAFT.MobileStore.Controllers
         [Route("createProduct")]
         public object createProduct(Product _toCreate )
         {
-            return new { sucess = true };
+            return new { success = true };      
         }
     }
 }
