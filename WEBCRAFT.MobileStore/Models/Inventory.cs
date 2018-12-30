@@ -10,12 +10,16 @@ namespace WEBCRAFT.MobileStore.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public List<Product> Products { get; set; }
+        public List<Event> Events { get; set; }
     }
 
     public class InventoryProducts
     {
+        public int Id { get; set; }
         public int Inventory_Id { get; set; }
         public int Product_Id { get; set; }
+        public int Event_Id { get; set; }
+
         public int Amount { get; set; }
 
     }

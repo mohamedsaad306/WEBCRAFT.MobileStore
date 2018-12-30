@@ -17,6 +17,7 @@ namespace WEBCRAFT.MobileStore.Models
         public string ImagePath { get; set; }
         public string Barcode  { get; set; }
         public List<Inventory> Inventories { get; set; }
+        public List<Event> Events { get; set; }
     }
     public class InvoicableProduct
     {

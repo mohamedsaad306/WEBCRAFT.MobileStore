@@ -183,11 +183,13 @@
     <Compile Include="Controllers\PartModelController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="DAL\IEventRepository.cs" />
     <Compile Include="DAL\IAccountRepository.cs" />
     <Compile Include="DAL\IAccountTypeRepository.cs" />
     <Compile Include="DAL\IInventoryProductRepository.cs" />
     <Compile Include="DAL\IInventoryRepository.cs" />
     <Compile Include="DAL\IServiceBalanceRepository.cs" />
+    <Compile Include="DAL\Repositories\EventRepository.cs" />
     <Compile Include="DAL\Repositories\AccountRepository.cs" />
     <Compile Include="DAL\Repositories\AccountTypesRepository.cs" />
     <Compile Include="DAL\Repositories\CategoryRepository.cs" />
@@ -342,11 +344,20 @@
     <Compile Include="Migrations\201812301700236_create-new-relation3.Designer.cs">
       <DependentUpon>201812301700236_create-new-relation3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812301818335_create-Event-with-1-to-m-customer.cs" />
+    <Compile Include="Migrations\201812301818335_create-Event-with-1-to-m-customer.Designer.cs">
+      <DependentUpon>201812301818335_create-Event-with-1-to-m-customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301834153_create-Event-with-m-to-m.cs" />
+    <Compile Include="Migrations\201812301834153_create-Event-with-m-to-m.Designer.cs">
+      <DependentUpon>201812301834153_create-Event-with-m-to-m.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\ExtraFeesType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Inventory.cs" />
@@ -534,6 +545,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812301700236_create-new-relation3.resx">
       <DependentUpon>201812301700236_create-new-relation3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301818335_create-Event-with-1-to-m-customer.resx">
+      <DependentUpon>201812301818335_create-Event-with-1-to-m-customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301834153_create-Event-with-m-to-m.resx">
+      <DependentUpon>201812301834153_create-Event-with-m-to-m.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
