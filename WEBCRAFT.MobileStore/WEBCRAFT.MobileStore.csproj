@@ -352,6 +352,10 @@
     <Compile Include="Migrations\201812301834153_create-Event-with-m-to-m.Designer.cs">
       <DependentUpon>201812301834153_create-Event-with-m-to-m.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812301849272_todrop.cs" />
+    <Compile Include="Migrations\201812301849272_todrop.Designer.cs">
+      <DependentUpon>201812301849272_todrop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -551,6 +555,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812301834153_create-Event-with-m-to-m.resx">
       <DependentUpon>201812301834153_create-Event-with-m-to-m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301849272_todrop.resx">
+      <DependentUpon>201812301849272_todrop.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
