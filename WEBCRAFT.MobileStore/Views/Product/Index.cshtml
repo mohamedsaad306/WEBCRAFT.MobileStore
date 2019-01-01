@@ -26,8 +26,8 @@
 
             <td>@p.Id</td>
             <td>@p.Name</td>
-            @{var pBrand = (p.FK_BrandId != 0) ? Model.Brands.Where(b => b.Id == p.FK_BrandId).FirstOrDefault().Name : "---";}
-            @{var pModel = (p.FK_PartModelId != 0) ? Model.PartModels.Where(m => m.Id == p.FK_PartModelId).FirstOrDefault().Name : "---"; }
+            @{var pBrand = (p.FK_CategoryId != 0) ? Model.Brands.Where(b => b.Id == p.FK_CategoryId).FirstOrDefault().Name : "---";}
+            @{var pModel = (p.FK_SubcategoryId != 0) ? Model.PartModels.Where(m => m.Id == p.FK_SubcategoryId).FirstOrDefault().Name : "---"; }
             <td>@pBrand</td>
             <td>@pModel</td>
 

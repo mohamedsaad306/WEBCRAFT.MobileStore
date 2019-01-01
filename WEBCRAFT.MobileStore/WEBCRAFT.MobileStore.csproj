@@ -176,7 +176,12 @@
     <Compile Include="BLL\ProductBLL.cs" />
     <Compile Include="BLL\ServiceBLL.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApiBrandController.cs" />
     <Compile Include="Controllers\APIControllers\TestController.cs" />
+    <Compile Include="Controllers\ApiCustomerController.cs" />
+    <Compile Include="Controllers\ApiPartModelController.cs" />
+    <Compile Include="Controllers\ApiProductController.cs" />
+    <Compile Include="Controllers\ApiServiceController.cs" />
     <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
