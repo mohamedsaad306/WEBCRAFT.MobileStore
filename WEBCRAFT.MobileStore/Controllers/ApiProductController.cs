@@ -26,7 +26,7 @@ namespace WEBCRAFT.MobileStore.Controllers
 
 
 
-
+        //TODO: How to use paging here?
         // GET: api/ApiProduct
         [HttpGet]
         [Route("Get")]
@@ -39,7 +39,8 @@ namespace WEBCRAFT.MobileStore.Controllers
             ProductsHomeViewModel vm = new ProductsHomeViewModel { Products = products.ToList(), Brands = brands.ToList(), PartModels = partModels.ToList() };
             yield return vm;
         }
-
+      
+        //TODO: Not needed, as we have Save(). and we will not use View Models in response. 
         // GET: api/ApiProduct/5
         [HttpGet]
         [Route("Edit")]
@@ -52,7 +53,6 @@ namespace WEBCRAFT.MobileStore.Controllers
 
             if (id != null)
             {
-                
                 p = Uow.Products.Get((int)id);
             }
 
@@ -85,6 +85,7 @@ namespace WEBCRAFT.MobileStore.Controllers
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
+        //TODO: is this method Tested ? , what is the value? , why we have this method while we have Save ? 
         // PUT: api/ApiProduct/5
         public void Put(int id, [FromBody]string value)
         {

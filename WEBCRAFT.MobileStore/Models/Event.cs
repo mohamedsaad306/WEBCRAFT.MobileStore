@@ -14,8 +14,10 @@ namespace WEBCRAFT.MobileStore.Models
         public string Address { get; set; }
         public string Owner { get; set; }
         public Customer Customer { get; set; }
+        //TODO: Replace with list of new model InventoryPreservedProducts.
         public List<Inventory> Inventories { get; set; }
+        //TODO: Replace with list of new model InventoryPreservedProducts.
         public List<Product> Products { get; set; }
-       
     }
+    //TODO: Add model InventoryPreservedProducts with info [productId, InventoryId, preservedQuantity ]
 }

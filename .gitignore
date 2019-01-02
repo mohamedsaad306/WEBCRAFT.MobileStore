@@ -177,3 +177,5 @@ WEBCRAFT.MobileStore/App_Data/aspnet-WEBCRAFT.MobileStore-20170530010941_log.ldf
 *.mdf
 *.ldf
 /.vs/WEBCRAFT.MobileStore/v15/Server/sqlite3
+/node_modules
+/inventory_app

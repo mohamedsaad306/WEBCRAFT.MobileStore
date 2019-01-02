@@ -9,14 +9,19 @@ namespace WEBCRAFT.MobileStore.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
         public int FK_CategoryId { get; set; }
         public int FK_SubcategoryId { get; set; }
+
         public Category Category { get; set; }
         public Subcategory Subcategory { get; set; }
         public decimal SellPrice { get; set; }
+
         public string ImagePath { get; set; }
-        public string Barcode  { get; set; }
+        public string Barcode { get; set; }
+        //TODO: Please confirm that this navigation property will resolve to inventories containing this product not all inventories. 
         public List<Inventory> Inventories { get; set; }
+        //TODO: Same as above navigation Proeprty. 
         public List<Event> Events { get; set; }
     }
     public class InvoicableProduct

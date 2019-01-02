@@ -39,8 +39,7 @@ namespace WEBCRAFT.MobileStore.Controllers
            
             Subcategory p = null;
             if (id != null)
-            {
-               
+            { 
                 p = Uow.PartModel.Get((int)id);
             }
             var brands = Uow.Brand.GetAll();
