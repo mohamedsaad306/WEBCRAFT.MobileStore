@@ -20,11 +20,11 @@ namespace WEBCRAFT.MobileStore.Controllers
             Uow = u;
         }
         public UnitOfWork Uow { get; set; }
-        // GET: PartModel
+        // GET: Subcategory
         public ActionResult Index()
         {
-            var partModels = Uow.PartModel.GetAll();
-            var brands = Uow.Brand.GetAll();
+            var partModels = Uow.Subcategory.GetAll();
+            var brands = Uow.Category.GetAll();
             SubcategoryHomeViewModel vm = new SubcategoryHomeViewModel { Subcategory = partModels.ToList() , Category= brands.ToList()};
             return View(vm);
         }
@@ -36,35 +36,35 @@ namespace WEBCRAFT.MobileStore.Controllers
             if (id != null)
             {
                 ViewBag.Mode = "Edit";
-                p = Uow.PartModel.Get((int)id);
+                p = Uow.Subcategory.Get((int)id);
             }
-            var brands = Uow.Brand.GetAll();
-            SubcategoryViewModel vm = new SubcategoryViewModel { PartModel = p , Categories = brands.ToList()};
+            var brands = Uow.Category.GetAll();
+            SubcategoryViewModel vm = new SubcategoryViewModel { Subcategory = p , Categories = brands.ToList()};
             Uow.Dispose();
             return View("Manage", vm);
         }
 
         [HttpPost]
-        public ActionResult Manage(Subcategory partModel)
+        public ActionResult Manage(Subcategory Subcategory)
         {
-            if (partModel.Id != 0)
+            if (Subcategory.Id != 0)
             {
-                var pToUpdate = Uow.PartModel.Get(partModel.Id);
-                pToUpdate.Name = partModel.Name;
-                pToUpdate.Fk_CategoryId = partModel.Fk_CategoryId;
+                var pToUpdate = Uow.Subcategory.Get(Subcategory.Id);
+                pToUpdate.Name = Subcategory.Name;
+                pToUpdate.Fk_CategoryId = Subcategory.Fk_CategoryId;
             }
             else
             {
-                Uow.PartModel.Add(partModel);
+                Uow.Subcategory.Add(Subcategory);
             }
             Uow.Complete();
             Uow.Dispose();
-            return RedirectToAction("index", "Brand");
+            return RedirectToAction("index", "Category");
         }
         public ActionResult Delete(int id)
         {
-            Subcategory partModel = Uow.PartModel.Get(id);
-            Uow.PartModel.Remove(partModel);
+            Subcategory Subcategory = Uow.Subcategory.Get(id);
+            Uow.Subcategory.Remove(Subcategory);
             Uow.Complete();
             Uow.Dispose();
             return RedirectToAction("Index");

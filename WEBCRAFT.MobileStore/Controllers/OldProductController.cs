@@ -10,14 +10,14 @@ using WEBCRAFT.MobileStore.ViewModels;
 
 namespace WEBCRAFT.MobileStore.Controllers
 {
-    public class ProductController : Controller
+    public class OldProductController : Controller
     {
-        public ProductController()
+        public OldProductController()
           : this(new UnitOfWork(new ApplicationDbContext()))
         {
         }
 
-        public ProductController(UnitOfWork u)
+        public OldProductController(UnitOfWork u)
         {
             Uow = u;
         }
@@ -29,8 +29,8 @@ namespace WEBCRAFT.MobileStore.Controllers
         public ActionResult Index()
         {
             var products = Uow.Products.GetAll();
-            var brands = Uow.Brand.GetAll();
-            var partModels = Uow.PartModel.GetAll();
+            var brands = Uow.Category.GetAll();
+            var partModels = Uow.Subcategory.GetAll();
             ProductsHomeViewModel vm = new ProductsHomeViewModel { Products = products.ToList(), Brands = brands.ToList(), PartModels = partModels.ToList() };
             return View(vm);
         }
@@ -39,8 +39,8 @@ namespace WEBCRAFT.MobileStore.Controllers
         {
             Product p = null;
             ViewBag.Mode = "Create";
-            var brands = Uow.Brand.GetAll();
-            var partModel = Uow.PartModel.GetAll();
+            var brands = Uow.Category.GetAll();
+            var Subcategory = Uow.Subcategory.GetAll();
 
             if (id != null)
             {
@@ -48,7 +48,7 @@ namespace WEBCRAFT.MobileStore.Controllers
                 p = Uow.Products.Get((int)id);
             }
 
-            ProductViewModels vm = new ProductViewModels { product = p , Brands = brands.ToList() , PartModels = partModel.ToList()};
+            ProductViewModels vm = new ProductViewModels { product = p , Brands = brands.ToList() , PartModels = Subcategory.ToList()};
             Uow.Dispose();
             return View("Edit", vm);
         }

@@ -176,24 +176,27 @@
     <Compile Include="BLL\ProductBLL.cs" />
     <Compile Include="BLL\ServiceBLL.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ApiBrandController.cs" />
+    <Compile Include="Controllers\APIControllers\BaseController.cs" />
+    <Compile Include="Controllers\APIControllers\CategoryController.cs" />
     <Compile Include="Controllers\APIControllers\TestController.cs" />
-    <Compile Include="Controllers\ApiCustomerController.cs" />
-    <Compile Include="Controllers\ApiPartModelController.cs" />
-    <Compile Include="Controllers\ApiProductController.cs" />
-    <Compile Include="Controllers\ApiServiceController.cs" />
+    <Compile Include="Controllers\APIControllers\CustomerController.cs" />
+    <Compile Include="Controllers\APIControllers\SubCategoryController.cs" />
+    <Compile Include="Controllers\APIControllers\ProductController.cs" />
+    <Compile Include="Controllers\APIControllers\ServiceController.cs" />
     <Compile Include="Controllers\BrandController.cs" />
-    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\OldCustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PartModelController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\OldProductController.cs" />
+    <Compile Include="Controllers\OldServiceController.cs" />
+    <Compile Include="DAL\IInventoryPreservedProductRepository.cs" />
     <Compile Include="DAL\IEventRepository.cs" />
     <Compile Include="DAL\IAccountRepository.cs" />
     <Compile Include="DAL\IAccountTypeRepository.cs" />
-    <Compile Include="DAL\IInventoryProductRepository.cs" />
+    <Compile Include="DAL\IStockItemRepository.cs" />
     <Compile Include="DAL\IInventoryRepository.cs" />
     <Compile Include="DAL\IServiceBalanceRepository.cs" />
+    <Compile Include="DAL\Repositories\InventoryPreservedProductRepository.cs" />
     <Compile Include="DAL\Repositories\EventRepository.cs" />
     <Compile Include="DAL\Repositories\AccountRepository.cs" />
     <Compile Include="DAL\Repositories\AccountTypesRepository.cs" />
@@ -202,7 +205,7 @@
     <Compile Include="DAL\IInvoiceRepository.cs" />
     <Compile Include="DAL\Repositories\CustomerRepository.cs" />
     <Compile Include="DAL\ICustomerRepository.cs" />
-    <Compile Include="DAL\Repositories\InventoryProductRepository.cs" />
+    <Compile Include="DAL\Repositories\StockItemRepository.cs" />
     <Compile Include="DAL\Repositories\InventoryRepository.cs" />
     <Compile Include="DAL\Repositories\InvoiceRepository.cs" />
     <Compile Include="DAL\IRepository.cs" />
@@ -361,6 +364,10 @@
     <Compile Include="Migrations\201812301849272_todrop.Designer.cs">
       <DependentUpon>201812301849272_todrop.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901042219219_fix-relation.cs" />
+    <Compile Include="Migrations\201901042219219_fix-relation.Designer.cs">
+      <DependentUpon>201901042219219_fix-relation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -395,6 +402,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="App_Data\WEBCRAFT.postman_collection.json" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -448,9 +456,7 @@
     <Content Include="Views\Service\Index.cshtml" />
     <Content Include="Views\Service\_ServiceBalnce.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -563,6 +569,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812301849272_todrop.resx">
       <DependentUpon>201812301849272_todrop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901042219219_fix-relation.resx">
+      <DependentUpon>201901042219219_fix-relation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

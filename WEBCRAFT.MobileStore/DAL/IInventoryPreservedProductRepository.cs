@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WEBCRAFT.MobileStore.DAL.Repositories;
 using WEBCRAFT.MobileStore.Models;
 
 namespace WEBCRAFT.MobileStore.DAL
 {
-    interface IInventoryProductRepository : IRepository<InventoryProducts>
+   public  interface IInventoryPreservedProductRepository : IRepository<InventoryPreservedProduct>
     {
     }
 }

@@ -6,7 +6,7 @@ using WEBCRAFT.MobileStore.ViewModels;
 
 namespace WEBCRAFT.MobileStore.Controllers
 {
-    public class ServiceController : Controller
+    public class OldServiceController : Controller
     {
         private UnitOfWork _uow;
         public UnitOfWork UOW { get

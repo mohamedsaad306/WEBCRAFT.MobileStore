@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+using System.Web;
+using System.Web.Mvc;
+using WEBCRAFT.MobileStore.BLL;
 using WEBCRAFT.MobileStore.DAL;
 using WEBCRAFT.MobileStore.Models;
 using WEBCRAFT.MobileStore.ViewModels;
 
 namespace WEBCRAFT.MobileStore.Controllers
 {
-    [RoutePrefix("api/ApiCustomer")]
-    public class ApiCustomerController : ApiController
+    public class OldCustomerController : Controller
     {
-        public ApiCustomerController()
+        public OldCustomerController()
         {
             uow = new UnitOfWork(new ApplicationDbContext());
         }
@@ -27,39 +26,35 @@ namespace WEBCRAFT.MobileStore.Controllers
                 return new CustomerRepository();
             }
         }
-        // GET: Customers
-        [HttpGet]
-        [Route("Get")]
-        public HttpResponseMessage Get()
+        // GET: Customer
+        public ActionResult Index()
         {
             CustomerIndexViewModel vm = new CustomerIndexViewModel() { Customers = uow.Customers.GetAll().ToList() };
-            return Request.CreateResponse(HttpStatusCode.OK,vm);
+            return View(vm);
         }
-     
+        public ActionResult New()
+        {
+            return View("_New");
+        }
 
 
         [HttpPost]
-        [Route("Save")]
-        public HttpResponseMessage Save(Customer Customer)
+        public ActionResult Save(Customer Customer)
         {
             Customer NewCustomer = CustomerRepository.AddNewCustomer(Customer);
             if (Customer != null)
-                return Request.CreateResponse(HttpStatusCode.OK);
+                TempData["info"] = "Account Created With account id =" + Customer.Id;
             else
-                return Request.CreateResponse(HttpStatusCode.InternalServerError);
-           
+                TempData["info"] = "Error Occured While Creating Account ";
+            return RedirectToAction("index");
         }
-        [HttpGet]
-        [Route("Delete")]
-        public HttpResponseMessage Delete(int id)
+        public ActionResult Delete(int id)
         {
             Customer customerToDelete = uow.Customers.Get(id);
             uow.Customers.Remove(customerToDelete);
             uow.Complete();
             uow.Dispose();
-            return Request.CreateResponse(HttpStatusCode.OK);
+            return RedirectToAction("Index");
         }
-
-     
     }
 }

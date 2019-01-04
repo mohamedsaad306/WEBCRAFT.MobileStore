@@ -13,17 +13,18 @@ namespace WEBCRAFT.MobileStore.DAL
 
         public IProductRepository Products { get { return new ProductRepository(_context); } }
 
-        public ICategoryepository Brand { get { return new CategoryRepository(_context); } }
+        public ICategoryepository Category { get { return new CategoryRepository(_context); } }
 
         public IServiceRepository Services { get { return new ServiceRepository(_context); } }
         public IServiceBalanceRepository ServiceBalances { get { return new ServiceBalanceRepository(_context); } }
 
-        public ISubcategoryRepository PartModel { get { return new SubcategoryRepository(_context); } }
+        public ISubcategoryRepository Subcategory { get { return new SubcategoryRepository(_context); } }
         public ICustomerRepository Customers { get { return new CustomerRepository(_context); } }
 
         public IAccountRepository Accounts { get { return new AccountRepository(_context); } }
         public IAccountTypeRepository AccountTypes { get { return new AccountTypesRepository(_context); } }
-
+        public IStockItemRepository StockItem { get { return new StockItemRepository(_context); } }
+        public IInventoryPreservedProductRepository InventoryPreservedProduct { get { return new InventoryPreservedProductRepository(_context); } }
 
         private readonly ApplicationDbContext _context;
         public UnitOfWork(ApplicationDbContext context)

@@ -9,7 +9,7 @@ namespace WEBCRAFT.MobileStore.ViewModels
 {
     public class SubcategoryViewModel
     {
-        public Subcategory PartModel { get; set; }
+        public Subcategory Subcategory { get; set; }
 
 
         [Required]

@@ -13,7 +13,7 @@
     <tr>
         <th>Id</th>
         <th>Name</th>
-        <th>Brand</th>
+        <th>Category</th>
         <th>Model</th>
         <th>Price</th>
         <th>Actions </th>
@@ -31,11 +31,11 @@
             <td>@pBrand</td>
             <td>@pModel</td>
 
-            @*@foreach (var brand in Model.Brands)
+            @*@foreach (var Category in Model.Brands)
                 {
-                    if (p.FK_BrandId == brand.Id)
+                    if (p.FK_BrandId == Category.Id)
                     {
-                        <td>@brand.Name</td>
+                        <td>@Category.Name</td>
                     }
                 }*@
             @*@foreach (var m in Model.PartModels)

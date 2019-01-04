@@ -1,0 +1,405 @@
+{
+	"info": {
+		"_postman_id": "f1a58e31-e326-49ba-a12f-496535ed5349",
+		"name": "WEBCRAFT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Product ",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Id\": 2,\n    \"Name\": \"Product Name \",\n    \"FK_CategoryId\": 0,\n    \"FK_SubcategoryId\": 0,\n    \"Category\": {\n        \"Id\": 1,\n        \"Name\": \"category \"\n    },\n    \"Subcategory\": null,\n    \"SellPrice\": 0\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3630/api/test/createProduct",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3630",
+							"path": [
+								"api",
+								"test",
+								"createProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Id\":0,\"Name\":\"Product Name \",\"FK_CategoryId\":0,\"FK_SubcategoryId\":0,\"Category\":{\"Id\":1,\"Name\":\"category \"},\"Subcategory\":null,\"SellPrice\":55.0,\"ImagePath\":null,\"Barcode\":null,\"Inventories\":null,\"Events\":null}"
+						},
+						"url": {
+							"raw": "http://localhost:3630/api/ApiProduct/edit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3630",
+							"path": [
+								"api",
+								"ApiProduct",
+								"edit"
+							]
+						},
+						"description": "edit"
+					},
+					"response": []
+				},
+				{
+					"name": "delete product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3630/api/ApiProduct/delete?id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3630",
+							"path": [
+								"api",
+								"ApiProduct",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3630/api/ApiProduct/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3630",
+							"path": [
+								"api",
+								"ApiProduct",
+								"get"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "listing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3630/api/ApiBrand/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3630",
+							"path": [
+								"api",
+								"ApiBrand",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Manage",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3630/api/ApiProduct/Manage?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3630",
+							"path": [
+								"api",
+								"ApiProduct",
+								"Manage"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Manage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3630/api/Apibrand/Manage?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3630",
+							"path": [
+								"api",
+								"Apibrand",
+								"Manage"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3630/api/Apibrand/delete?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3630",
+							"path": [
+								"api",
+								"Apibrand",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "listing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3630/api/Apicustomer/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3630",
+							"path": [
+								"api",
+								"Apicustomer",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"Id\": 5,\n            \"Name\": \"customer5\",\n            \"Account\": null,\n            \"FK_AccountId\": 1,\n            \"Invoices\": null,\n            \"Events\": null\n        }"
+						},
+						"url": {
+							"raw": "http://localhost:3630/api/Apicustomer/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3630",
+							"path": [
+								"api",
+								"Apicustomer",
+								"save"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Part Model",
+			"item": [
+				{
+					"name": "listing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3630/api/ApiPartModel/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3630",
+							"path": [
+								"api",
+								"ApiPartModel",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3630/api/ApiPartModel/manage?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3630",
+							"path": [
+								"api",
+								"ApiPartModel",
+								"manage"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"Id\": 2,\n            \"Name\": \"rggr\",\n            \"Fk_CategoryId\":1\n        }"
+						},
+						"url": {
+							"raw": "http://localhost:3630/api/ApiPartModel/manage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3630",
+							"path": [
+								"api",
+								"ApiPartModel",
+								"manage"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

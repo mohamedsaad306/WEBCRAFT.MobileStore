@@ -10,20 +10,10 @@ using WEBCRAFT.MobileStore.ViewModels;
 
 namespace WEBCRAFT.MobileStore.Controllers
 {
-    [RoutePrefix("api/ApiProduct")]
-    public class ApiProductController : ApiController
+    [RoutePrefix("api/Product")]
+    public class ProductController : BaseController
     {
-        public ApiProductController()
-         : this(new UnitOfWork(new ApplicationDbContext()))
-        {
-        }
-
-        public ApiProductController(UnitOfWork u)
-        {
-            Uow = u;
-        }
-        public UnitOfWork Uow = new UnitOfWork(new ApplicationDbContext());// { get; set; }
-
+       
 
 
         //TODO: How to use paging here?
@@ -33,9 +23,9 @@ namespace WEBCRAFT.MobileStore.Controllers
         public IEnumerable<ProductsHomeViewModel> Get()
         {
 
-            var products = Uow.Products.GetAll();
-            var brands = Uow.Brand.GetAll();
-            var partModels = Uow.PartModel.GetAll();
+            var products = UOW.Products.GetAll();
+            var brands = UOW.Category.GetAll();
+            var partModels = UOW.Subcategory.GetAll();
             ProductsHomeViewModel vm = new ProductsHomeViewModel { Products = products.ToList(), Brands = brands.ToList(), PartModels = partModels.ToList() };
             yield return vm;
         }
@@ -48,16 +38,16 @@ namespace WEBCRAFT.MobileStore.Controllers
         {
             Product p = null;
             
-            var brands = Uow.Brand.GetAll();
-            var partModel = Uow.PartModel.GetAll();
+            var brands = UOW.Category.GetAll();
+            var Subcategory = UOW.Subcategory.GetAll();
 
             if (id != null)
             {
-                p = Uow.Products.Get((int)id);
+                p = UOW.Products.Get((int)id);
             }
 
-            ProductViewModels vm = new ProductViewModels { product = p, Brands = brands.ToList(), PartModels = partModel.ToList() };
-            Uow.Dispose();
+            ProductViewModels vm = new ProductViewModels { product = p, Brands = brands.ToList(), PartModels = Subcategory.ToList() };
+            UOW.Dispose();
              return Request.CreateResponse(HttpStatusCode.OK, vm);
         }
 
@@ -68,7 +58,7 @@ namespace WEBCRAFT.MobileStore.Controllers
         {
             if (product.Id != 0)
             {
-                var pToUpdate = Uow.Products.Get(product.Id);
+                var pToUpdate = UOW.Products.Get(product.Id);
                 pToUpdate.Name = product.Name;
                 pToUpdate.SellPrice = product.SellPrice;
                 pToUpdate.FK_CategoryId = product.FK_CategoryId;
@@ -78,10 +68,10 @@ namespace WEBCRAFT.MobileStore.Controllers
             else
             {
                 product.Category = new Category { Id = product.FK_CategoryId };
-                Uow.Products.Add(product);
+                UOW.Products.Add(product);
             }
-            Uow.Complete();
-            Uow.Dispose();
+            UOW.Complete();
+            UOW.Dispose();
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
@@ -100,10 +90,10 @@ namespace WEBCRAFT.MobileStore.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
-            Product p = Uow.Products.Get((int)id);
-            Uow.Products.Remove(p);
-            Uow.Complete();
-            Uow.Dispose();
+            Product p = UOW.Products.Get((int)id);
+            UOW.Products.Remove(p);
+            UOW.Complete();
+            UOW.Dispose();
             return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
