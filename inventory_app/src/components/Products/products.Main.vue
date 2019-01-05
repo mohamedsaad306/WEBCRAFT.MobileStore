@@ -1,14 +1,24 @@
 <template>
   <div class="products">
-    <h3>Products Main</h3>
+    <!-- <h3>Products Main Area</h3> -->
+    <div class="container">
+      <div class="col-md-4">
+        <ProductsForm></ProductsForm>
+      </div>
+    </div>
   </div>
 </template> 
 
 <script>
+import ProductsForm from "./products.Form.vue";
+
 export default {
   name: "Products.Main",
   props: {
     msg: String
+  },
+  components: {
+    ProductsForm
   }
 };
 </script>
@@ -17,7 +27,7 @@ export default {
 <style scoped>
 /* h3 {
   margin: 40px 0 0;
-}
+}   
 ul {
   list-style-type: none;
   padding: 0;
