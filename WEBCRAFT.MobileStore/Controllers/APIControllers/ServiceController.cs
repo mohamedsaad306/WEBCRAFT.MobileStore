@@ -10,19 +10,10 @@ using WEBCRAFT.MobileStore.ViewModels;
 
 namespace WEBCRAFT.MobileStore.Controllers
 {
-    [RoutePrefix("api/ApiService")]
-    public class ApiServiceController : ApiController
+    [RoutePrefix("api/Service")]
+    public class ServiceController : BaseController
     {
-        private UnitOfWork _uow;
-        public UnitOfWork UOW
-        {
-            get
-            {
-                if (_uow == null)
-                    _uow = new UnitOfWork(new ApplicationDbContext());
-                return _uow;
-            }
-        }
+        
 
        
         [HttpGet]

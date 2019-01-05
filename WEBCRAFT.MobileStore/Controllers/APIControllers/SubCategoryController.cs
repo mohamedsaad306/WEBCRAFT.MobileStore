@@ -10,25 +10,17 @@ using WEBCRAFT.MobileStore.ViewModels;
 
 namespace WEBCRAFT.MobileStore.Controllers
 {
-    [RoutePrefix("api/ApiPartModel")]
-    public class ApiPartModelController : ApiController
+    [RoutePrefix("api/SubCategory")]
+    public class SubCategoryController : BaseController
     {
-        public ApiPartModelController()
-        : this(new UnitOfWork(new ApplicationDbContext()))
-        {
-        }
-        public ApiPartModelController(UnitOfWork u)
-        {
-            Uow = u;
-        }
-        public UnitOfWork Uow { get; set; }
-        // GET: PartModel
+       
+        // GET: Subcategory
         [HttpGet]
         [Route("Get")]
         public HttpResponseMessage Get()
         {
-            var partModels = Uow.PartModel.GetAll();
-            var brands = Uow.Brand.GetAll();
+            var partModels = UOW.Subcategory.GetAll();
+            var brands = UOW.Category.GetAll();
             SubcategoryHomeViewModel vm = new SubcategoryHomeViewModel { Subcategory = partModels.ToList(), Category = brands.ToList() };
             return Request.CreateResponse(HttpStatusCode.OK,vm);
         }
@@ -40,30 +32,30 @@ namespace WEBCRAFT.MobileStore.Controllers
             Subcategory p = null;
             if (id != null)
             { 
-                p = Uow.PartModel.Get((int)id);
+                p = UOW.Subcategory.Get((int)id);
             }
-            var brands = Uow.Brand.GetAll();
-            SubcategoryViewModel vm = new SubcategoryViewModel { PartModel = p, Categories = brands.ToList() };
-            Uow.Dispose();
+            var brands = UOW.Category.GetAll();
+            SubcategoryViewModel vm = new SubcategoryViewModel { Subcategory = p, Categories = brands.ToList() };
+            UOW.Dispose();
             return Request.CreateResponse(HttpStatusCode.OK, vm);
         }
 
         [HttpPost]
         [Route("Manage")]
-        public HttpResponseMessage Manage(Subcategory partModel)
+        public HttpResponseMessage Manage(Subcategory Subcategory)
         {
-            if (partModel.Id != 0)
+            if (Subcategory.Id != 0)
             {
-                var pToUpdate = Uow.PartModel.Get(partModel.Id);
-                pToUpdate.Name = partModel.Name;
-                pToUpdate.Fk_CategoryId = partModel.Fk_CategoryId;
+                var pToUpdate = UOW.Subcategory.Get(Subcategory.Id);
+                pToUpdate.Name = Subcategory.Name;
+                pToUpdate.Fk_CategoryId = Subcategory.Fk_CategoryId;
             }
             else
             {
-                Uow.PartModel.Add(partModel);
+                UOW.Subcategory.Add(Subcategory);
             }
-            Uow.Complete();
-            Uow.Dispose();
+            UOW.Complete();
+            UOW.Dispose();
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
@@ -71,10 +63,10 @@ namespace WEBCRAFT.MobileStore.Controllers
         [Route("Delete")]
         public HttpResponseMessage Delete(int id)
         {
-            Subcategory partModel = Uow.PartModel.Get(id);
-            Uow.PartModel.Remove(partModel);
-            Uow.Complete();
-            Uow.Dispose();
+            Subcategory Subcategory = UOW.Subcategory.Get(id);
+            UOW.Subcategory.Remove(Subcategory);
+            UOW.Complete();
+            UOW.Dispose();
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 

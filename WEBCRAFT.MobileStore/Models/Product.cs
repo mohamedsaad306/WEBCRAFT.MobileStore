@@ -19,10 +19,12 @@ namespace WEBCRAFT.MobileStore.Models
 
         public string ImagePath { get; set; }
         public string Barcode { get; set; }
-        //TODO: Please confirm that this navigation property will resolve to inventories containing this product not all inventories. 
-        public List<Inventory> Inventories { get; set; }
-        //TODO: Same as above navigation Proeprty. 
-        public List<Event> Events { get; set; }
+        public List<StockItem> StockItems { get; set; }
+        public List<InventoryPreservedProduct> InventoryPreservedProducts { get; set; }
+        ////TODO: Please confirm that this navigation property will resolve to inventories containing this product not all inventories. 
+        //public List<Inventory> Inventories { get; set; }
+        ////TODO: Same as above navigation Proeprty. 
+        //public List<Event> Events { get; set; }
     }
     public class InvoicableProduct
     {

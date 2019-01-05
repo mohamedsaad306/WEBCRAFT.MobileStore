@@ -21,10 +21,10 @@ namespace WEBCRAFT.MobileStore.Controllers
         }
         public UnitOfWork Uow { get; set; }
 
-        // GET: Brand
+        // GET: Category
         public ActionResult Index()
         {
-            var brands = Uow.Brand.GetAll();
+            var brands = Uow.Category.GetAll();
             var viewModel = new CategoriesHomeViewModel { Categories = brands.ToList() };
             return View(viewModel);
         }
@@ -36,7 +36,7 @@ namespace WEBCRAFT.MobileStore.Controllers
             if (id != null)
             {
                 ViewBag.Mode = "Edit";
-                b = Uow.Brand.Get((int)id);
+                b = Uow.Category.Get((int)id);
             }
                 CategoryVeiwModels bVM = new CategoryVeiwModels { Category = b};
                 Uow.Dispose();
@@ -47,11 +47,11 @@ namespace WEBCRAFT.MobileStore.Controllers
         {
             if (category.Id == 0)
             {
-                Uow.Brand.Add(category);
+                Uow.Category.Add(category);
             }
             else
             {      
-                Category BrandToUpdate = Uow.Brand.Get(category.Id);
+                Category BrandToUpdate = Uow.Category.Get(category.Id);
                 BrandToUpdate.Name = category.Name;
             }
 
@@ -61,8 +61,8 @@ namespace WEBCRAFT.MobileStore.Controllers
         }
         public ActionResult Delete(int id)
         {
-            Category brand = Uow.Brand.Get(id);
-            Uow.Brand.Remove(brand);
+            Category Category = Uow.Category.Get(id);
+            Uow.Category.Remove(Category);
             Uow.Complete();
             Uow.Dispose();
             return RedirectToAction("Index");

@@ -10,26 +10,18 @@ using WEBCRAFT.MobileStore.ViewModels;
 
 namespace WEBCRAFT.MobileStore.Controllers
 {
-    [RoutePrefix("api/ApiBrand")]
-    public class ApiBrandController : ApiController
+    [RoutePrefix("api/Category")]
+    public class CategoryController : BaseController
     {
 
-        public ApiBrandController()
-       : this(new UnitOfWork(new ApplicationDbContext()))
-        {
-        }
-        public ApiBrandController(UnitOfWork u)
-        {
-            Uow = u;
-        }
-        public UnitOfWork Uow { get; set; }
+       
 
         // GET: api/ApiBrand
         [HttpGet]
         [Route("Get")]
         public IEnumerable<CategoriesHomeViewModel> Get()
         {
-            var brands = Uow.Brand.GetAll();
+            var brands = UOW.Category.GetAll();
             var viewModel = new CategoriesHomeViewModel { Categories = brands.ToList() };
             yield return viewModel;
         }
@@ -42,10 +34,10 @@ namespace WEBCRAFT.MobileStore.Controllers
             if (id != null)
             {
                
-                b = Uow.Brand.Get((int)id);
+                b = UOW.Category.Get((int)id);
             }
             CategoryVeiwModels bVM = new CategoryVeiwModels { Category = b };
-            Uow.Dispose();
+            UOW.Dispose();
             return  bVM;
         }
         [HttpPost]
@@ -54,16 +46,16 @@ namespace WEBCRAFT.MobileStore.Controllers
         {
             if (category.Id == 0)
             {
-                Uow.Brand.Add(category);
+                UOW.Category.Add(category);
             }
             else
             {
-                Category BrandToUpdate = Uow.Brand.Get(category.Id);
+                Category BrandToUpdate = UOW.Category.Get(category.Id);
                 BrandToUpdate.Name = category.Name;
             }
 
-            Uow.Complete();
-            Uow.Dispose();
+            UOW.Complete();
+            UOW.Dispose();
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
@@ -73,10 +65,10 @@ namespace WEBCRAFT.MobileStore.Controllers
         [Route("Delete")]
         public HttpResponseMessage Delete(int id)
         {
-            Category brand = Uow.Brand.Get(id);
-            Uow.Brand.Remove(brand);
-            Uow.Complete();
-            Uow.Dispose();
+            Category Category = UOW.Category.Get(id);
+            UOW.Category.Remove(Category);
+            UOW.Complete();
+            UOW.Dispose();
             return Request.CreateResponse(HttpStatusCode.OK);
         }
     }

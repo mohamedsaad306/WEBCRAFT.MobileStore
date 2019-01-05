@@ -29,8 +29,10 @@ namespace WEBCRAFT.MobileStore.Models
         public DbSet<ServiceType> ServiceTypes { get; set; }
         public DbSet<ExtraFeesType> ExtraFeesTypes { get; set; }
         public DbSet<Inventory> Inventories { get; set; }
-        public DbSet<InventoryProducts> InventoryProducts { get; set; }
+        public DbSet<StockItem> StockItems { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<InventoryPreservedProduct> InventoryPreservedProducts { get; set; }
+
 
         public ApplicationDbContext()
             : base("DefaultConnection")

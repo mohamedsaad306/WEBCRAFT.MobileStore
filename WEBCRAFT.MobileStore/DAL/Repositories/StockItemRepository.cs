@@ -7,10 +7,10 @@ using WEBCRAFT.MobileStore.Models;
 
 namespace WEBCRAFT.MobileStore.DAL.Repositories
 {
-    public class InventoryProductRepository : Repository<InventoryProducts>, IInventoryProductRepository
+    public class StockItemRepository : Repository<StockItem>, IStockItemRepository
 
     {
-        public InventoryProductRepository(ApplicationDbContext _context) : base(_context)
+        public StockItemRepository(ApplicationDbContext _context) : base(_context)
         {
         }
     }
