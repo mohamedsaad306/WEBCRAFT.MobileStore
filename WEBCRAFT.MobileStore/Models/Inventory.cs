@@ -9,7 +9,7 @@ namespace WEBCRAFT.MobileStore.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<Product> Products { get; set; }
+        public List<StockItem> StockItems { get; set; }
 
         //TODO: Why we have Events Here ?
         //public List<Event> Events { get; set; }

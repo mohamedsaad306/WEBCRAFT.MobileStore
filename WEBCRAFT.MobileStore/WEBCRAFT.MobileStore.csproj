@@ -183,6 +183,7 @@
     <Compile Include="Controllers\APIControllers\SubCategoryController.cs" />
     <Compile Include="Controllers\APIControllers\ProductController.cs" />
     <Compile Include="Controllers\APIControllers\ServiceController.cs" />
+    <Compile Include="Controllers\APIControllers\UplaodImageController.cs" />
     <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\OldCustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -368,6 +369,10 @@
     <Compile Include="Migrations\201901042219219_fix-relation.Designer.cs">
       <DependentUpon>201901042219219_fix-relation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901051225486_fix-relation-ver2.cs" />
+    <Compile Include="Migrations\201901051225486_fix-relation-ver2.Designer.cs">
+      <DependentUpon>201901051225486_fix-relation-ver2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -456,7 +461,9 @@
     <Content Include="Views\Service\Index.cshtml" />
     <Content Include="Views\Service\_ServiceBalnce.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Product_Image\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -572,6 +579,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901042219219_fix-relation.resx">
       <DependentUpon>201901042219219_fix-relation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901051225486_fix-relation-ver2.resx">
+      <DependentUpon>201901051225486_fix-relation-ver2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

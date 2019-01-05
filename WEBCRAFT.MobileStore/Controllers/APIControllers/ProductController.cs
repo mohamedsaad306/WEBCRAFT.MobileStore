@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using WEBCRAFT.MobileStore.DAL;
 using WEBCRAFT.MobileStore.Models;
@@ -13,7 +16,7 @@ namespace WEBCRAFT.MobileStore.Controllers
     [RoutePrefix("api/Product")]
     public class ProductController : BaseController
     {
-       
+
 
 
         //TODO: How to use paging here?
@@ -29,27 +32,8 @@ namespace WEBCRAFT.MobileStore.Controllers
             ProductsHomeViewModel vm = new ProductsHomeViewModel { Products = products.ToList(), Brands = brands.ToList(), PartModels = partModels.ToList() };
             yield return vm;
         }
-      
-        //TODO: Not needed, as we have Save(). and we will not use View Models in response. 
-        // GET: api/ApiProduct/5
-        [HttpGet]
-        [Route("Edit")]
-        public HttpResponseMessage Edit(int? id)
-        {
-            Product p = null;
-            
-            var brands = UOW.Category.GetAll();
-            var Subcategory = UOW.Subcategory.GetAll();
 
-            if (id != null)
-            {
-                p = UOW.Products.Get((int)id);
-            }
-
-            ProductViewModels vm = new ProductViewModels { product = p, Brands = brands.ToList(), PartModels = Subcategory.ToList() };
-            UOW.Dispose();
-             return Request.CreateResponse(HttpStatusCode.OK, vm);
-        }
+       
 
         // POST: api/ApiProduct
         [HttpPost]
@@ -69,24 +53,21 @@ namespace WEBCRAFT.MobileStore.Controllers
             {
                 product.Category = new Category { Id = product.FK_CategoryId };
                 UOW.Products.Add(product);
+
             }
             UOW.Complete();
             UOW.Dispose();
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        //TODO: is this method Tested ? , what is the value? , why we have this method while we have Save ? 
-        // PUT: api/ApiProduct/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+
 
         // DELETE: api/ApiProduct/5
         [HttpGet]
         [Route("Delete")]
         public HttpResponseMessage Delete(int? id)
         {
-            if(id==null)
+            if (id == null)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
@@ -96,5 +77,8 @@ namespace WEBCRAFT.MobileStore.Controllers
             UOW.Dispose();
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
+      
+
     }
 }
