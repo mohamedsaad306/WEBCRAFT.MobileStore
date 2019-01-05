@@ -21,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,12 +53,21 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -161,19 +171,30 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BLL\BLL.cs" />
     <Compile Include="BLL\ProductBLL.cs" />
     <Compile Include="BLL\ServiceBLL.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApiBrandController.cs" />
+    <Compile Include="Controllers\APIControllers\TestController.cs" />
+    <Compile Include="Controllers\ApiCustomerController.cs" />
+    <Compile Include="Controllers\ApiPartModelController.cs" />
+    <Compile Include="Controllers\ApiProductController.cs" />
+    <Compile Include="Controllers\ApiServiceController.cs" />
     <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PartModelController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="DAL\IEventRepository.cs" />
     <Compile Include="DAL\IAccountRepository.cs" />
     <Compile Include="DAL\IAccountTypeRepository.cs" />
+    <Compile Include="DAL\IInventoryProductRepository.cs" />
+    <Compile Include="DAL\IInventoryRepository.cs" />
     <Compile Include="DAL\IServiceBalanceRepository.cs" />
+    <Compile Include="DAL\Repositories\EventRepository.cs" />
     <Compile Include="DAL\Repositories\AccountRepository.cs" />
     <Compile Include="DAL\Repositories\AccountTypesRepository.cs" />
     <Compile Include="DAL\Repositories\CategoryRepository.cs" />
@@ -181,6 +202,8 @@
     <Compile Include="DAL\IInvoiceRepository.cs" />
     <Compile Include="DAL\Repositories\CustomerRepository.cs" />
     <Compile Include="DAL\ICustomerRepository.cs" />
+    <Compile Include="DAL\Repositories\InventoryProductRepository.cs" />
+    <Compile Include="DAL\Repositories\InventoryRepository.cs" />
     <Compile Include="DAL\Repositories\InvoiceRepository.cs" />
     <Compile Include="DAL\IRepository.cs" />
     <Compile Include="DAL\IUnitOfWork.cs" />
@@ -286,13 +309,67 @@
     <Compile Include="Migrations\201810011902578_Add_SubcategoriesTOIdentity.Designer.cs">
       <DependentUpon>201810011902578_Add_SubcategoriesTOIdentity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812301525401_Update-product.cs" />
+    <Compile Include="Migrations\201812301525401_Update-product.Designer.cs">
+      <DependentUpon>201812301525401_Update-product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301543138_create-Inventory-with-m-to-m-Product.cs" />
+    <Compile Include="Migrations\201812301543138_create-Inventory-with-m-to-m-Product.Designer.cs">
+      <DependentUpon>201812301543138_create-Inventory-with-m-to-m-Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301553300_Add-Amount-into-m-to-m.cs" />
+    <Compile Include="Migrations\201812301553300_Add-Amount-into-m-to-m.Designer.cs">
+      <DependentUpon>201812301553300_Add-Amount-into-m-to-m.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301559087_Update-Amount-into-m-to-m.cs" />
+    <Compile Include="Migrations\201812301559087_Update-Amount-into-m-to-m.Designer.cs">
+      <DependentUpon>201812301559087_Update-Amount-into-m-to-m.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301604004_Update-Amount-into-m-to-m-after-delete.cs" />
+    <Compile Include="Migrations\201812301604004_Update-Amount-into-m-to-m-after-delete.Designer.cs">
+      <DependentUpon>201812301604004_Update-Amount-into-m-to-m-after-delete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301630583_Create-m-to-m-inventory-product.cs" />
+    <Compile Include="Migrations\201812301630583_Create-m-to-m-inventory-product.Designer.cs">
+      <DependentUpon>201812301630583_Create-m-to-m-inventory-product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301632032_Create-m-to-m-inventory-product2.cs" />
+    <Compile Include="Migrations\201812301632032_Create-m-to-m-inventory-product2.Designer.cs">
+      <DependentUpon>201812301632032_Create-m-to-m-inventory-product2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301652554_create-new-relation.cs" />
+    <Compile Include="Migrations\201812301652554_create-new-relation.Designer.cs">
+      <DependentUpon>201812301652554_create-new-relation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301654460_create-new-relation2.cs" />
+    <Compile Include="Migrations\201812301654460_create-new-relation2.Designer.cs">
+      <DependentUpon>201812301654460_create-new-relation2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301700236_create-new-relation3.cs" />
+    <Compile Include="Migrations\201812301700236_create-new-relation3.Designer.cs">
+      <DependentUpon>201812301700236_create-new-relation3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301818335_create-Event-with-1-to-m-customer.cs" />
+    <Compile Include="Migrations\201812301818335_create-Event-with-1-to-m-customer.Designer.cs">
+      <DependentUpon>201812301818335_create-Event-with-1-to-m-customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301834153_create-Event-with-m-to-m.cs" />
+    <Compile Include="Migrations\201812301834153_create-Event-with-m-to-m.Designer.cs">
+      <DependentUpon>201812301834153_create-Event-with-m-to-m.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812301849272_todrop.cs" />
+    <Compile Include="Migrations\201812301849272_todrop.Designer.cs">
+      <DependentUpon>201812301849272_todrop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\ExtraFeesType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Inventory.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\Subcategory.cs" />
     <Compile Include="Models\Product.cs" />
@@ -334,7 +411,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -445,6 +524,45 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810011902578_Add_SubcategoriesTOIdentity.resx">
       <DependentUpon>201810011902578_Add_SubcategoriesTOIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301525401_Update-product.resx">
+      <DependentUpon>201812301525401_Update-product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301543138_create-Inventory-with-m-to-m-Product.resx">
+      <DependentUpon>201812301543138_create-Inventory-with-m-to-m-Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301553300_Add-Amount-into-m-to-m.resx">
+      <DependentUpon>201812301553300_Add-Amount-into-m-to-m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301559087_Update-Amount-into-m-to-m.resx">
+      <DependentUpon>201812301559087_Update-Amount-into-m-to-m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301604004_Update-Amount-into-m-to-m-after-delete.resx">
+      <DependentUpon>201812301604004_Update-Amount-into-m-to-m-after-delete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301630583_Create-m-to-m-inventory-product.resx">
+      <DependentUpon>201812301630583_Create-m-to-m-inventory-product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301632032_Create-m-to-m-inventory-product2.resx">
+      <DependentUpon>201812301632032_Create-m-to-m-inventory-product2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301652554_create-new-relation.resx">
+      <DependentUpon>201812301652554_create-new-relation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301654460_create-new-relation2.resx">
+      <DependentUpon>201812301654460_create-new-relation2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301700236_create-new-relation3.resx">
+      <DependentUpon>201812301700236_create-new-relation3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301818335_create-Event-with-1-to-m-customer.resx">
+      <DependentUpon>201812301818335_create-Event-with-1-to-m-customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301834153_create-Event-with-m-to-m.resx">
+      <DependentUpon>201812301834153_create-Event-with-m-to-m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301849272_todrop.resx">
+      <DependentUpon>201812301849272_todrop.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

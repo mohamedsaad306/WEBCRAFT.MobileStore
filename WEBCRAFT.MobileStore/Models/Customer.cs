@@ -9,11 +9,12 @@ namespace WEBCRAFT.MobileStore.Models
     public class Customer
     {
         public int Id { get; set; }
-        [Display(Name="Customer NAme Here ")]
+        [Display(Name="Customer Name Here")]
         public string Name { get; set; }
         public Account Account { get; set; }
         public int FK_AccountId { get; set; }
         public List<Invoice> Invoices { get; set; }
+        public List<Event> Events { get; set; }
 
     }
 }
