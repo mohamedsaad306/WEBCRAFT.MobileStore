@@ -5,12 +5,15 @@
       <div class="col-md-4">
         <ProductsForm></ProductsForm>
       </div>
+      <hr>
+      <ProuctsList></ProuctsList>
     </div>
   </div>
 </template> 
 
 <script>
 import ProductsForm from "./products.Form.vue";
+import ProuctsList from "./products.List.vue";
 
 export default {
   name: "Products.Main",
@@ -18,7 +21,8 @@ export default {
     msg: String
   },
   components: {
-    ProductsForm
+    ProductsForm,
+    ProuctsList
   }
 };
 </script>
