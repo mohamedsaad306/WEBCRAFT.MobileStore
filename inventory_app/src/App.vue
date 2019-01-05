@@ -1,21 +1,19 @@
 <template>
   <div id="app">
-    <div class>
-      <b-navbar toggleable="md" type="dark" variant="dark">
-        <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-        <b-navbar-brand href="#">Inventory</b-navbar-brand>
-        <b-collapse is-nav id="nav_collapse">
-          <b-navbar-nav>
-            <b-nav-item href="#">Warehouses</b-nav-item>
-            <b-nav-item href="#">Products</b-nav-item>
-            <b-nav-item href="#">Customers</b-nav-item>
-            <b-nav-item href="#">Events</b-nav-item>
-          </b-navbar-nav>
-        </b-collapse>
-      </b-navbar>
-    </div>
-     <router-view></router-view>
-    
+    <b-navbar toggleable="md" type="dark" variant="dark">
+      <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+      <b-navbar-brand href="#">Inventory</b-navbar-brand>
+      <b-collapse is-nav id="nav_collapse">
+        <b-navbar-nav>
+          <b-nav-item to="Warehouses">Warehouses</b-nav-item>
+          <b-nav-item to="products">Products</b-nav-item>
+          <b-nav-item to="Customers">Customers</b-nav-item>
+          <b-nav-item to="HelloWorld">Hello World</b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+
+    <router-view></router-view>
   </div>
 </template>
 
