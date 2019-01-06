@@ -6,9 +6,9 @@
         <b-form-group horizontal label="Filter" class="mb-0">
           <b-input-group>
             <b-form-input v-model="filter" placeholder="Type to Search"/>
-            <b-input-group-append>
+            <!-- <b-input-group-append> -->
               <b-btn :disabled="!filter" @click="filter = ''">Clear</b-btn>
-            </b-input-group-append>
+            <!-- </b-input-group-append> -->
           </b-input-group>
         </b-form-group>
       </b-col>

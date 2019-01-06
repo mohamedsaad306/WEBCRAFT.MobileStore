@@ -45,7 +45,7 @@ export default {
         name: "",
         category: "",
         price: "",
-        file: ""
+        file: "" //TODO: check binding
       }, // end form
       options: [
         { value: null, text: "Please select an option" },

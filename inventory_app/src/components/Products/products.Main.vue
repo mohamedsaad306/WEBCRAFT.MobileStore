@@ -3,7 +3,11 @@
     <!-- <h3>Products Main Area</h3> -->
     <div class="container">
       <div class="col-md-4">
-        <ProductsForm></ProductsForm>
+        <b-btn v-b-modal.modal1>New Product</b-btn>
+        <b-modal id="modal1" title="Create New Product" @ok="ProductsForm.onSubmit">
+          <!-- <p class="my-4">Hello from modal!</p> -->
+          <ProductsForm></ProductsForm>
+        </b-modal>
       </div>
       <hr>
       <ProuctsList></ProuctsList>
@@ -16,7 +20,12 @@ import ProductsForm from "./products.Form.vue";
 import ProuctsList from "./products.List.vue";
 
 export default {
-  name: "Products.Main",
+  name: "ProductsMain",
+  methods: {
+    createNewProduct(input) {
+      console.log(input.target);
+    }
+  },
   props: {
     msg: String
   },
