@@ -4,7 +4,7 @@
     <div class="container">
       <div class="col-md-4">
         <b-btn v-b-modal.modal1>New Product</b-btn>
-        <b-modal id="modal1" title="Create New Product" @ok="ProductsForm.onSubmit">
+        <b-modal id="modal1" title="Create New Product" @ok="createNewProduct" hide-footer>
           <!-- <p class="my-4">Hello from modal!</p> -->
           <ProductsForm></ProductsForm>
         </b-modal>

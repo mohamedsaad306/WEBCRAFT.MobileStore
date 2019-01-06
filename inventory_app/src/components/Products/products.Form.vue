@@ -59,6 +59,8 @@ export default {
     onSubmit(evt) {
       evt.preventDefault();
       console.log(JSON.stringify(this.form));
+      // close parent modal .
+      this.$root.$emit("bv::hide::modal", "modal1");
     }
   }
 };
