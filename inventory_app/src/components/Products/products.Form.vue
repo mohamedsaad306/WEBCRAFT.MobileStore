@@ -17,6 +17,10 @@
         <b-form-group id="priceGroup" label="Price:" label-for="product-price">
           <b-form-input id="product-price" type="text" v-model="form.price" placeholder></b-form-input>
         </b-form-group>
+
+        <b-form-group id="barCodeGroup" label="Barcode:" label-for="product-barcode">
+          <b-form-input id="product-barcode" type="text" v-model="form.barcode" placeholder></b-form-input>
+        </b-form-group>
       </b-form-group>
 
       <!-- <b-form-file v-model="form.file" :state="Boolean(file)" placeholder="Choose a file..."></b-form-file> -->
@@ -45,6 +49,7 @@ export default {
         name: "",
         category: "",
         price: "",
+        barcode: "",
         file: "" //TODO: check binding
       }, // end form
       options: [

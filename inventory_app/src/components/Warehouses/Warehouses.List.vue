@@ -33,6 +33,7 @@ export default {
         : (this.activeIndex = r.index);
       console.log(r);
       console.log(this.activeIndex);
+      this.$emit("warehouceChanged");
     }
   },
   data() {

@@ -160,7 +160,8 @@ export default {
           label: "Price",
           sortable: true,
           class: "text-center"
-        }
+        },
+        "barcode"
         // { key: "isActive", label: "is Active" },
         // { key: "actions", label: "Actions" }
       ],

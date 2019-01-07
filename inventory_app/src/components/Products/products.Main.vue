@@ -10,7 +10,7 @@
         </b-modal>
       </div>
       <hr>
-      <ProuctsList v-bind:products-items="items" diplay-quants></ProuctsList>
+      <ProuctsList v-bind:products-items="items"></ProuctsList>
     </div>
   </div>
 </template> 
