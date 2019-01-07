@@ -7,7 +7,7 @@
           <b-input-group>
             <b-form-input v-model="filter" placeholder="Type to Search"/>
             <!-- <b-input-group-append> -->
-              <b-btn :disabled="!filter" @click="filter = ''">Clear</b-btn>
+            <b-btn :disabled="!filter" @click="filter = ''">Clear</b-btn>
             <!-- </b-input-group-append> -->
           </b-input-group>
         </b-form-group>
@@ -110,7 +110,12 @@ const items = [
     name: { first: "Mini", last: "Navarro" },
     _rowVariant: "success"
   },
-  { isActive: false, age: 89, name: { first: "Geneva", last: "Wilson" } },
+  {
+    isActive: false,
+    age: 89,
+    name: { first: "Geneva", last: "Wilson" }
+    //quants: 100
+  },
   { isActive: true, age: 38, name: { first: "Jami", last: "Carney" } },
   { isActive: false, age: 27, name: { first: "Essie", last: "Dunlap" } },
   { isActive: true, age: 40, name: { first: "Thor", last: "Macdonald" } },
@@ -131,9 +136,18 @@ export default {
   components: {
     BootstrapVue
   },
+  props: {
+    ["productsItems"]: Array,
+    ["diplayQuants"]: Boolean
+  },
+  created() {
+    if (this.diplayQuants) {
+      this.fields.push("quants");
+    }
+  },
   data() {
     return {
-      items: items,
+      items: this.productsItems || items,
       fields: [
         {
           key: "name",
