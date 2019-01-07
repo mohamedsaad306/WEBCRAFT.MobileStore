@@ -178,6 +178,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\APIControllers\BaseController.cs" />
     <Compile Include="Controllers\APIControllers\CategoryController.cs" />
+    <Compile Include="Controllers\APIControllers\InventoryController.cs" />
+    <Compile Include="Controllers\APIControllers\StockItemController.cs" />
+    <Compile Include="Controllers\APIControllers\InventoryPreservedProductController.cs" />
+    <Compile Include="Controllers\APIControllers\EventController.cs" />
     <Compile Include="Controllers\APIControllers\TestController.cs" />
     <Compile Include="Controllers\APIControllers\CustomerController.cs" />
     <Compile Include="Controllers\APIControllers\SubCategoryController.cs" />

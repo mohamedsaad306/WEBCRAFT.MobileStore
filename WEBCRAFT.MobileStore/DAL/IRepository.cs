@@ -17,5 +17,7 @@ namespace WEBCRAFT.MobileStore.DAL
         void AddRange(IEnumerable<TEntity> entities);
         void Remove (TEntity entitie);
         void RemoveRange(IEnumerable<TEntity> entities);
+        void Update(TEntity entity);
+
     }
 }
