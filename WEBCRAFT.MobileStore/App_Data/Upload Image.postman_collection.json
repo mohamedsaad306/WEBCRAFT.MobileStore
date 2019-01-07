@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "d67fb7f2-1fc3-4777-b932-90e446caf3f4",
+		"name": "Upload Image",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3630/api/UplaodImage/PostUserImage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imajhmhj,jh,",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3630/api/UplaodImage/PostUserImage",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3630",
+					"path": [
+						"api",
+						"UplaodImage",
+						"PostUserImage"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
