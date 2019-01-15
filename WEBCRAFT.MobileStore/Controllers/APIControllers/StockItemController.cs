@@ -21,8 +21,8 @@ namespace WEBCRAFT.MobileStore.Controllers
                 {
                     var pToUpdate = UOW.StockItem.Get(stockItem.Id);
                     pToUpdate.Quantity = stockItem.Quantity;
-                    pToUpdate.Product_Id = stockItem.Product_Id;
-                    pToUpdate.Inventory_Id = stockItem.Inventory_Id;
+                    pToUpdate.ProductId = stockItem.ProductId;
+                    pToUpdate.InventoryId = stockItem.InventoryId;
                     UOW.StockItem.Update(pToUpdate);
 
                 }
