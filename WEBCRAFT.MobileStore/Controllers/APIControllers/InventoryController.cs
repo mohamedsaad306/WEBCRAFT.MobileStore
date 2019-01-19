@@ -11,6 +11,15 @@ namespace WEBCRAFT.MobileStore.Controllers
     [RoutePrefix("api/Inventory")]
     public class InventoryController : BaseController
     {
+        [HttpGet]
+        [Route("Get")]
+        public HttpResponseMessage Get()
+        {
+            var inventories = UOW.inventories.GetAll();
+            return Request.CreateResponse(HttpStatusCode.OK, inventories);
+
+        }
+
         [HttpPost]
         [Route("Save")]
         public HttpResponseMessage Save(Inventory inventory)
@@ -32,7 +41,7 @@ namespace WEBCRAFT.MobileStore.Controllers
                 }
                 UOW.Complete();
                 UOW.Dispose();
-                return Request.CreateResponse(HttpStatusCode.OK);
+                return Request.CreateResponse(HttpStatusCode.OK,inventory.Id);
             }
             catch (Exception e)
             {

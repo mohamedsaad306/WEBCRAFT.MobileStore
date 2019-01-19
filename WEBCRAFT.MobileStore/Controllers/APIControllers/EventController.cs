@@ -11,6 +11,15 @@ namespace WEBCRAFT.MobileStore.Controllers
     [RoutePrefix("api/Event")]
     public class EventController : BaseController
     {
+        [HttpGet]
+        [Route("Get")]
+        public HttpResponseMessage Get()
+        {
+            var events = UOW.Event.GetAll();
+
+            return Request.CreateResponse(HttpStatusCode.OK, events);
+        }
+
         [HttpPost]
         [Route("Save")]
         public HttpResponseMessage Save(Event myEvent)

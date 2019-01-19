@@ -19,15 +19,15 @@ namespace WEBCRAFT.MobileStore.Controllers
         // GET: api/ApiBrand
         [HttpGet]
         [Route("Get")]
-        public IEnumerable<CategoriesHomeViewModel> Get()
+        public HttpResponseMessage Get()
         {
             var brands = UOW.Category.GetAll();
-            var viewModel = new CategoriesHomeViewModel { Categories = brands.ToList() };
-            yield return viewModel;
+            return Request.CreateResponse(HttpStatusCode.OK, brands);
+
         }
         [HttpGet]
         [Route("Manage")]
-        public CategoryVeiwModels Manage(int? id)
+        public HttpResponseMessage Manage(int? id)
         {
             Category b = null;
            
@@ -36,27 +36,36 @@ namespace WEBCRAFT.MobileStore.Controllers
                
                 b = UOW.Category.Get((int)id);
             }
-            CategoryVeiwModels bVM = new CategoryVeiwModels { Category = b };
+            
             UOW.Dispose();
-            return  bVM;
+            return Request.CreateResponse(HttpStatusCode.OK, b);
         }
         [HttpPost]
         [Route("Manage")]
         public HttpResponseMessage Manage(Category category)
         {
-            if (category.Id == 0)
+            try
             {
-                UOW.Category.Add(category);
-            }
-            else
-            {
-                Category BrandToUpdate = UOW.Category.Get(category.Id);
-                BrandToUpdate.Name = category.Name;
-            }
+                if (category.Id == 0)
+                {
+                    UOW.Category.Add(category);
+                }
+                else
+                {
+                    Category BrandToUpdate = UOW.Category.Get(category.Id);
+                    BrandToUpdate.Name = category.Name;
+                }
 
-            UOW.Complete();
-            UOW.Dispose();
-            return Request.CreateResponse(HttpStatusCode.OK);
+                UOW.Complete();
+                UOW.Dispose();
+                return Request.CreateResponse(HttpStatusCode.OK ,category.Id);
+            }
+            catch (Exception e)
+            {
+
+                return Request.CreateResponse(HttpStatusCode.ExpectationFailed, e.Message);
+            }
+           
         }
 
 
@@ -65,11 +74,20 @@ namespace WEBCRAFT.MobileStore.Controllers
         [Route("Delete")]
         public HttpResponseMessage Delete(int id)
         {
-            Category Category = UOW.Category.Get(id);
-            UOW.Category.Remove(Category);
-            UOW.Complete();
-            UOW.Dispose();
-            return Request.CreateResponse(HttpStatusCode.OK);
+            try
+            {
+                Category Category = UOW.Category.Get(id);
+                UOW.Category.Remove(Category);
+                UOW.Complete();
+                UOW.Dispose();
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception e)
+            {
+
+                return Request.CreateResponse(HttpStatusCode.ExpectationFailed, e.Message);
+            }
+            
         }
     }
 }

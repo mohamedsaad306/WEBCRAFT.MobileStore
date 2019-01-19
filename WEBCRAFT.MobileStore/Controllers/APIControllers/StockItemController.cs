@@ -15,6 +15,14 @@ namespace WEBCRAFT.MobileStore.Controllers
         [Route("Save")]
         public HttpResponseMessage Save(StockItem stockItem)
         {
+            if((stockItem.InventoryId==0 ||stockItem.ProductId==0)|| (stockItem.InventoryId == 0 && stockItem.ProductId == 0))
+            {
+                return Request.CreateResponse(HttpStatusCode.ExpectationFailed,"we can not create a stock without product and inventory");
+            }
+            var product = UOW.Products.Get(stockItem.ProductId);
+            var inventory = UOW.inventories.Get(stockItem.InventoryId);
+            if((product==null ||inventory==null)|| (product == null && inventory == null))
+                return Request.CreateResponse(HttpStatusCode.ExpectationFailed, "we can not create a stock without product and inventory");
             try
             {
                 if (stockItem.Id != 0)
@@ -34,7 +42,7 @@ namespace WEBCRAFT.MobileStore.Controllers
                 }
                 UOW.Complete();
                 UOW.Dispose();
-                return Request.CreateResponse(HttpStatusCode.OK);
+                return Request.CreateResponse(HttpStatusCode.OK,stockItem.Id);
             }
             catch (Exception e)
             {

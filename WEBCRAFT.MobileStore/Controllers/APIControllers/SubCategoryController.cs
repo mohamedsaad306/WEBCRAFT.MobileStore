@@ -20,9 +20,8 @@ namespace WEBCRAFT.MobileStore.Controllers
         public HttpResponseMessage Get()
         {
             var partModels = UOW.Subcategory.GetAll();
-            var brands = UOW.Category.GetAll();
-            SubcategoryHomeViewModel vm = new SubcategoryHomeViewModel { Subcategory = partModels.ToList(), Category = brands.ToList() };
-            return Request.CreateResponse(HttpStatusCode.OK,vm);
+          
+            return Request.CreateResponse(HttpStatusCode.OK, partModels);
         }
         [HttpGet]
         [Route("Manage")]
@@ -56,7 +55,7 @@ namespace WEBCRAFT.MobileStore.Controllers
             }
             UOW.Complete();
             UOW.Dispose();
-            return Request.CreateResponse(HttpStatusCode.OK);
+            return Request.CreateResponse(HttpStatusCode.OK,Subcategory.Id);
         }
 
         [HttpGet]

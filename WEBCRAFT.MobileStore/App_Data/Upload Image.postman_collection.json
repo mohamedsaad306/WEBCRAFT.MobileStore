@@ -21,7 +21,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3630/api/UplaodImage/PostUserImage",
+					"raw": "http://localhost:3630/api/UplaodImage/UploadImage",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -30,7 +30,7 @@
 					"path": [
 						"api",
 						"UplaodImage",
-						"PostUserImage"
+						"UploadImage"
 					]
 				}
 			},

@@ -23,14 +23,14 @@ namespace WEBCRAFT.MobileStore.Controllers
         // GET: api/ApiProduct
         [HttpGet]
         [Route("Get")]
-        public IEnumerable<ProductsHomeViewModel> Get()
+        public HttpResponseMessage Get()
         {
 
             var products = UOW.Products.GetAll();
-            var brands = UOW.Category.GetAll();
-            var partModels = UOW.Subcategory.GetAll();
-            ProductsHomeViewModel vm = new ProductsHomeViewModel { Products = products.ToList(), Brands = brands.ToList(), PartModels = partModels.ToList() };
-            yield return vm;
+            //var brands = UOW.Category.GetAll();
+            //var partModels = UOW.Subcategory.GetAll();
+            //ProductsHomeViewModel vm = new ProductsHomeViewModel { Products = products.ToList(), Brands = brands.ToList(), PartModels = partModels.ToList() };
+            return Request.CreateResponse(HttpStatusCode.OK,products);
         }
 
        
@@ -40,8 +40,18 @@ namespace WEBCRAFT.MobileStore.Controllers
         [Route("Save")]
         public HttpResponseMessage Save(Product product)
         {
+            if(product.FK_CategoryId!=0)
+            {
+                var category = UOW.Category.Get(product.FK_CategoryId);
+                if (category == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.ExpectationFailed, "Category not found");
+                }
+            }
+
             if (product.Id != 0)
             {
+               
                 var pToUpdate = UOW.Products.Get(product.Id);
                 pToUpdate.Name = product.Name;
                 pToUpdate.SellPrice = product.SellPrice;
@@ -51,13 +61,13 @@ namespace WEBCRAFT.MobileStore.Controllers
             }
             else
             {
-                product.Category = new Category { Id = product.FK_CategoryId };
+                
                 UOW.Products.Add(product);
 
             }
             UOW.Complete();
             UOW.Dispose();
-            return Request.CreateResponse(HttpStatusCode.OK);
+            return Request.CreateResponse(HttpStatusCode.OK,product.Id);
         }
 
 
