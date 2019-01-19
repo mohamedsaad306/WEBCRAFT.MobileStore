@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using WEBCRAFT.MobileStore.DAL;
+using WEBCRAFT.MobileStore.Helper;
 using WEBCRAFT.MobileStore.Models;
 using WEBCRAFT.MobileStore.ViewModels;
 
@@ -67,7 +68,15 @@ namespace WEBCRAFT.MobileStore.Controllers
             }
             UOW.Complete();
             UOW.Dispose();
-            return Request.CreateResponse(HttpStatusCode.OK,product.Id);
+            var response = new Response<object>
+            {
+                Data = new { Id = product.Id },
+                status = ResponseStatusEnum.sucess,
+                StatusCode = HttpStatusCode.OK,
+                Message  ="sucess "
+            };
+            return Request.CreateResponse(response);
+          //  return Request.CreateResponse(HttpStatusCode.OK,product.Id);
         }
 
 
