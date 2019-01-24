@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WEBCRAFT.MobileStore.Helper;
 using WEBCRAFT.MobileStore.Models;
 
 namespace WEBCRAFT.MobileStore.Controllers
@@ -17,12 +18,30 @@ namespace WEBCRAFT.MobileStore.Controllers
         {
             if((stockItem.InventoryId==0 ||stockItem.ProductId==0)|| (stockItem.InventoryId == 0 && stockItem.ProductId == 0))
             {
-                return Request.CreateResponse(HttpStatusCode.ExpectationFailed,"we can not create a stock without product and inventory");
+                var response = new Response<object>
+                {
+                    
+                    status = ResponseStatusEnum.error,
+                    StatusCode = HttpStatusCode.Conflict,
+                    Message = "we can not create a stock without product and inventory"
+                };
+                return Request.CreateResponse(response);
+                
             }
             var product = UOW.Products.Get(stockItem.ProductId);
             var inventory = UOW.inventories.Get(stockItem.InventoryId);
             if((product==null ||inventory==null)|| (product == null && inventory == null))
-                return Request.CreateResponse(HttpStatusCode.ExpectationFailed, "we can not create a stock without product and inventory");
+            {
+                var response = new Response<object>
+                {
+
+                    status = ResponseStatusEnum.error,
+                    StatusCode = HttpStatusCode.Conflict,
+                    Message = "we can not create a stock without product and inventory"
+                };
+                return Request.CreateResponse(response);
+            }
+               
             try
             {
                 if (stockItem.Id != 0)
@@ -42,12 +61,26 @@ namespace WEBCRAFT.MobileStore.Controllers
                 }
                 UOW.Complete();
                 UOW.Dispose();
-                return Request.CreateResponse(HttpStatusCode.OK,stockItem.Id);
+                var response = new Response<object>
+                {
+                    Data = new { Id = stockItem.Id },
+                    status = ResponseStatusEnum.sucess,
+                    StatusCode = HttpStatusCode.OK,
+                    Message = "sucess "
+                };
+                return Request.CreateResponse(response);
             }
             catch (Exception e)
             {
 
-                return Request.CreateResponse(HttpStatusCode.ExpectationFailed, e.Message);
+                var response = new Response<object>
+                {
+
+                    status = ResponseStatusEnum.error,
+                    StatusCode = HttpStatusCode.Conflict,
+                    Message = e.Message
+                };
+                return Request.CreateResponse(response);
             }
 
         }

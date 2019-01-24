@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WEBCRAFT.MobileStore.Helper;
 using WEBCRAFT.MobileStore.Models;
 
 namespace WEBCRAFT.MobileStore.Controllers
@@ -17,7 +18,14 @@ namespace WEBCRAFT.MobileStore.Controllers
         {
             var events = UOW.Event.GetAll();
 
-            return Request.CreateResponse(HttpStatusCode.OK, events);
+            var response = new Response<object>
+            {
+                Data = new { events = events },
+                status = ResponseStatusEnum.sucess,
+                StatusCode = HttpStatusCode.OK,
+                Message = "sucess "
+            };
+            return Request.CreateResponse(response);
         }
 
         [HttpPost]
@@ -46,12 +54,26 @@ namespace WEBCRAFT.MobileStore.Controllers
                 }
                 UOW.Complete();
                 UOW.Dispose();
-                return Request.CreateResponse(HttpStatusCode.OK);
+                var response = new Response<object>
+                {
+                    Data = new { Id = myEvent.Id },
+                    status = ResponseStatusEnum.sucess,
+                    StatusCode = HttpStatusCode.OK,
+                    Message = "sucess "
+                };
+                return Request.CreateResponse(response);
             }
             catch (Exception e)
             {
 
-                return Request.CreateResponse(HttpStatusCode.ExpectationFailed, e.Message);
+                var response = new Response<object>
+                {
+                    
+                    status = ResponseStatusEnum.error,
+                    StatusCode = HttpStatusCode.ExpectationFailed,
+                    Message = e.Message
+                };
+                return Request.CreateResponse(response);
             }
 
         }

@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WEBCRAFT.MobileStore.DAL;
+using WEBCRAFT.MobileStore.Helper;
 using WEBCRAFT.MobileStore.Models;
 using WEBCRAFT.MobileStore.ViewModels;
 
@@ -27,22 +28,48 @@ namespace WEBCRAFT.MobileStore.Controllers
         [Route("Get")]
         public HttpResponseMessage Get()
         {
-            CustomerIndexViewModel vm = new CustomerIndexViewModel() { Customers = UOW.Customers.GetAll().ToList() };
-            return Request.CreateResponse(HttpStatusCode.OK,vm);
+            var Customers = UOW.Customers.GetAll().ToList() ;
+            var response = new Response<object>
+            {
+                Data = new { Customers = Customers },
+                status = ResponseStatusEnum.sucess,
+                StatusCode = HttpStatusCode.OK,
+                Message = "sucess "
+            };
+            return Request.CreateResponse(response);
         }
      
 
 
         [HttpPost]
         [Route("Save")]
-        public HttpResponseMessage Save(Customer Customer)
+        public HttpResponseMessage Save(Customer customer)
         {
-            Customer NewCustomer = CustomerRepository.AddNewCustomer(Customer);
-            if (Customer != null)
-                return Request.CreateResponse(HttpStatusCode.OK);
+            if (customer != null)
+            {
+                var NewCustomer = CustomerRepository.AddNewCustomer(customer);
+                var response = new Response<object>
+                {
+                    Data = new { Id = customer.Id },
+                    status = ResponseStatusEnum.sucess,
+                    StatusCode = HttpStatusCode.OK,
+                    Message = "sucess "
+                };
+                return Request.CreateResponse(response);
+            }
             else
-                return Request.CreateResponse(HttpStatusCode.InternalServerError);
-           
+            {
+                var response = new Response<object>
+                {
+
+                    status = ResponseStatusEnum.error,
+                    StatusCode = HttpStatusCode.ExpectationFailed,
+                    Message = "sucess "
+                };
+                return Request.CreateResponse(response);
+            }
+                
+
         }
         [HttpGet]
         [Route("Delete")]
@@ -52,7 +79,14 @@ namespace WEBCRAFT.MobileStore.Controllers
             UOW.Customers.Remove(customerToDelete);
             UOW.Complete();
             UOW.Dispose();
-            return Request.CreateResponse(HttpStatusCode.OK);
+            var response = new Response<object>
+            {
+                
+                status = ResponseStatusEnum.sucess,
+                StatusCode = HttpStatusCode.OK,
+                Message = "sucess "
+            };
+            return Request.CreateResponse(response);
         }
 
      

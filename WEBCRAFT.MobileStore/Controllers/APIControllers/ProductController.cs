@@ -31,7 +31,14 @@ namespace WEBCRAFT.MobileStore.Controllers
             //var brands = UOW.Category.GetAll();
             //var partModels = UOW.Subcategory.GetAll();
             //ProductsHomeViewModel vm = new ProductsHomeViewModel { Products = products.ToList(), Brands = brands.ToList(), PartModels = partModels.ToList() };
-            return Request.CreateResponse(HttpStatusCode.OK,products);
+            var response = new Response<object>
+            {
+                Data = new { products = products },
+                status = ResponseStatusEnum.sucess,
+                StatusCode = HttpStatusCode.OK,
+                Message = "sucess "
+            };
+            return Request.CreateResponse(response);
         }
 
        
@@ -41,13 +48,15 @@ namespace WEBCRAFT.MobileStore.Controllers
         [Route("Save")]
         public HttpResponseMessage Save(Product product)
         {
-            if(product.FK_CategoryId!=0)
+            if(product.FK_CategoryId != 0)
             {
                 var category = UOW.Category.Get(product.FK_CategoryId);
                 if (category == null)
                 {
                     return Request.CreateResponse(HttpStatusCode.ExpectationFailed, "Category not found");
                 }
+               
+
             }
 
             if (product.Id != 0)
@@ -56,7 +65,7 @@ namespace WEBCRAFT.MobileStore.Controllers
                 var pToUpdate = UOW.Products.Get(product.Id);
                 pToUpdate.Name = product.Name;
                 pToUpdate.SellPrice = product.SellPrice;
-                pToUpdate.FK_CategoryId = product.FK_CategoryId;
+                //pToUpdate.FK_CategoryId = product.FK_CategoryId;
                 pToUpdate.FK_SubcategoryId = product.FK_SubcategoryId;
 
             }
@@ -94,7 +103,14 @@ namespace WEBCRAFT.MobileStore.Controllers
             UOW.Products.Remove(p);
             UOW.Complete();
             UOW.Dispose();
-            return Request.CreateResponse(HttpStatusCode.OK);
+            var response = new Response<object>
+            {
+                
+                status = ResponseStatusEnum.sucess,
+                StatusCode = HttpStatusCode.OK,
+                Message = "sucess "
+            };
+            return Request.CreateResponse(response);
         }
 
       

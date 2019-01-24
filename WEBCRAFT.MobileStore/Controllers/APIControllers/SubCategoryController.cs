@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WEBCRAFT.MobileStore.DAL;
+using WEBCRAFT.MobileStore.Helper;
 using WEBCRAFT.MobileStore.Models;
 using WEBCRAFT.MobileStore.ViewModels;
 
@@ -20,8 +21,15 @@ namespace WEBCRAFT.MobileStore.Controllers
         public HttpResponseMessage Get()
         {
             var partModels = UOW.Subcategory.GetAll();
-          
-            return Request.CreateResponse(HttpStatusCode.OK, partModels);
+
+            var response = new Response<object>
+            {
+                Data = new { partModels = partModels },
+                status = ResponseStatusEnum.sucess,
+                StatusCode = HttpStatusCode.OK,
+                Message = "sucess "
+            };
+            return Request.CreateResponse(response);
         }
         [HttpGet]
         [Route("Manage")]
@@ -36,7 +44,14 @@ namespace WEBCRAFT.MobileStore.Controllers
             var brands = UOW.Category.GetAll();
             SubcategoryViewModel vm = new SubcategoryViewModel { Subcategory = p, Categories = brands.ToList() };
             UOW.Dispose();
-            return Request.CreateResponse(HttpStatusCode.OK, vm);
+            var response = new Response<object>
+            {
+                Data = new { Subcategory = vm },
+                status = ResponseStatusEnum.sucess,
+                StatusCode = HttpStatusCode.OK,
+                Message = "sucess "
+            };
+            return Request.CreateResponse(response);
         }
 
         [HttpPost]
@@ -55,7 +70,14 @@ namespace WEBCRAFT.MobileStore.Controllers
             }
             UOW.Complete();
             UOW.Dispose();
-            return Request.CreateResponse(HttpStatusCode.OK,Subcategory.Id);
+            var response = new Response<object>
+            {
+                Data = new { Id = Subcategory.Id },
+                status = ResponseStatusEnum.sucess,
+                StatusCode = HttpStatusCode.OK,
+                Message = "sucess "
+            };
+            return Request.CreateResponse(response);
         }
 
         [HttpGet]
@@ -66,7 +88,14 @@ namespace WEBCRAFT.MobileStore.Controllers
             UOW.Subcategory.Remove(Subcategory);
             UOW.Complete();
             UOW.Dispose();
-            return Request.CreateResponse(HttpStatusCode.OK);
+            var response = new Response<object>
+            {
+                
+                status = ResponseStatusEnum.sucess,
+                StatusCode = HttpStatusCode.OK,
+                Message = "sucess "
+            };
+            return Request.CreateResponse(response);
         }
 
     }

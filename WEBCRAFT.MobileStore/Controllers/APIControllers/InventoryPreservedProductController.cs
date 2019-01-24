@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WEBCRAFT.MobileStore.Helper;
 using WEBCRAFT.MobileStore.Models;
 
 namespace WEBCRAFT.MobileStore.Controllers
@@ -35,14 +36,23 @@ namespace WEBCRAFT.MobileStore.Controllers
                             foreach (var stock in stocks)
                             {
                                 if (preservedProduct.PreservedQuantity > totalRemaningQuantities)
-                                    return Request.CreateResponse(HttpStatusCode.Conflict, "We do not have enough quantity,so please do not exceed this number " + totalRemaningQuantities);
+                                {
+                                    var response = new Response<object>
+                                    {
+
+                                        status = ResponseStatusEnum.error,
+                                        StatusCode = HttpStatusCode.Conflict,
+                                        Message = "We do not have enough quantity,so please do not exceed this number " + totalRemaningQuantities
+                                    };
+                                    return Request.CreateResponse(response);
+                                }
                                 else if (stock.Quantity >= preservedProduct.PreservedQuantity)
                                 {
                                     stock.Quantity -= preservedProduct.PreservedQuantity;
                                     preservedProduct.InventoryId = stock.InventoryId;
                                     UOW.StockItem.Update(stock);
                                     var preservedQuantityToUpdate = UOW.InventoryPreservedProduct.Get(stock.InventoryId);
-                                    if(preservedQuantityToUpdate!=null)
+                                    if (preservedQuantityToUpdate != null)
                                     {
                                         preservedQuantityToUpdate.PreservedQuantity += totalRemaningQuantities;
                                         UOW.InventoryPreservedProduct.Update(preservedQuantityToUpdate);
@@ -60,7 +70,7 @@ namespace WEBCRAFT.MobileStore.Controllers
                                         UOW.InventoryPreservedProduct.Add(preservedQuantityToUpdate);
                                         UOW.Complete();
                                     }
-                                    
+
                                     UOW.Complete();
                                     break;
                                 }
@@ -90,35 +100,35 @@ namespace WEBCRAFT.MobileStore.Controllers
 
                                     UOW.StockItem.Update(stock);
 
-                                   
+
                                     UOW.Complete();
                                 }
                             }
                         }
 
                     }
-                    else if(preservedProduct.PreservedQuantity < oldPreservedQuantity)
+                    else if (preservedProduct.PreservedQuantity < oldPreservedQuantity)
                     {
                         var returnedQuantity = oldPreservedQuantity - preservedProduct.PreservedQuantity;
                         pToUpdate.OrderBy(q => q.PreservedQuantity).ToList();
                         foreach (var item in pToUpdate)
                         {
                             var inventory = UOW.StockItem.Get(item.InventoryId);
-                            if(returnedQuantity>item.PreservedQuantity)
+                            if (returnedQuantity > item.PreservedQuantity)
                             {
-                                returnedQuantity -=item.PreservedQuantity ;
+                                returnedQuantity -= item.PreservedQuantity;
                                 inventory.Quantity += item.PreservedQuantity;
                                 item.PreservedQuantity = 0;
-                                
+
                                 UOW.InventoryPreservedProduct.Update(item);
                                 UOW.StockItem.Update(inventory);
 
                             }
                             else
                             {
-                                
+
                                 inventory.Quantity += returnedQuantity;
-                                
+
                                 item.PreservedQuantity -= returnedQuantity;
                                 returnedQuantity = 0;
                                 UOW.InventoryPreservedProduct.Update(item);
@@ -142,9 +152,9 @@ namespace WEBCRAFT.MobileStore.Controllers
                     }
 
 
-                    
 
-                  
+
+
 
                 }
                 else
@@ -156,7 +166,16 @@ namespace WEBCRAFT.MobileStore.Controllers
                         foreach (var stock in stocks)
                         {
                             if (preservedProduct.PreservedQuantity > totalQuantity)
-                                return Request.CreateResponse(HttpStatusCode.Conflict, "We do not have enough quantity,so please do not exceed this number " + totalQuantity);
+                            {
+                                var response = new Response<object>
+                                {
+
+                                    status = ResponseStatusEnum.error,
+                                    StatusCode = HttpStatusCode.Conflict,
+                                    Message = "We do not have enough quantity,so please do not exceed this number " + totalQuantity
+                                };
+                                return Request.CreateResponse(response);
+                            }
                             else if (stock.Quantity >= preservedProduct.PreservedQuantity)
                             {
                                 stock.Quantity -= preservedProduct.PreservedQuantity;
@@ -189,17 +208,42 @@ namespace WEBCRAFT.MobileStore.Controllers
 
                     }
                     else
-                        return Request.CreateResponse(HttpStatusCode.Conflict, "the product does not exist in our inventories");
+                    {
+                        var response = new Response<object>
+                        {
+
+                            status = ResponseStatusEnum.error,
+                            StatusCode = HttpStatusCode.Conflict,
+                            Message = "the product does not exist in our inventories"
+                        };
+                        return Request.CreateResponse(response);
+
+                    }
+                       
 
                 }
                 UOW.Complete();
                 UOW.Dispose();
-                return Request.CreateResponse(HttpStatusCode.OK);
+                var response1 = new Response<object>
+                {
+                   
+                    status = ResponseStatusEnum.sucess,
+                    StatusCode = HttpStatusCode.OK,
+                    Message = "sucess "
+                };
+                return Request.CreateResponse(response1);
             }
             catch (Exception e)
             {
 
-                return Request.CreateResponse(HttpStatusCode.ExpectationFailed, e.Message);
+                var response = new Response<object>
+                {
+                   
+                    status = ResponseStatusEnum.error,
+                    StatusCode = HttpStatusCode.ExpectationFailed,
+                    Message = e.Message
+                };
+                return Request.CreateResponse(response);
             }
 
         }

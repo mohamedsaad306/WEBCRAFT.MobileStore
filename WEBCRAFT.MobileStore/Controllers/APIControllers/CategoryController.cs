@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WEBCRAFT.MobileStore.DAL;
+using WEBCRAFT.MobileStore.Helper;
 using WEBCRAFT.MobileStore.Models;
 using WEBCRAFT.MobileStore.ViewModels;
 
@@ -22,7 +23,14 @@ namespace WEBCRAFT.MobileStore.Controllers
         public HttpResponseMessage Get()
         {
             var brands = UOW.Category.GetAll();
-            return Request.CreateResponse(HttpStatusCode.OK, brands);
+            var response = new Response<object>
+            {
+                Data = new { brands = brands. },
+                status = ResponseStatusEnum.sucess,
+                StatusCode = HttpStatusCode.OK,
+                Message = "sucess "
+            };
+            return Request.CreateResponse(response);
 
         }
         [HttpGet]
@@ -38,7 +46,14 @@ namespace WEBCRAFT.MobileStore.Controllers
             }
             
             UOW.Dispose();
-            return Request.CreateResponse(HttpStatusCode.OK, b);
+            var response = new Response<object>
+            {
+                Data = new { Category = b },
+                status = ResponseStatusEnum.sucess,
+                StatusCode = HttpStatusCode.OK,
+                Message = "sucess "
+            };
+            return Request.CreateResponse(response);
         }
         [HttpPost]
         [Route("Manage")]
@@ -58,12 +73,26 @@ namespace WEBCRAFT.MobileStore.Controllers
 
                 UOW.Complete();
                 UOW.Dispose();
-                return Request.CreateResponse(HttpStatusCode.OK ,category.Id);
+                var response = new Response<object>
+                {
+                    Data = new { Id = category.Id },
+                    status = ResponseStatusEnum.sucess,
+                    StatusCode = HttpStatusCode.OK,
+                    Message = "sucess "
+                };
+                return Request.CreateResponse(response);
             }
             catch (Exception e)
             {
 
-                return Request.CreateResponse(HttpStatusCode.ExpectationFailed, e.Message);
+                var response = new Response<object>
+                {
+                    
+                    status = ResponseStatusEnum.error,
+                    StatusCode = HttpStatusCode.ExpectationFailed,
+                    Message = e.Message
+                };
+                return Request.CreateResponse(response);
             }
            
         }
@@ -80,12 +109,26 @@ namespace WEBCRAFT.MobileStore.Controllers
                 UOW.Category.Remove(Category);
                 UOW.Complete();
                 UOW.Dispose();
-                return Request.CreateResponse(HttpStatusCode.OK);
+                var response = new Response<object>
+                {
+                    
+                    status = ResponseStatusEnum.sucess,
+                    StatusCode = HttpStatusCode.OK,
+                    Message = "sucess "
+                };
+                return Request.CreateResponse(response);
             }
             catch (Exception e)
             {
 
-                return Request.CreateResponse(HttpStatusCode.ExpectationFailed, e.Message);
+                var response = new Response<object>
+                {
+                    
+                    status = ResponseStatusEnum.error,
+                    StatusCode = HttpStatusCode.ExpectationFailed,
+                    Message = e.Message
+                };
+                return Request.CreateResponse(response);
             }
             
         }
