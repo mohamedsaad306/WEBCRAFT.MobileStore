@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 
-namespace WEBCRAFT.MobileStore.Controllers.APIControllers
+namespace WEBCRAFT.MobileStore.Controllers
 {
     [RoutePrefix("api/UplaodImage")]
     public class UplaodImageController : BaseController
@@ -14,9 +14,9 @@ namespace WEBCRAFT.MobileStore.Controllers.APIControllers
 
 
 
-        [Route("PostUserImage")]
+        [Route("UploadImage")]
         [HttpPost]
-        public string PostUserImage()
+        public string UploadImage()
         {
             Dictionary<string, object> dict = new Dictionary<string, object>();
             var httpRequest = HttpContext.Current.Request;
@@ -31,7 +31,7 @@ namespace WEBCRAFT.MobileStore.Controllers.APIControllers
                 var postedFile = httpRequest.Files[0];
                 var extension = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.')).ToLower();
                 var generatedName = GenerateImageName(extension);
-                var filePath = "~/Product_Image/" + generatedName;
+               
                 var fileFullPath = HttpContext.Current.Server.MapPath("~/Product_Image/" + postedFile.FileName);
 
                 postedFile.SaveAs(fileFullPath);

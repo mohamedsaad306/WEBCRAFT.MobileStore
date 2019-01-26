@@ -41,7 +41,16 @@ namespace WEBCRAFT.MobileStore.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-                
+            //modelBuilder.Entity<Inventory>()
+            //    .HasMany<Product>(s => s.Products)
+            //    .WithMany(c => c.Inventories)
+            //    .Map(cs =>
+            //    {
+            //        cs.MapLeftKey("Inventory_Id");
+            //        cs.MapRightKey("Product_Id");
+            //        cs.ToTable("StockItem");
+            //    });
+
         }
     }
 }

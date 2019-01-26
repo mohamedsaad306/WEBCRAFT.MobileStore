@@ -178,6 +178,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\APIControllers\BaseController.cs" />
     <Compile Include="Controllers\APIControllers\CategoryController.cs" />
+    <Compile Include="Controllers\APIControllers\InventoryController.cs" />
+    <Compile Include="Controllers\APIControllers\StockItemController.cs" />
+    <Compile Include="Controllers\APIControllers\InventoryPreservedProductController.cs" />
+    <Compile Include="Controllers\APIControllers\EventController.cs" />
     <Compile Include="Controllers\APIControllers\TestController.cs" />
     <Compile Include="Controllers\APIControllers\CustomerController.cs" />
     <Compile Include="Controllers\APIControllers\SubCategoryController.cs" />
@@ -225,153 +229,10 @@
     </Compile>
     <Compile Include="Helper\DrownDownListHelper.cs" />
     <Compile Include="Helper\HtmlSelectListModel.cs" />
-    <Compile Include="Migrations\201705302141491_Initial.cs" />
-    <Compile Include="Migrations\201705302141491_Initial.Designer.cs">
-      <DependentUpon>201705302141491_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706011202247_ProductInitial.cs" />
-    <Compile Include="Migrations\201706011202247_ProductInitial.Designer.cs">
-      <DependentUpon>201706011202247_ProductInitial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706061324159_Brand_PartModel.cs" />
-    <Compile Include="Migrations\201706061324159_Brand_PartModel.Designer.cs">
-      <DependentUpon>201706061324159_Brand_PartModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706061922495_InitialModel.cs" />
-    <Compile Include="Migrations\201706061922495_InitialModel.Designer.cs">
-      <DependentUpon>201706061922495_InitialModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706242354397_InvoiceEntity.cs" />
-    <Compile Include="Migrations\201706242354397_InvoiceEntity.Designer.cs">
-      <DependentUpon>201706242354397_InvoiceEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707042102594_updatePartModel.cs" />
-    <Compile Include="Migrations\201707042102594_updatePartModel.Designer.cs">
-      <DependentUpon>201707042102594_updatePartModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707042111512_updatePartModel1.cs" />
-    <Compile Include="Migrations\201707042111512_updatePartModel1.Designer.cs">
-      <DependentUpon>201707042111512_updatePartModel1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707091448357_Invoice Updates .cs" />
-    <Compile Include="Migrations\201707091448357_Invoice Updates .Designer.cs">
-      <DependentUpon>201707091448357_Invoice Updates .cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707091600271_Invoice Helping classes .cs" />
-    <Compile Include="Migrations\201707091600271_Invoice Helping classes .Designer.cs">
-      <DependentUpon>201707091600271_Invoice Helping classes .cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707091602191_Invoiceable Services .cs" />
-    <Compile Include="Migrations\201707091602191_Invoiceable Services .Designer.cs">
-      <DependentUpon>201707091602191_Invoiceable Services .cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707091606019_Update Transaction Model.cs" />
-    <Compile Include="Migrations\201707091606019_Update Transaction Model.Designer.cs">
-      <DependentUpon>201707091606019_Update Transaction Model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707091609188_Update Transaction Model 2.cs" />
-    <Compile Include="Migrations\201707091609188_Update Transaction Model 2.Designer.cs">
-      <DependentUpon>201707091609188_Update Transaction Model 2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707091611303_Update ServiceModel Removed FK_ .cs" />
-    <Compile Include="Migrations\201707091611303_Update ServiceModel Removed FK_ .Designer.cs">
-      <DependentUpon>201707091611303_Update ServiceModel Removed FK_ .cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707091613471_UpdateTransactionModelTypeId.cs" />
-    <Compile Include="Migrations\201707091613471_UpdateTransactionModelTypeId.Designer.cs">
-      <DependentUpon>201707091613471_UpdateTransactionModelTypeId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707091820313_InvoiceableItemsRemoveFK.cs" />
-    <Compile Include="Migrations\201707091820313_InvoiceableItemsRemoveFK.Designer.cs">
-      <DependentUpon>201707091820313_InvoiceableItemsRemoveFK.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707091851284_CustomerUpdate.cs" />
-    <Compile Include="Migrations\201707091851284_CustomerUpdate.Designer.cs">
-      <DependentUpon>201707091851284_CustomerUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707180931589_ParentAccount.cs" />
-    <Compile Include="Migrations\201707180931589_ParentAccount.Designer.cs">
-      <DependentUpon>201707180931589_ParentAccount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708011140350_PartnerId_Added_To_Account.cs" />
-    <Compile Include="Migrations\201708011140350_PartnerId_Added_To_Account.Designer.cs">
-      <DependentUpon>201708011140350_PartnerId_Added_To_Account.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708011153409_PartnerId_Added_To_Account1.cs" />
-    <Compile Include="Migrations\201708011153409_PartnerId_Added_To_Account1.Designer.cs">
-      <DependentUpon>201708011153409_PartnerId_Added_To_Account1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810011837400_Change_brand_to_Category.cs" />
-    <Compile Include="Migrations\201810011837400_Change_brand_to_Category.Designer.cs">
-      <DependentUpon>201810011837400_Change_brand_to_Category.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810011851270_Change_Category_refactor.cs" />
-    <Compile Include="Migrations\201810011851270_Change_Category_refactor.Designer.cs">
-      <DependentUpon>201810011851270_Change_Category_refactor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810011902578_Add_SubcategoriesTOIdentity.cs" />
-    <Compile Include="Migrations\201810011902578_Add_SubcategoriesTOIdentity.Designer.cs">
-      <DependentUpon>201810011902578_Add_SubcategoriesTOIdentity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812301525401_Update-product.cs" />
-    <Compile Include="Migrations\201812301525401_Update-product.Designer.cs">
-      <DependentUpon>201812301525401_Update-product.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812301543138_create-Inventory-with-m-to-m-Product.cs" />
-    <Compile Include="Migrations\201812301543138_create-Inventory-with-m-to-m-Product.Designer.cs">
-      <DependentUpon>201812301543138_create-Inventory-with-m-to-m-Product.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812301553300_Add-Amount-into-m-to-m.cs" />
-    <Compile Include="Migrations\201812301553300_Add-Amount-into-m-to-m.Designer.cs">
-      <DependentUpon>201812301553300_Add-Amount-into-m-to-m.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812301559087_Update-Amount-into-m-to-m.cs" />
-    <Compile Include="Migrations\201812301559087_Update-Amount-into-m-to-m.Designer.cs">
-      <DependentUpon>201812301559087_Update-Amount-into-m-to-m.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812301604004_Update-Amount-into-m-to-m-after-delete.cs" />
-    <Compile Include="Migrations\201812301604004_Update-Amount-into-m-to-m-after-delete.Designer.cs">
-      <DependentUpon>201812301604004_Update-Amount-into-m-to-m-after-delete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812301630583_Create-m-to-m-inventory-product.cs" />
-    <Compile Include="Migrations\201812301630583_Create-m-to-m-inventory-product.Designer.cs">
-      <DependentUpon>201812301630583_Create-m-to-m-inventory-product.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812301632032_Create-m-to-m-inventory-product2.cs" />
-    <Compile Include="Migrations\201812301632032_Create-m-to-m-inventory-product2.Designer.cs">
-      <DependentUpon>201812301632032_Create-m-to-m-inventory-product2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812301652554_create-new-relation.cs" />
-    <Compile Include="Migrations\201812301652554_create-new-relation.Designer.cs">
-      <DependentUpon>201812301652554_create-new-relation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812301654460_create-new-relation2.cs" />
-    <Compile Include="Migrations\201812301654460_create-new-relation2.Designer.cs">
-      <DependentUpon>201812301654460_create-new-relation2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812301700236_create-new-relation3.cs" />
-    <Compile Include="Migrations\201812301700236_create-new-relation3.Designer.cs">
-      <DependentUpon>201812301700236_create-new-relation3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812301818335_create-Event-with-1-to-m-customer.cs" />
-    <Compile Include="Migrations\201812301818335_create-Event-with-1-to-m-customer.Designer.cs">
-      <DependentUpon>201812301818335_create-Event-with-1-to-m-customer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812301834153_create-Event-with-m-to-m.cs" />
-    <Compile Include="Migrations\201812301834153_create-Event-with-m-to-m.Designer.cs">
-      <DependentUpon>201812301834153_create-Event-with-m-to-m.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812301849272_todrop.cs" />
-    <Compile Include="Migrations\201812301849272_todrop.Designer.cs">
-      <DependentUpon>201812301849272_todrop.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901042219219_fix-relation.cs" />
-    <Compile Include="Migrations\201901042219219_fix-relation.Designer.cs">
-      <DependentUpon>201901042219219_fix-relation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901051225486_fix-relation-ver2.cs" />
-    <Compile Include="Migrations\201901051225486_fix-relation-ver2.Designer.cs">
-      <DependentUpon>201901051225486_fix-relation-ver2.cs</DependentUpon>
+    <Compile Include="Helper\Response.cs" />
+    <Compile Include="Migrations\201901092151493_FreshStart.cs" />
+    <Compile Include="Migrations\201901092151493_FreshStart.Designer.cs">
+      <DependentUpon>201901092151493_FreshStart.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -408,6 +269,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="App_Data\WEBCRAFT.postman_collection.json" />
+    <Content Include="App_Data\Upload Image.postman_collection.json" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -472,120 +334,12 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705302141491_Initial.resx">
-      <DependentUpon>201705302141491_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706011202247_ProductInitial.resx">
-      <DependentUpon>201706011202247_ProductInitial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706061324159_Brand_PartModel.resx">
-      <DependentUpon>201706061324159_Brand_PartModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706061922495_InitialModel.resx">
-      <DependentUpon>201706061922495_InitialModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706242354397_InvoiceEntity.resx">
-      <DependentUpon>201706242354397_InvoiceEntity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707042102594_updatePartModel.resx">
-      <DependentUpon>201707042102594_updatePartModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707042111512_updatePartModel1.resx">
-      <DependentUpon>201707042111512_updatePartModel1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707091448357_Invoice Updates .resx">
-      <DependentUpon>201707091448357_Invoice Updates .cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707091600271_Invoice Helping classes .resx">
-      <DependentUpon>201707091600271_Invoice Helping classes .cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707091602191_Invoiceable Services .resx">
-      <DependentUpon>201707091602191_Invoiceable Services .cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707091606019_Update Transaction Model.resx">
-      <DependentUpon>201707091606019_Update Transaction Model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707091609188_Update Transaction Model 2.resx">
-      <DependentUpon>201707091609188_Update Transaction Model 2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707091611303_Update ServiceModel Removed FK_ .resx">
-      <DependentUpon>201707091611303_Update ServiceModel Removed FK_ .cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707091613471_UpdateTransactionModelTypeId.resx">
-      <DependentUpon>201707091613471_UpdateTransactionModelTypeId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707091820313_InvoiceableItemsRemoveFK.resx">
-      <DependentUpon>201707091820313_InvoiceableItemsRemoveFK.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707091851284_CustomerUpdate.resx">
-      <DependentUpon>201707091851284_CustomerUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707180931589_ParentAccount.resx">
-      <DependentUpon>201707180931589_ParentAccount.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708011140350_PartnerId_Added_To_Account.resx">
-      <DependentUpon>201708011140350_PartnerId_Added_To_Account.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708011153409_PartnerId_Added_To_Account1.resx">
-      <DependentUpon>201708011153409_PartnerId_Added_To_Account1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810011837400_Change_brand_to_Category.resx">
-      <DependentUpon>201810011837400_Change_brand_to_Category.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810011851270_Change_Category_refactor.resx">
-      <DependentUpon>201810011851270_Change_Category_refactor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810011902578_Add_SubcategoriesTOIdentity.resx">
-      <DependentUpon>201810011902578_Add_SubcategoriesTOIdentity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812301525401_Update-product.resx">
-      <DependentUpon>201812301525401_Update-product.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812301543138_create-Inventory-with-m-to-m-Product.resx">
-      <DependentUpon>201812301543138_create-Inventory-with-m-to-m-Product.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812301553300_Add-Amount-into-m-to-m.resx">
-      <DependentUpon>201812301553300_Add-Amount-into-m-to-m.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812301559087_Update-Amount-into-m-to-m.resx">
-      <DependentUpon>201812301559087_Update-Amount-into-m-to-m.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812301604004_Update-Amount-into-m-to-m-after-delete.resx">
-      <DependentUpon>201812301604004_Update-Amount-into-m-to-m-after-delete.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812301630583_Create-m-to-m-inventory-product.resx">
-      <DependentUpon>201812301630583_Create-m-to-m-inventory-product.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812301632032_Create-m-to-m-inventory-product2.resx">
-      <DependentUpon>201812301632032_Create-m-to-m-inventory-product2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812301652554_create-new-relation.resx">
-      <DependentUpon>201812301652554_create-new-relation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812301654460_create-new-relation2.resx">
-      <DependentUpon>201812301654460_create-new-relation2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812301700236_create-new-relation3.resx">
-      <DependentUpon>201812301700236_create-new-relation3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812301818335_create-Event-with-1-to-m-customer.resx">
-      <DependentUpon>201812301818335_create-Event-with-1-to-m-customer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812301834153_create-Event-with-m-to-m.resx">
-      <DependentUpon>201812301834153_create-Event-with-m-to-m.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812301849272_todrop.resx">
-      <DependentUpon>201812301849272_todrop.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901042219219_fix-relation.resx">
-      <DependentUpon>201901042219219_fix-relation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901051225486_fix-relation-ver2.resx">
-      <DependentUpon>201901051225486_fix-relation-ver2.cs</DependentUpon>
-    </EmbeddedResource>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <EmbeddedResource Include="Migrations\201901092151493_FreshStart.resx">
+      <DependentUpon>201901092151493_FreshStart.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

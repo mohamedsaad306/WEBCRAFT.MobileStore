@@ -25,6 +25,9 @@ namespace WEBCRAFT.MobileStore.DAL
         public IAccountTypeRepository AccountTypes { get { return new AccountTypesRepository(_context); } }
         public IStockItemRepository StockItem { get { return new StockItemRepository(_context); } }
         public IInventoryPreservedProductRepository InventoryPreservedProduct { get { return new InventoryPreservedProductRepository(_context); } }
+        public IInventoryRepository inventories { get { return new InventoryRepository(_context); } }
+        public IEventRepository Event { get { return new EventRepository(_context); } }
+
 
         private readonly ApplicationDbContext _context;
         public UnitOfWork(ApplicationDbContext context)

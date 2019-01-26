@@ -64,6 +64,10 @@ namespace WEBCRAFT.MobileStore.DAL
         {
             Context.Set<TEntity>().RemoveRange(entities);
         }
+       public  void Update(TEntity entity)
+        {
+            Context.Entry(entity).State = EntityState.Modified;
+        }
 
     }
 }

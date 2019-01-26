@@ -20,10 +20,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"Id\": 2,\n    \"Name\": \"Product Name \",\n    \"FK_CategoryId\": 0,\n    \"FK_SubcategoryId\": 0,\n    \"Category\": {\n        \"Id\": 1,\n        \"Name\": \"category \"\n    },\n    \"Subcategory\": null,\n    \"SellPrice\": 0\n}"
+							"raw": "{\n    \"Id\": 0,\n    \"Name\": \"Product Name \",\n    \"FK_CategoryId\": 0,\n   \n    \"SellPrice\": 0\n}"
 						},
 						"url": {
-							"raw": "http://localhost:3630/api/test/createProduct",
+							"raw": "http://localhost:3630/api/Product/Save",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -31,12 +31,89 @@
 							"port": "3630",
 							"path": [
 								"api",
-								"test",
-								"createProduct"
+								"Product",
+								"Save"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Create Product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"Id\": 2,\n    \"Name\": \"Product2 \",\n    \"FK_CategoryId\": 1,\n   \n    \"SellPrice\": 54\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3630/api/Product/Save",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3630",
+									"path": [
+										"api",
+										"Product",
+										"Save"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Expires",
+									"value": "-1"
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0"
+								},
+								{
+									"key": "X-AspNet-Version",
+									"value": "4.0.30319"
+								},
+								{
+									"key": "X-SourceFiles",
+									"value": "=?UTF-8?B?RTpcSG9zc2FtIEFwcFxXRUJDUkFGVC5Nb2JpbGVTdG9yZVxXRUJDUkFGVC5Nb2JpbGVTdG9yZVxhcGlcUHJvZHVjdFxTYXZl?="
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 19 Jan 2019 10:39:22 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1"
+								}
+							],
+							"cookie": [],
+							"body": "2"
+						}
+					]
 				},
 				{
 					"name": "Save",
@@ -48,15 +125,14 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"Id\":0,\"Name\":\"Product Name \",\"FK_CategoryId\":0,\"FK_SubcategoryId\":0,\"Category\":{\"Id\":1,\"Name\":\"category \"},\"Subcategory\":null,\"SellPrice\":55.0,\"ImagePath\":null,\"Barcode\":null,\"Inventories\":null,\"Events\":null}"
-						},
+						"body": {},
 						"url": {
-							"raw": "http://localhost:3630/api/ApiProduct/edit",
+							"raw": "http://localhost:3630/api/Product/Save",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -64,8 +140,8 @@
 							"port": "3630",
 							"path": [
 								"api",
-								"ApiProduct",
-								"edit"
+								"Product",
+								"Save"
 							]
 						},
 						"description": "edit"
@@ -82,7 +158,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3630/api/ApiProduct/delete?id",
+							"raw": "http://localhost:3630/api/Product/delete?id",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -90,7 +166,7 @@
 							"port": "3630",
 							"path": [
 								"api",
-								"ApiProduct",
+								"Product",
 								"delete"
 							],
 							"query": [
@@ -113,7 +189,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3630/api/ApiProduct/get",
+							"raw": "http://localhost:3630/api/Product/get",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -121,7 +197,7 @@
 							"port": "3630",
 							"path": [
 								"api",
-								"ApiProduct",
+								"Product",
 								"get"
 							]
 						}
@@ -131,7 +207,7 @@
 			]
 		},
 		{
-			"name": "Category",
+			"name": "Brand",
 			"item": [
 				{
 					"name": "listing",
@@ -143,7 +219,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3630/api/ApiBrand/get",
+							"raw": "http://localhost:3630/api/Category/get",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -151,7 +227,7 @@
 							"port": "3630",
 							"path": [
 								"api",
-								"ApiBrand",
+								"Category",
 								"get"
 							]
 						}
@@ -162,10 +238,20 @@
 					"name": "Manage",
 					"request": {
 						"method": "POST",
-						"header": [],
-						"body": {},
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/javascript",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://localhost:3630/api/ApiProduct/Manage?id=1",
+							"raw": "http://localhost:3630/api/Product/Manage?id=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -173,7 +259,7 @@
 							"port": "3630",
 							"path": [
 								"api",
-								"ApiProduct",
+								"Product",
 								"Manage"
 							],
 							"query": [
@@ -196,7 +282,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3630/api/Apibrand/Manage?id=1",
+							"raw": "http://localhost:3630/api/brand/Manage?id=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -204,7 +290,7 @@
 							"port": "3630",
 							"path": [
 								"api",
-								"Apibrand",
+								"brand",
 								"Manage"
 							],
 							"query": [
@@ -227,7 +313,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3630/api/Apibrand/delete?id=1",
+							"raw": "http://localhost:3630/api/brand/delete?id=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -235,7 +321,7 @@
 							"port": "3630",
 							"path": [
 								"api",
-								"Apibrand",
+								"brand",
 								"delete"
 							],
 							"query": [
@@ -263,7 +349,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3630/api/Apicustomer/get",
+							"raw": "http://localhost:3630/api/customer/get",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -271,7 +357,7 @@
 							"port": "3630",
 							"path": [
 								"api",
-								"Apicustomer",
+								"customer",
 								"get"
 							]
 						}
@@ -293,7 +379,7 @@
 							"raw": "{\n            \"Id\": 5,\n            \"Name\": \"customer5\",\n            \"Account\": null,\n            \"FK_AccountId\": 1,\n            \"Invoices\": null,\n            \"Events\": null\n        }"
 						},
 						"url": {
-							"raw": "http://localhost:3630/api/Apicustomer/save",
+							"raw": "http://localhost:3630/api/customer/save",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -301,7 +387,7 @@
 							"port": "3630",
 							"path": [
 								"api",
-								"Apicustomer",
+								"customer",
 								"save"
 							]
 						}
@@ -323,7 +409,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3630/api/ApiPartModel/get",
+							"raw": "http://localhost:3630/api/PartModel/get",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -331,7 +417,7 @@
 							"port": "3630",
 							"path": [
 								"api",
-								"ApiPartModel",
+								"PartModel",
 								"get"
 							]
 						}
@@ -348,7 +434,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3630/api/ApiPartModel/manage?id=1",
+							"raw": "http://localhost:3630/api/PartModel/manage?id=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -356,7 +442,7 @@
 							"port": "3630",
 							"path": [
 								"api",
-								"ApiPartModel",
+								"PartModel",
 								"manage"
 							],
 							"query": [
@@ -384,7 +470,7 @@
 							"raw": "{\n            \"Id\": 2,\n            \"Name\": \"rggr\",\n            \"Fk_CategoryId\":1\n        }"
 						},
 						"url": {
-							"raw": "http://localhost:3630/api/ApiPartModel/manage",
+							"raw": "http://localhost:3630/api/PartModel/manage",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -392,8 +478,181 @@
 							"port": "3630",
 							"path": [
 								"api",
-								"ApiPartModel",
+								"PartModel",
 								"manage"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inventory",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"Id\": 0,\n            \"Name\": \"inventory\"\n            \n        }"
+						},
+						"url": {
+							"raw": "http://localhost:3630/api/inventory/Save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3630",
+							"path": [
+								"api",
+								"inventory",
+								"Save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3630/api/inventory/Get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3630",
+							"path": [
+								"api",
+								"inventory",
+								"Get"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Stock Item",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"Id\": 0,\n            \"Quantity\": \"440\",\n            \"InventoryId\":1,\n            \"ProductId\":5\n        }"
+						},
+						"url": {
+							"raw": "http://localhost:3630/api/stockItem/Save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3630",
+							"path": [
+								"api",
+								"stockItem",
+								"Save"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "Save",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Id\": 0,\n    \"Owner\": \"Owner Name \",\n    \"StartDate\": \"12/12/2018\",\n    \"EndDate\": \"12/12/2019\",\n    \n    \"Address\": \"A5er el4ar3\",\n    \"FK_CustomerId\": 2\n        }"
+						},
+						"url": {
+							"raw": "http://localhost:3630/api/event/Save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3630",
+							"path": [
+								"api",
+								"event",
+								"Save"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inventory Preserved Product",
+			"item": [
+				{
+					"name": "Save",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Id\": 0,\n    \"ProductId\": 6,\n    \"InventoryId\": 0,\n    \"EventId\": 5,\n    \n    \"PreservedQuantity\": 55\n   \n        }"
+						},
+						"url": {
+							"raw": "http://localhost:3630/api/InventoryPreservedProduct/Save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3630",
+							"path": [
+								"api",
+								"InventoryPreservedProduct",
+								"Save"
 							]
 						}
 					},

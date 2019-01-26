@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -19,10 +21,12 @@ namespace WEBCRAFT.MobileStore.Models
 
         public string ImagePath { get; set; }
         public string Barcode { get; set; }
-        public List<StockItem> StockItems { get; set; }
+        public virtual  StockItem StockItems { get; set; }
+
         public List<InventoryPreservedProduct> InventoryPreservedProducts { get; set; }
         ////TODO: Please confirm that this navigation property will resolve to inventories containing this product not all inventories. 
-        //public List<Inventory> Inventories { get; set; }
+        //[Key,ForeignKey("Inventory")]
+        public List<Inventory> Inventories { get; set; }
         ////TODO: Same as above navigation Proeprty. 
         //public List<Event> Events { get; set; }
     }

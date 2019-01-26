@@ -4,6 +4,8 @@ namespace WEBCRAFT.MobileStore.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<WEBCRAFT.MobileStore.Models.ApplicationDbContext>
@@ -40,6 +42,19 @@ namespace WEBCRAFT.MobileStore.Migrations
                 new Account { Name = "Customers" },
                 new Account { Name = "Expenses" }
                 );
+
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            if (!roleManager.RoleExists("Admin"))
+            {
+                
+                roleManager.Create(new IdentityRole("Admin"));
+                roleManager.Create(new IdentityRole("Employee"));
+            }
+          
+
+
+
+
         }
     }
 }

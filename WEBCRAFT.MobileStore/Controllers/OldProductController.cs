@@ -61,13 +61,13 @@ namespace WEBCRAFT.MobileStore.Controllers
                 var pToUpdate = Uow.Products.Get(product.Id);
                 pToUpdate.Name = product.Name;
                 pToUpdate.SellPrice = product.SellPrice;
-                pToUpdate.FK_CategoryId = product.FK_CategoryId;
+               // pToUpdate.FK_CategoryId = product.FK_CategoryId;
                 pToUpdate.FK_SubcategoryId = product.FK_SubcategoryId;
                 
             }
             else
             {
-                product.Category = new Category { Id = product.FK_CategoryId };
+               // product.Category = new Category { Id = product.FK_CategoryId };
                 Uow.Products.Add(product);
             }
             Uow.Complete();

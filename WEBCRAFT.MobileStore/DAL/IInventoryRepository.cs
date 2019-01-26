@@ -7,7 +7,7 @@ using WEBCRAFT.MobileStore.Models;
 
 namespace WEBCRAFT.MobileStore.DAL
 {
-    interface IInventoryRepository:IRepository<Inventory>
+    public interface IInventoryRepository:IRepository<Inventory>
     {
     }
 }

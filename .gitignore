@@ -201,3 +201,7 @@ npm-debug.log
 yarn-error.log
 WEBCRAFT.MobileStore/Web.config
 WEBCRAFT.MobileStore/Web.config
+/node_modules
+/inventory_app
+WEBCRAFT.MobileStore/Web.config
+WEBCRAFT.MobileStore/Web.config
