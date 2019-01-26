@@ -2,9 +2,20 @@
   <div>
     <h3>Warehouses Main</h3>
     <div class="container">
+      <b-btn v-b-modal.warehouseForm>Add Warehouse</b-btn>
       <b-btn v-b-modal.warehouceStockItemModal v-show="!activeWarehouse==''">Add Stock Item</b-btn>
+
       <warehouses-list ref="warehoucesList" v-on:warehouceChanged="updateActiveWarehouse"></warehouses-list>
-      <!-- <WarehouseForm></WarehouseForm> -->
+      <b-modal
+        id="warehouseForm"
+        title="Create Warehouse "
+        size="lg"
+        ok-title="Save"
+        @ok="createNewInventory"
+      >
+        <WarehouseForm></WarehouseForm>
+      </b-modal>
+
       <b-modal id="warehouceStockItemModal" :title="activeWarehouse" size="lg" ok-title="Save">
         <!-- <p class="my-4">Hello from modal!</p> -->
         <WarehouseStockItem></WarehouseStockItem>
@@ -31,6 +42,9 @@ export default {
     WarehouseStockItem
   },
   methods: {
+    createNewInventory() {
+      console.log(this.form);
+    },
     updateActiveWarehouse() {
       console.log("updateActiveWarehouse");
       let wareHouseIndex = this.$refs.warehoucesList.activeIndex;
