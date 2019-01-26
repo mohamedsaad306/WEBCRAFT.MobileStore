@@ -25,7 +25,7 @@ namespace WEBCRAFT.MobileStore.Controllers
             var brands = UOW.Category.GetAll();
             var response = new Response<object>
             {
-                Data = new { brands = brands. },
+                Data = new { brands = brands },
                 status = ResponseStatusEnum.sucess,
                 StatusCode = HttpStatusCode.OK,
                 Message = "sucess "
