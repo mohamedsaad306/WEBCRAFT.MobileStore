@@ -13,8 +13,8 @@
         </b-form-group>
       </b-col>
       <b-col md="6" class="my-1">
-        <b-form-group horizontal label="Per page" class="mb-0">
-          <b-form-select :options="pageOptions" v-model="perPage"/>
+        <b-form-group horizontal label="Per pprice" class="mb-0">
+          <b-form-select :options="ppriceOptions" v-model="perPprice"/>
         </b-form-group>
       </b-col>
 
@@ -48,17 +48,17 @@
     <b-table
       show-empty
       stacked="md"
-      :items="items"
+      :items="listDataProvider"
       :fields="fields"
-      :current-page="currentPage"
-      :per-page="perPage"
+      :current-pprice="currentPprice"
+      :per-pprice="perPprice"
       :filter="filter"
       :sort-by.sync="sortBy"
       :sort-desc.sync="sortDesc"
       :sort-direction="sortDirection"
       @filtered="onFiltered"
     >
-      <template slot="name" slot-scope="row">{{row.value.first}} {{row.value.last}}</template>
+      <template slot="name" slot-scope="row">{{row.value}}</template>
       <template slot="isActive" slot-scope="row">{{row.value?'Yes :)':'No :('}}</template>
       <!-- <template slot="actions" slot-scope="row">
                 <b-button
@@ -84,8 +84,8 @@
       <b-col md="6" class="my-1">
         <b-pagination
           :total-rows="totalRows"
-          :per-page="perPage"
-          v-model="currentPage"
+          :per-pprice="perPprice"
+          v-model="currentPprice"
           class="my-0"
         />
       </b-col>
@@ -100,35 +100,39 @@
 
 <script>
 import BootstrapVue from "bootstrap-vue";
-
+import axios from "axios";
 const items = [
-  { isActive: true, age: 40, name: { first: "Dickerson", last: "Macdonald" } },
-  { isActive: false, age: 21, name: { first: "Larsen", last: "Shaw" } },
+  {
+    isActive: true,
+    price: 40,
+    name: { first: "Dickerson", last: "Macdonald" }
+  },
+  { isActive: false, price: 21, name: { first: "Larsen", last: "Shaw" } },
   {
     isActive: false,
-    age: 9,
+    price: 9,
     name: { first: "Mini", last: "Navarro" },
     _rowVariant: "success"
   },
   {
     isActive: false,
-    age: 89,
+    price: 89,
     name: { first: "Geneva", last: "Wilson" }
     //quants: 100
   },
-  { isActive: true, age: 38, name: { first: "Jami", last: "Carney" } },
-  { isActive: false, age: 27, name: { first: "Essie", last: "Dunlap" } },
-  { isActive: true, age: 40, name: { first: "Thor", last: "Macdonald" } },
+  { isActive: true, price: 38, name: { first: "Jami", last: "Carney" } },
+  { isActive: false, price: 27, name: { first: "Essie", last: "Dunlap" } },
+  { isActive: true, price: 40, name: { first: "Thor", last: "Macdonald" } },
   {
     isActive: true,
-    age: 87,
+    price: 87,
     name: { first: "Larsen", last: "Shaw" },
-    _cellVariants: { age: "danger", isActive: "warning" }
+    _cellVariants: { price: "danger", isActive: "warning" }
   },
-  { isActive: false, age: 26, name: { first: "Mitzi", last: "Navarro" } },
-  { isActive: false, age: 22, name: { first: "Genevieve", last: "Wilson" } },
-  { isActive: true, age: 38, name: { first: "John", last: "Carney" } },
-  { isActive: false, age: 29, name: { first: "Dick", last: "Dunlap" } }
+  { isActive: false, price: 26, name: { first: "Mitzi", last: "Navarro" } },
+  { isActive: false, price: 22, name: { first: "Genevieve", last: "Wilson" } },
+  { isActive: true, price: 38, name: { first: "John", last: "Carney" } },
+  { isActive: false, price: 29, name: { first: "Dick", last: "Dunlap" } }
 ];
 
 export default {
@@ -156,7 +160,7 @@ export default {
           sortDirection: "desc"
         },
         {
-          key: "age",
+          key: "price",
           label: "Price",
           sortable: true,
           class: "text-center"
@@ -165,10 +169,10 @@ export default {
         // { key: "isActive", label: "is Active" },
         // { key: "actions", label: "Actions" }
       ],
-      currentPage: 1,
-      perPage: 5,
+      currentPprice: 1,
+      perPprice: 5,
       totalRows: items.length,
-      pageOptions: [5, 10, 15],
+      ppriceOptions: [5, 10, 15],
       sortBy: null,
       sortDesc: false,
       sortDirection: "asc",
@@ -197,11 +201,40 @@ export default {
       this.modalInfo.content = "";
     },
     onFiltered(filteredItems) {
-      // Trigger pagination to update the number of buttons/pages due to filtering
+      // Trigger pagination to update the number of buttons/pprices due to filtering
       this.totalRows = filteredItems.length;
-      this.currentPage = 1;
+      this.currentPprice = 1;
+    },
+    listDataProvider(ctx) {
+      console.log("Data Provider ctx ");
+      console.log(ctx);
+      let prom = axios.get("http://localhost:3630/api/Product/get");
+
+      return prom.then(res => {
+        let listData = [];
+        console.log("response recieved ");
+        let apiRes = res.data;
+        if (apiRes.Status == 1 && apiRes.Data) {
+          console.log("string loop ");
+          console.log(apiRes.Data);
+          apiRes.Data.products.forEach(element => {
+            // debugger;
+            listData.push({
+              name: element.Name,
+              price: element.SellPrice,
+              barcode: element.Barcode
+            });
+          });
+        }
+        // console.log(listData);
+        console.log("daty");
+        // debugger;
+        return listData;
+      });
     }
   }
 };
 // https://bootstrap-vue.js.org/docs/components/table/#using-items-provider-functions
 </script>
+
+ 

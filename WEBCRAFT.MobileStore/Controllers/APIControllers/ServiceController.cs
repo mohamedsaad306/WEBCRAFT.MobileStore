@@ -25,7 +25,7 @@ namespace WEBCRAFT.MobileStore.Controllers
             var response = new Response<object>
             {
                 Data = new { servicesBalances = servicesBalances },
-                status = ResponseStatusEnum.sucess,
+                Status = ResponseStatusEnum.sucess,
                 StatusCode = HttpStatusCode.OK,
                 Message = "sucess "
             };
@@ -44,7 +44,7 @@ namespace WEBCRAFT.MobileStore.Controllers
             var response = new Response<object>
             {
                 Data = new { Id = ServiceBalanceId.Id },
-                status = ResponseStatusEnum.sucess,
+                Status = ResponseStatusEnum.sucess,
                 StatusCode = HttpStatusCode.OK,
                 Message = "sucess "
             };

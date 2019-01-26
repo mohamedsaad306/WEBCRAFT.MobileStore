@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <b-table hover :items="stockItems" :fields="fields">
-      <template slot="actions" slot-scope="row">
+      <template slot="actions" slot-scope>
         <!-- A custom formatted footer cell  for field 'name' -->
         <b-button size="sm" variant="danger">Remove</b-button>
       </template>

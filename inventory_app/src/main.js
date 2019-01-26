@@ -27,6 +27,8 @@ const router = new VueRouter({
   routes // short for `routes: routes`
 })
 
+
+
 new Vue({
   router: router,
   el: '#app',

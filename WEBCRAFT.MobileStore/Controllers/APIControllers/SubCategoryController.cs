@@ -25,7 +25,7 @@ namespace WEBCRAFT.MobileStore.Controllers
             var response = new Response<object>
             {
                 Data = new { partModels = partModels },
-                status = ResponseStatusEnum.sucess,
+                Status = ResponseStatusEnum.sucess,
                 StatusCode = HttpStatusCode.OK,
                 Message = "sucess "
             };
@@ -47,7 +47,7 @@ namespace WEBCRAFT.MobileStore.Controllers
             var response = new Response<object>
             {
                 Data = new { Subcategory = vm },
-                status = ResponseStatusEnum.sucess,
+                Status = ResponseStatusEnum.sucess,
                 StatusCode = HttpStatusCode.OK,
                 Message = "sucess "
             };
@@ -73,7 +73,7 @@ namespace WEBCRAFT.MobileStore.Controllers
             var response = new Response<object>
             {
                 Data = new { Id = Subcategory.Id },
-                status = ResponseStatusEnum.sucess,
+                Status = ResponseStatusEnum.sucess,
                 StatusCode = HttpStatusCode.OK,
                 Message = "sucess "
             };
@@ -91,7 +91,7 @@ namespace WEBCRAFT.MobileStore.Controllers
             var response = new Response<object>
             {
                 
-                status = ResponseStatusEnum.sucess,
+                Status = ResponseStatusEnum.sucess,
                 StatusCode = HttpStatusCode.OK,
                 Message = "sucess "
             };

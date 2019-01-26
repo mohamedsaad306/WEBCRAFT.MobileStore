@@ -36,6 +36,7 @@
 
 <script>
 import BootstrapVue from "bootstrap-vue";
+import axios from "axios";
 
 export default {
   name: "ProductsForm",
@@ -53,18 +54,54 @@ export default {
         file: "" //TODO: check binding
       }, // end form
       options: [
-        { value: null, text: "Please select an option" },
-        { value: "a", text: "This is First option" },
-        { value: "b", text: "Selected Option" },
-        { value: { C: "3PO" }, text: "This is an option with object value" }
+        // { value: null, text: "Please select an option" },
+        // { value: "a", text: "This is First option" },
+        // { value: "b", text: "Selected Option" },
+        // { value: { C: "3PO" }, text: "This is an option with object value" }
       ]
     };
   },
+  created() {
+    this.fetchData();
+  },
+  mounted() {
+    var config = {
+      headers: { "Access-Control-Allow-Origin": "*" }
+    };
+  },
   methods: {
+    fetchData() {
+      console.log("fetchingdata ");
+      axios.get("http://localhost:3630/api/Category/get").then(response => {
+        //console.log(response.data);
+
+        let apiRes = response.data;
+
+        // console.log(apiRes.Data && apiRes.Status == 1);
+
+        if (apiRes.Data && apiRes.Status == 1) {
+          apiRes.Data.brands.forEach(b => {
+            this.options.push({ value: b.Id, text: b.Name });
+            // console.log({ value: b.Id, text: b.Name });
+          });
+          // console.log(this.options);
+        }
+      });
+    },
     onSubmit(evt) {
       evt.preventDefault();
       console.log(JSON.stringify(this.form));
-      // close parent modal .
+      console.log("product form save ");
+
+      axios
+        .post("http://localhost:3630/api/Product/Save", {
+          Id: 0,
+          Name: this.form.name,
+          FK_CategoryId: this.form.category,
+          SellPrice: this.form.price
+        })
+        .then(response => console.log(response.data)); //TODO: show message with response.
+
       this.$root.$emit("bv::hide::modal", "modal1");
     }
   }

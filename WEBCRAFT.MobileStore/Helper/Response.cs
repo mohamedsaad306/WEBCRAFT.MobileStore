@@ -8,7 +8,7 @@ namespace WEBCRAFT.MobileStore.Helper
 {
     public class Response<T>: HttpResponseMessage  where T : class
     {
-        public ResponseStatusEnum status { get; set; }
+        public ResponseStatusEnum Status { get; set; }
         public string Message { get; set; }
         public T Data { get; set; }
 

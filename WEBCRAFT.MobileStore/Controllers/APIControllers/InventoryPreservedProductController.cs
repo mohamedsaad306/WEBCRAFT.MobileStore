@@ -40,7 +40,7 @@ namespace WEBCRAFT.MobileStore.Controllers
                                     var response = new Response<object>
                                     {
 
-                                        status = ResponseStatusEnum.error,
+                                        Status = ResponseStatusEnum.error,
                                         StatusCode = HttpStatusCode.Conflict,
                                         Message = "We do not have enough quantity,so please do not exceed this number " + totalRemaningQuantities
                                     };
@@ -170,7 +170,7 @@ namespace WEBCRAFT.MobileStore.Controllers
                                 var response = new Response<object>
                                 {
 
-                                    status = ResponseStatusEnum.error,
+                                    Status = ResponseStatusEnum.error,
                                     StatusCode = HttpStatusCode.Conflict,
                                     Message = "We do not have enough quantity,so please do not exceed this number " + totalQuantity
                                 };
@@ -212,7 +212,7 @@ namespace WEBCRAFT.MobileStore.Controllers
                         var response = new Response<object>
                         {
 
-                            status = ResponseStatusEnum.error,
+                            Status = ResponseStatusEnum.error,
                             StatusCode = HttpStatusCode.Conflict,
                             Message = "the product does not exist in our inventories"
                         };
@@ -227,7 +227,7 @@ namespace WEBCRAFT.MobileStore.Controllers
                 var response1 = new Response<object>
                 {
                    
-                    status = ResponseStatusEnum.sucess,
+                    Status = ResponseStatusEnum.sucess,
                     StatusCode = HttpStatusCode.OK,
                     Message = "sucess "
                 };
@@ -239,7 +239,7 @@ namespace WEBCRAFT.MobileStore.Controllers
                 var response = new Response<object>
                 {
                    
-                    status = ResponseStatusEnum.error,
+                    Status = ResponseStatusEnum.error,
                     StatusCode = HttpStatusCode.ExpectationFailed,
                     Message = e.Message
                 };
