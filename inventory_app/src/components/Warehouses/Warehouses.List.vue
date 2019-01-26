@@ -57,7 +57,8 @@ export default {
 
       this.$emit("warehouceChanged", {
         activeWarehouseId: r.item.id,
-        activeWarehoseIndex: this.activeIndex
+        activeWarehoseIndex: this.activeIndex,
+        activeWarehouseName: r.item.name
       });
     }
   },

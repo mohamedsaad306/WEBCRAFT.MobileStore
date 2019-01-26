@@ -3,7 +3,7 @@
     <h3>Warehouses Main</h3>
     <div class="container">
       <b-btn v-b-modal.warehouseForm>Add Warehouse</b-btn>
-      <b-btn v-b-modal.warehouceStockItemModal v-show="!activeWarehouse==''">Add Stock Item</b-btn>
+      <b-btn v-b-modal.warehouceStockItemModal v-show="activeWarehouseIndex>-1">Add Stock Item</b-btn>
 
       <warehouses-list ref="warehouseList" v-on:warehouceChanged="updateActiveWarehouse"></warehouses-list>
       <b-modal
@@ -16,8 +16,18 @@
         <WarehouseForm ref="warehouseRef"></WarehouseForm>
       </b-modal>
 
-      <b-modal id="warehouceStockItemModal" :title="activeWarehouse" size="lg" ok-title="Save">
-        <WarehouseStockItem></WarehouseStockItem>
+      <b-modal
+        id="warehouceStockItemModal"
+        :title="activeWarehouseName"
+        size="lg"
+        ok-title="Save"
+        @ok="addStockItem"
+      >
+        <WarehouseStockItem
+          ref="stockItemModal"
+          :activeIndex="activeWarehouseIndex"
+          :activeId="activeWarehouseId"
+        ></WarehouseStockItem>
       </b-modal>
     </div>
   </div>
@@ -32,8 +42,9 @@ export default {
   name: "WarehousesMain",
   data() {
     return {
-      activeWarehouse: "",
-      activeWarehouseId: 0
+      activeWarehouseId: 0,
+      activeWarehouseIndex: -1,
+      activeWarehouseName: ""
     };
   },
   components: {
@@ -46,6 +57,10 @@ export default {
       this.$refs.warehouseRef.onSubmit();
       // console.log("ware house form submitted ");
     },
+    addStockItem() {
+      this.$refs.stockItemModal.onSave();
+      // console.log("ware house form submitted ");
+    },
     updateActiveWarehouse(params) {
       console.log("updateActiveWarehouse");
       console.log("emmitted id ");
@@ -55,11 +70,14 @@ export default {
         ? (this.activeWarehouse =
             "Adding Stock Items To Warehouse: " + wareHouseIndex)
         : (this.activeWarehouse = "");
+      // this.wareHouseIndex = wareHouseIndex;
+
+      this.activeWarehouseId = params.activeWarehouseId;
+      this.activeWarehouseIndex = wareHouseIndex; //params.activeWarehouseIndex;
+      this.activeWarehouseName = params.activeWarehouseName;
+      //  this.$refs.stockItemModal.wareHouseIndex = 10;
     }
   }
-  // mounted() {
-  //   this.activeWarehouse = this.$refs.warehouseList.activeIndex;
-  // },
 };
 </script>
 

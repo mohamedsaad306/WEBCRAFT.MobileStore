@@ -32,7 +32,7 @@
           >{{item.name}}</option>
         </datalist>
 
-        <b-button size="sm" variant="success">Addssss</b-button>
+        <b-button size="sm" variant="success">{{activeIndex}} -- {{activeId}}</b-button>
       </template>
     </b-table>
   </div>
@@ -49,7 +49,11 @@ export default {
       console.log(this.selectedProductIndex);
     }
   },
+  props: ["activeIndex", "activeId"],
   methods: {
+    onSave() {
+      console.log("Save ");
+    },
     sayhi: function() {
       alert("his");
     }
