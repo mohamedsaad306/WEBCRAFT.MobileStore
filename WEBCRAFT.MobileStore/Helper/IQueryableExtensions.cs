@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Linq.Expressions;
 using System.Web;
 
@@ -26,5 +27,10 @@ namespace WEBCRAFT.MobileStore.Helper
 
             return Expression.Lambda<Func<T, object>>(propAsObject, parameter);
         }
+        public static IQueryable Sort(this IQueryable collection, string sortBy, int skip, int perPage, bool reverse = false)
+        {
+            return collection.OrderBy(sortBy + (reverse ? " descending" : "")).Skip(skip).Take(perPage);
+        }
+
     }
 }

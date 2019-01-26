@@ -12,7 +12,7 @@ namespace WEBCRAFT.MobileStore.DAL
         IEnumerable<TEntity> GetAll();
         IEnumerable<TEntity> GetPagination(int Page, int CountPerPage);
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predecate);
-
+        IQueryable<TEntity> GetAllToSort();
         TEntity Add (TEntity entity);
         void AddRange(IEnumerable<TEntity> entities);
         void Remove (TEntity entitie);

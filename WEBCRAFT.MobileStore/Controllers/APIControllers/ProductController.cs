@@ -22,36 +22,50 @@ namespace WEBCRAFT.MobileStore.Controllers
         [Route("Index")]
         public HttpResponseMessage Index()
         {
-            
-            int currentPage = 1;
-            int Take = 20;
-            var re = Request;
-            var headers = re.Headers;
-           
-            if (Convert.ToInt32(headers.GetValues("currentPage").FirstOrDefault()) > 1)
+            try
             {
-                currentPage = Convert.ToInt32(headers.GetValues("currentPage"));
-            }
+                int currentPage = 1;
 
-            int skip = 0;
-            if (currentPage == 1)
-                skip = 0;
-            else
-                skip = ((currentPage - 1) * Take);
+                var re = Request;
+                var headers = re.Headers;
+                int Take = Convert.ToInt32(headers.GetValues("perPage").FirstOrDefault());
+                if (Convert.ToInt32(headers.GetValues("currentPage").FirstOrDefault()) > 1)
+                {
+                    currentPage = Convert.ToInt32(headers.GetValues("currentPage"));
+                }
 
+                int skip = 0;
+                if (currentPage == 1)
+                    skip = 0;
+                else
+                    skip = ((currentPage - 1) * Take);
+                string sortBy = headers.GetValues("sortBy").FirstOrDefault() == null ? "id" : headers.GetValues("sortBy").FirstOrDefault();
 
-            //var xx= IQueryableExtensions.ToLambda<Product>(headers.GetValues("sortBy").FirstOrDefault());
-            System.Reflection.PropertyInfo prop = typeof(Product).GetProperty("Name");
-            var q = UOW.Products.OrderBy(x=> prop.GetValue(x, null)).ToList();
-            //q = IQueryableExtensions.OrderBy(q, headers.GetValues("sortBy").FirstOrDefault().ToString());
+                var products = UOW.Products.GetAllToSort().Sort(sortBy, skip, Take, Convert.ToBoolean(headers.GetValues("sortDesc").FirstOrDefault()));
+
                 var response = new Response<object>
                 {
-                    Data = new { pagging = q },
+                    Data = new { pagging = products },
                     Status = ResponseStatusEnum.sucess,
                     StatusCode = HttpStatusCode.OK,
                     Message = "sucess "
                 };
-            return Request.CreateResponse(response);
+                return Request.CreateResponse(response);
+            }
+            catch (Exception e)
+            {
+
+                var response = new Response<object>
+                {
+
+                    Status = ResponseStatusEnum.error,
+                    StatusCode = HttpStatusCode.OK,
+                    Message = e.Message
+                };
+                return Request.CreateResponse(response);
+            }
+            
+           
         }
 
 
