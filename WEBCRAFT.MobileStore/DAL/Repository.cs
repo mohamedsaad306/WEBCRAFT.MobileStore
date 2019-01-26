@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using WEBCRAFT.MobileStore.Models;
 
@@ -34,6 +35,10 @@ namespace WEBCRAFT.MobileStore.DAL
         public IEnumerable<TEntity> GetAll()
         {
             return Context.Set<TEntity>().ToList();
+        }
+        public IQueryable<TEntity>OrderBy(Expression<Func<TEntity, object>> exp)
+        {
+            return Context.Set<TEntity>().OrderBy(exp);
         }
         public IEnumerable<TEntity> GetPagination(int Page = 0, int CountPerPage = 10)
         {

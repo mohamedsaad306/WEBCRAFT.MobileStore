@@ -12,12 +12,47 @@ using WEBCRAFT.MobileStore.Helper;
 using WEBCRAFT.MobileStore.Models;
 using WEBCRAFT.MobileStore.ViewModels;
 
+
 namespace WEBCRAFT.MobileStore.Controllers
 {
     [RoutePrefix("api/Product")]
     public class ProductController : BaseController
     {
+        [HttpGet]
+        [Route("Index")]
+        public HttpResponseMessage Index()
+        {
+            
+            int currentPage = 1;
+            int Take = 20;
+            var re = Request;
+            var headers = re.Headers;
+           
+            if (Convert.ToInt32(headers.GetValues("currentPage").FirstOrDefault()) > 1)
+            {
+                currentPage = Convert.ToInt32(headers.GetValues("currentPage"));
+            }
 
+            int skip = 0;
+            if (currentPage == 1)
+                skip = 0;
+            else
+                skip = ((currentPage - 1) * Take);
+
+
+            //var xx= IQueryableExtensions.ToLambda<Product>(headers.GetValues("sortBy").FirstOrDefault());
+            System.Reflection.PropertyInfo prop = typeof(Product).GetProperty("Name");
+            var q = UOW.Products.OrderBy(x=> prop.GetValue(x, null)).ToList();
+            //q = IQueryableExtensions.OrderBy(q, headers.GetValues("sortBy").FirstOrDefault().ToString());
+                var response = new Response<object>
+                {
+                    Data = new { pagging = q },
+                    Status = ResponseStatusEnum.sucess,
+                    StatusCode = HttpStatusCode.OK,
+                    Message = "sucess "
+                };
+            return Request.CreateResponse(response);
+        }
 
 
         //TODO: How to use paging here?

@@ -18,6 +18,7 @@ namespace WEBCRAFT.MobileStore.DAL
         void Remove (TEntity entitie);
         void RemoveRange(IEnumerable<TEntity> entities);
         void Update(TEntity entity);
+        IQueryable<TEntity> OrderBy(Expression<Func<TEntity, object>> exp);
 
     }
 }
