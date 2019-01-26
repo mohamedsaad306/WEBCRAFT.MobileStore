@@ -14,7 +14,7 @@
       </b-col>
       <b-col md="6" class="my-1">
         <b-form-group horizontal label="Per pprice" class="mb-0">
-          <b-form-select :options="ppriceOptions" v-model="perPprice"/>
+          <b-form-select :options="perPageOptions" v-model="perPage"/>
         </b-form-group>
       </b-col>
 
@@ -50,8 +50,8 @@
       stacked="md"
       :items="listDataProvider"
       :fields="fields"
-      :current-pprice="currentPprice"
-      :per-pprice="perPprice"
+      :current-page="currentPage"
+      :per-page="perPage"
       :filter="filter"
       :sort-by.sync="sortBy"
       :sort-desc.sync="sortDesc"
@@ -84,8 +84,8 @@
       <b-col md="6" class="my-1">
         <b-pagination
           :total-rows="totalRows"
-          :per-pprice="perPprice"
-          v-model="currentPprice"
+          :per-page="perPage"
+          v-model="currentPage"
           class="my-0"
         />
       </b-col>
@@ -169,10 +169,10 @@ export default {
         // { key: "isActive", label: "is Active" },
         // { key: "actions", label: "Actions" }
       ],
-      currentPprice: 1,
-      perPprice: 5,
+      currentPage: 1,
+      perPage: 5,
       totalRows: items.length,
-      ppriceOptions: [5, 10, 15],
+      perPageOptions: [5, 10, 15],
       sortBy: null,
       sortDesc: false,
       sortDirection: "asc",
