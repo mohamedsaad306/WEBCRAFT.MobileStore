@@ -3,9 +3,9 @@
     <h3>Warehouses Main</h3>
     <div class="container">
       <b-btn v-b-modal.warehouseForm>Add Warehouse</b-btn>
-      <b-btn v-b-modal.warehouceStockItemModal v-show="!activeWarehouse==''">Add Stock Item</b-btn>
+      <b-btn v-b-modal.warehouceStockItemModal v-show="activeWarehouseIndex>-1">Add Stock Item</b-btn>
 
-      <warehouses-list ref="warehoucesList" v-on:warehouceChanged="updateActiveWarehouse"></warehouses-list>
+      <warehouses-list ref="warehouseList" v-on:warehouceChanged="updateActiveWarehouse"></warehouses-list>
       <b-modal
         id="warehouseForm"
         title="Create Warehouse "
@@ -13,12 +13,21 @@
         ok-title="Save"
         @ok="createNewInventory"
       >
-        <WarehouseForm></WarehouseForm>
+        <WarehouseForm ref="warehouseRef"></WarehouseForm>
       </b-modal>
 
-      <b-modal id="warehouceStockItemModal" :title="activeWarehouse" size="lg" ok-title="Save">
-        <!-- <p class="my-4">Hello from modal!</p> -->
-        <WarehouseStockItem></WarehouseStockItem>
+      <b-modal
+        id="warehouceStockItemModal"
+        :title="activeWarehouseName"
+        size="lg"
+        ok-title="Save"
+        @ok="addStockItem"
+      >
+        <WarehouseStockItem
+          ref="stockItemModal"
+          :activeIndex="activeWarehouseIndex"
+          :activeId="activeWarehouseId"
+        ></WarehouseStockItem>
       </b-modal>
     </div>
   </div>
@@ -33,7 +42,9 @@ export default {
   name: "WarehousesMain",
   data() {
     return {
-      activeWarehouse: ""
+      activeWarehouseId: 0,
+      activeWarehouseIndex: -1,
+      activeWarehouseName: ""
     };
   },
   components: {
@@ -43,20 +54,30 @@ export default {
   },
   methods: {
     createNewInventory() {
-      console.log(this.form);
+      this.$refs.warehouseRef.onSubmit();
+      // console.log("ware house form submitted ");
     },
-    updateActiveWarehouse() {
+    addStockItem() {
+      this.$refs.stockItemModal.onSave();
+      // console.log("ware house form submitted ");
+    },
+    updateActiveWarehouse(params) {
       console.log("updateActiveWarehouse");
-      let wareHouseIndex = this.$refs.warehoucesList.activeIndex;
+      console.log("emmitted id ");
+      console.log(params);
+      let wareHouseIndex = params.activeWarehoseIndex; //this.$refs.warehouseList.activeIndex;
       wareHouseIndex > -1
         ? (this.activeWarehouse =
             "Adding Stock Items To Warehouse: " + wareHouseIndex)
         : (this.activeWarehouse = "");
+      // this.wareHouseIndex = wareHouseIndex;
+
+      this.activeWarehouseId = params.activeWarehouseId;
+      this.activeWarehouseIndex = wareHouseIndex; //params.activeWarehouseIndex;
+      this.activeWarehouseName = params.activeWarehouseName;
+      //  this.$refs.stockItemModal.wareHouseIndex = 10;
     }
   }
-  // mounted() {
-  //   this.activeWarehouse = this.$refs.warehoucesList.activeIndex;
-  // },
 };
 </script>
 

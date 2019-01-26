@@ -12,12 +12,21 @@
 
 <script>
 import BootstrapVue from "bootstrap-vue";
+import axios from "axios";
 
 export default {
   name: "WarehousesForm",
+
   methods: {
     onSubmit() {
-      console.log(this.form);
+      // console.log(this.form);
+      // console.log("inside iNventory submit  ");
+      axios
+        .post("http://localhost:3630/api/inventory/Save", {
+          Id: 0,
+          Name: this.form.name
+        })
+        .then(r => console.log(r));
     }
   },
 
