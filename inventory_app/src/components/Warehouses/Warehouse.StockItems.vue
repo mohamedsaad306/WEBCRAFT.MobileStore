@@ -6,22 +6,9 @@
         <b-button size="sm" variant="danger">Remove</b-button>
       </template>
       <template slot="table-caption">
-        <b-form-select
-          v-show="true"
-          list="products"
-          v-model="selectedProduct"
-          :data-id="selectedProductIndex"
-          class="custom-select"
-          :onselect="sayhi"
-          type="text"
-        >
-          <option
-            :data-id="item.id"
-            v-for="item in products"
-            :key="item.id"
-            :onSelect="sayhi"
-          >{{item.name}}</option>
-        </b-form-select>
+        <Select2 :options="options" v-model="selected">
+          <option disabled value="0">Select one</option>
+        </Select2>
 
         <datalist id="products" v-show="false">
           <option
@@ -39,8 +26,11 @@
 </template>
 
 <script>
+import Select2 from "../Shared/select2  .vue";
+
 export default {
   name: "WarehouseStockItem",
+  components: { select2 },
   watch: {
     selectedProduct: function() {
       console.log(this.selectedProduct);
@@ -60,6 +50,9 @@ export default {
   },
   data() {
     return {
+      selected: 2,
+      options: [{ id: 1, text: "Hello" }, { id: 2, text: "World" }],
+
       selectedProduct: "",
       selectedProductIndex: "",
       newItem: { productId: "", warehouseId: "", quantity: 0 },
