@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import BootstrapVue from "bootstrap-vue"
 
+
 import App from './App.vue'
 import WarehousesMain from './components/Warehouses/Warehouses.Main.vue'
 import ProductsMain from './components/products/products.Main.vue'

@@ -6,10 +6,7 @@
         <b-button size="sm" variant="danger">Remove</b-button>
       </template>
       <template slot="table-caption">
-        <Select2 :options="options" v-model="selected">
-          <option disabled value="0">Select one</option>
-        </Select2>
-
+        <!-- <v-select v-model="selected" :options="options"></v-select> -->
         <datalist id="products" v-show="false">
           <option
             :data-id="item.id"
@@ -26,11 +23,13 @@
 </template>
 
 <script>
-import Select2 from "../Shared/select2  .vue";
+// import Select2 from "../Shared/select2.vue";
+// import VueSelect from "VueSelect";
+// import vSelect from "Select.vue";
 
 export default {
   name: "WarehouseStockItem",
-  components: { select2 },
+  // components: { vSelect },
   watch: {
     selectedProduct: function() {
       console.log(this.selectedProduct);
