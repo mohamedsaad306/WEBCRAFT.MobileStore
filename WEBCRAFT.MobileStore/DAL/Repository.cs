@@ -36,6 +36,10 @@ namespace WEBCRAFT.MobileStore.DAL
         {
             return Context.Set<TEntity>().ToList();
         }
+        public IQueryable<TEntity> GetAllToSort()
+        {
+            return Context.Set<TEntity>();
+        }
         public IQueryable<TEntity>OrderBy(Expression<Func<TEntity, object>> exp)
         {
             return Context.Set<TEntity>().OrderBy(exp);
