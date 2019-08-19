@@ -1,6 +1,6 @@
  <template>
   <div>
-    <h3>Warehouses Main</h3>
+    <!-- <h3>Warehouses Main</h3> -->
     <div class="container">
       <b-btn v-b-modal.warehouseForm>Add Warehouse</b-btn>
       <b-btn v-b-modal.warehouceStockItemModal v-show="activeWarehouseIndex>-1">Add Stock Item</b-btn>

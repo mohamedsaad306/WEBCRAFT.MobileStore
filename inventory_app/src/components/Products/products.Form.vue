@@ -25,7 +25,7 @@
 
       <!-- <b-form-file v-model="form.file" :state="Boolean(file)" placeholder="Choose a file..."></b-form-file> -->
       <b-form-file v-model="form.file" class="mt-3" plain></b-form-file>
-      <br>
+      <br />
       <b-button type="submit" variant="primary">Submit</b-button>
     </b-form>
     <!-- </div> -->
@@ -98,7 +98,8 @@ export default {
           Id: 0,
           Name: this.form.name,
           FK_CategoryId: this.form.category,
-          SellPrice: this.form.price
+          SellPrice: this.form.price,
+          Barcode: this.form.barcode
         })
         .then(response => console.log(response.data)); //TODO: show message with response.
 

@@ -5,7 +5,7 @@
       <b-col md="6" class="my-1">
         <b-form-group horizontal label="Filter" class="mb-0">
           <b-input-group>
-            <b-form-input v-model="filter" placeholder="Type to Search"/>
+            <b-form-input v-model="filter" placeholder="Type to Search" />
             <!-- <b-input-group-append> -->
             <b-btn :disabled="!filter" @click="filter = ''">Clear</b-btn>
             <!-- </b-input-group-append> -->
@@ -14,32 +14,7 @@
       </b-col>
       <b-col md="6" class="my-1">
         <b-form-group horizontal label="Per pprice" class="mb-0">
-          <b-form-select :options="perPageOptions" v-model="perPage"/>
-        </b-form-group>
-      </b-col>
-
-      <b-col md="6" class="my-1">
-        <!-- <b-form-group horizontal label="Sort" class="mb-0">
-          <b-input-group>
-            <b-form-select v-model="sortBy" :options="sortOptions">
-              <option slot="first" :value="null">-- none --</option>
-            </b-form-select>
-            <b-form-select :disabled="!sortBy" v-model="sortDesc" slot="append">
-              <option :value="false">Asc</option>
-              <option :value="true">Desc</option>
-            </b-form-select>
-          </b-input-group>
-        </b-form-group>-->
-      </b-col>
-      <b-col md="6" class="my-1">
-        <b-form-group horizontal label class="mb-0">
-          <b-input-group>
-            <b-form-select v-model="sortDirection" slot="append">
-              <option value="asc">Asc</option>
-              <option value="desc">Desc</option>
-              <option value="last">Last</option>
-            </b-form-select>
-          </b-input-group>
+          <b-form-select :options="perPageOptions" v-model="perPage" />
         </b-form-group>
       </b-col>
     </b-row>
@@ -60,7 +35,7 @@
     >
       <template slot="name" slot-scope="row">{{row.value}}</template>
       <template slot="isActive" slot-scope="row">{{row.value?'Yes :)':'No :('}}</template>
-      <!-- <template slot="actions" slot-scope="row">
+      <!-- <template slot="actio  ns" slot-scope="row">
                 <b-button
           size="sm"
           @click.stop="info(row.item, row.index, $event.target)"
@@ -101,39 +76,6 @@
 <script>
 import BootstrapVue from "bootstrap-vue";
 import axios from "axios";
-const items = [
-  {
-    isActive: true,
-    price: 40,
-    name: { first: "Dickerson", last: "Macdonald" }
-  },
-  { isActive: false, price: 21, name: { first: "Larsen", last: "Shaw" } },
-  {
-    isActive: false,
-    price: 9,
-    name: { first: "Mini", last: "Navarro" },
-    _rowVariant: "success"
-  },
-  {
-    isActive: false,
-    price: 89,
-    name: { first: "Geneva", last: "Wilson" }
-    //quants: 100
-  },
-  { isActive: true, price: 38, name: { first: "Jami", last: "Carney" } },
-  { isActive: false, price: 27, name: { first: "Essie", last: "Dunlap" } },
-  { isActive: true, price: 40, name: { first: "Thor", last: "Macdonald" } },
-  {
-    isActive: true,
-    price: 87,
-    name: { first: "Larsen", last: "Shaw" },
-    _cellVariants: { price: "danger", isActive: "warning" }
-  },
-  { isActive: false, price: 26, name: { first: "Mitzi", last: "Navarro" } },
-  { isActive: false, price: 22, name: { first: "Genevieve", last: "Wilson" } },
-  { isActive: true, price: 38, name: { first: "John", last: "Carney" } },
-  { isActive: false, price: 29, name: { first: "Dick", last: "Dunlap" } }
-];
 
 export default {
   name: "ProuctsList",
@@ -235,6 +177,39 @@ export default {
   }
 };
 // https://bootstrap-vue.js.org/docs/components/table/#using-items-provider-functions
+const items = [
+  {
+    isActive: true,
+    price: 40,
+    name: { first: "Dickerson", last: "Macdonald" }
+  },
+  { isActive: false, price: 21, name: { first: "Larsen", last: "Shaw" } },
+  {
+    isActive: false,
+    price: 9,
+    name: { first: "Mini", last: "Navarro" },
+    _rowVariant: "success"
+  },
+  {
+    isActive: false,
+    price: 89,
+    name: { first: "Geneva", last: "Wilson" }
+    //quants: 100
+  },
+  { isActive: true, price: 38, name: { first: "Jami", last: "Carney" } },
+  { isActive: false, price: 27, name: { first: "Essie", last: "Dunlap" } },
+  { isActive: true, price: 40, name: { first: "Thor", last: "Macdonald" } },
+  {
+    isActive: true,
+    price: 87,
+    name: { first: "Larsen", last: "Shaw" },
+    _cellVariants: { price: "danger", isActive: "warning" }
+  },
+  { isActive: false, price: 26, name: { first: "Mitzi", last: "Navarro" } },
+  { isActive: false, price: 22, name: { first: "Genevieve", last: "Wilson" } },
+  { isActive: true, price: 38, name: { first: "John", last: "Carney" } },
+  { isActive: false, price: 29, name: { first: "Dick", last: "Dunlap" } }
+];
 </script>
 
  

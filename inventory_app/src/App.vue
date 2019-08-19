@@ -8,7 +8,8 @@
           <b-nav-item to="Warehouses">Warehouses</b-nav-item>
           <b-nav-item to="products">Products</b-nav-item>
           <b-nav-item to="Customers">Customers</b-nav-item>
-          <b-nav-item to="HelloWorld">Hello World</b-nav-item>
+          <b-nav-item to="Events">Events</b-nav-item>
+          <!-- <b-nav-item to="HelloWorld">Hello World</b-nav-item> -->
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>

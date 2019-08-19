@@ -65,7 +65,6 @@ namespace WEBCRAFT.MobileStore.Controllers
                 return Request.CreateResponse(response);
             }
             
-           
         }
 
 
@@ -116,7 +115,7 @@ namespace WEBCRAFT.MobileStore.Controllers
                 pToUpdate.SellPrice = product.SellPrice;
                 //pToUpdate.FK_CategoryId = product.FK_CategoryId;
                 pToUpdate.FK_SubcategoryId = product.FK_SubcategoryId;
-
+                pToUpdate.Barcode = product.Barcode; 
             }
             else
             {
