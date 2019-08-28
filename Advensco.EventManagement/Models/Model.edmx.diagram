@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5a88760c81524e7dad2cf8b7b0ec2de5" Name="Diagram1">
+        <EntityTypeShape EntityType="event_mgmtModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="event_mgmtModel.AspNetRole" Width="1.5" PointX="9.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="event_mgmtModel.AspNetUserClaim" Width="1.5" PointX="14.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="event_mgmtModel.AspNetUserLogin" Width="1.5" PointX="14.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="event_mgmtModel.AspNetUser" Width="1.5" PointX="12" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="event_mgmtModel.Category" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="event_mgmtModel.Event" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="event_mgmtModel.EventItem" Width="1.5" PointX="7.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="event_mgmtModel.Item" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="event_mgmtModel.ItemsOperation" Width="1.5" PointX="10.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="event_mgmtModel.SubCategory" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="event_mgmtModel.sysdiagram" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="event_mgmtModel.Warehouse" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="event_mgmtModel.WarehouseItem" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="event_mgmtModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="event_mgmtModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="event_mgmtModel.FK_Item_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="event_mgmtModel.FK_SubCategory_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="event_mgmtModel.FK_EventItems_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="event_mgmtModel.FK_ItemsOperations_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="event_mgmtModel.FK_EventItems_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="event_mgmtModel.FK_Item_SubCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="event_mgmtModel.FK_WarehouseItems_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="event_mgmtModel.FK_ItemsOperations_Warehouse" ManuallyRouted="false" />
+        <AssociationConnector Association="event_mgmtModel.FK_WarehouseItems_Warehouse" ManuallyRouted="false" />
+        <AssociationConnector Association="event_mgmtModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
