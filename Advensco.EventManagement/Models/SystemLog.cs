@@ -13,22 +13,20 @@ namespace Advensco.EventManagement.Models
     using System.Collections.Generic;
     
     //repo class 
-    public class  AspNetUserLoginRepository : Repository<AspNetUserLogin >
+    public class  SystemLogRepository : Repository<SystemLog >
     {
     
-        public AspNetUserLoginRepository(Entities context)
+        public SystemLogRepository(Entities context)
             : base(context)
         {
         }
     }//1
     //repo class 
-    public partial class AspNetUserLogin
+    public partial class SystemLog
     {
-        public string LoginProvider { get; set; }
-        public string ProviderKey { get; set; }
-        public string UserId { get; set; }
-    
-        public virtual AspNetUser AspNetUser { get; set; }
+        public System.Guid Id { get; set; }
+        public System.DateTime Date { get; set; }
+        public string Message { get; set; }
     }
 
 

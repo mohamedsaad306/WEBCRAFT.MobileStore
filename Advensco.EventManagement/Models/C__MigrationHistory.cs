@@ -31,5 +31,4 @@ namespace Advensco.EventManagement.Models
     }
 
 
-// my code here 
-}//1
+}

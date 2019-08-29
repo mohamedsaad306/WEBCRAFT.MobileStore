@@ -4,9 +4,10 @@ using System.Linq;
 using System.Net.Http;
 using System.Web;
 
-namespace WEBCRAFT.MobileStore.Helper
+namespace Advensco.EventManagement.Models
 {
-    public class Response<T>: HttpResponseMessage  where T : class
+   
+    public class GenericResponse<T> : HttpResponseMessage where T : class
     {
         public ResponseStatusEnum Status { get; set; }
         public string Message { get; set; }
@@ -14,8 +15,8 @@ namespace WEBCRAFT.MobileStore.Helper
 
     }
     public enum ResponseStatusEnum
-        {
-            error=0,
-            sucess=1
-        }
+    {
+        error = 0,
+        sucess = 1
+    }
 }
