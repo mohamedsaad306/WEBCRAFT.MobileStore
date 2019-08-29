@@ -157,7 +157,8 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ItemId" Type="uniqueidentifier" />
           <Property Name="WarehouseId" Type="uniqueidentifier" />
-          <Property Name="Count" Type="int" />
+          <Property Name="Stock" Type="int" />
+          <Property Name="CheckedOut" Type="int" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -564,7 +565,8 @@
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="ItemId" Type="Guid" />
           <Property Name="WarehouseId" Type="Guid" />
-          <Property Name="Count" Type="Int32" />
+          <Property Name="Stock" Type="Int32" />
+          <Property Name="CheckedOut" Type="Int32" />
           <NavigationProperty Name="Item" Relationship="Self.FK_WarehouseItems_Item" FromRole="WarehouseItem" ToRole="Item" />
           <NavigationProperty Name="Warehouse" Relationship="Self.FK_WarehouseItems_Warehouse" FromRole="WarehouseItem" ToRole="Warehouse" />
         </EntityType>
@@ -933,7 +935,8 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="WarehouseId" ColumnName="WarehouseId" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="CheckedOut" ColumnName="CheckedOut" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

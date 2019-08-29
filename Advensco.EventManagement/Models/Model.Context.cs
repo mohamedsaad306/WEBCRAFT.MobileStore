@@ -92,9 +92,9 @@ string includeProperties = "");
             return Context.Set<TEntity>().Find(id);
         }
         public virtual IEnumerable<TEntity> Get(
-       Expression<Func<TEntity, bool>> filter = null,
-       Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-       string includeProperties = "")
+          Expression<Func<TEntity, bool>> filter = null,
+          Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+          string includeProperties = "")
         {
             IQueryable<TEntity> query = Context.Set<TEntity>();
             if (filter != null)
@@ -115,7 +115,6 @@ string includeProperties = "");
                 return query.ToList();
             }
         }
-
         public IEnumerable<TEntity> GetAll()
         {
             return Context.Set<TEntity>().ToList();

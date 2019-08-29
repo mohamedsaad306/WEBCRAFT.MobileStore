@@ -38,7 +38,15 @@ namespace Advensco.EventManagement.Controllers
                 Data = UOW.Warehouses.Get().ToList(),
             };
             return Request.CreateResponse(res);
-
         }
+
+        [HttpPost, Route("AddStock")]
+        public HttpResponseMessage AddStockItems(List<WarehouseItem> stockItems )
+        {
+
+            int result = WarehouseBll.UpdateStockItems(stockItems); 
+            return Request.CreateResponse(System.Net.HttpStatusCode.OK, "Update Compeleted."); 
+        }
+
     }
 }

@@ -27,11 +27,13 @@ namespace Advensco.EventManagement.Models
         public System.Guid Id { get; set; }
         public Nullable<System.Guid> ItemId { get; set; }
         public Nullable<System.Guid> WarehouseId { get; set; }
-        public Nullable<int> Count { get; set; }
+        public Nullable<int> Stock { get; set; }
+        public Nullable<int> CheckedOut { get; set; }
     
         public virtual Item Item { get; set; }
         public virtual Warehouse Warehouse { get; set; }
     }
 
 
-}
+// my code here 
+}//1

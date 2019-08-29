@@ -62,6 +62,7 @@ using System.Linq;
     public <#=code.Escape(container)#>()
         : base("name=<#=container.Name#>")
     {
+	  this.Configuration.LazyLoadingEnabled = false;
 <#
 if (!loader.IsLazyLoadingEnabled(container))
 {
@@ -117,6 +118,10 @@ foreach (var entitySet in container.BaseEntitySets.OfType<EntitySet>())
             void RemoveRange(IEnumerable<TEntity> entities);
             void Update(TEntity entity);
             IQueryable<TEntity> OrderBy(Expression<Func<TEntity, object>> exp);
+			 IEnumerable<TEntity> Get(
+Expression<Func<TEntity, bool>> filter = null,
+Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+string includeProperties = "");
     
         }
     //repo class 
@@ -143,7 +148,30 @@ foreach (var entitySet in container.BaseEntitySets.OfType<EntitySet>())
             {
                 return Context.Set<TEntity>().Find(id);
             }
-    
+      public virtual IEnumerable<TEntity> Get(
+        Expression<Func<TEntity, bool>> filter = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+        string includeProperties = "")
+        {
+            IQueryable<TEntity> query = Context.Set<TEntity>();
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+            foreach (var includeProperty in includeProperties.Split
+                (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(includeProperty);
+            }
+            if (orderBy != null)
+            {
+                return orderBy(query).ToList();
+            }
+            else
+            {
+                return query.ToList();
+            }
+        }
             public IEnumerable<TEntity> GetAll()
             {
                 return Context.Set<TEntity>().ToList();

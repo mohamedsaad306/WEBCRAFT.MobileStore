@@ -288,7 +288,8 @@ public void EndNamespace(CodeGenerationTools code)
 #>
 
 
-}
+// my code here 
+}//1
 <#+
     }
 } 
