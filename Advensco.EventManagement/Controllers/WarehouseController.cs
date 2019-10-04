@@ -27,26 +27,26 @@ namespace Advensco.EventManagement.Controllers
             });
         }
 
-        [HttpGet, Route("GetAll")]
-        public HttpResponseMessage GetAll()
-        {
-            var res = new GenericResponse<List<Warehouse>>
-            {
-                Status = ResponseStatusEnum.sucess,
-                StatusCode = System.Net.HttpStatusCode.OK,
-                Message = "Success",
-                Data = UOW.Warehouses.Get().ToList(),
-            };
-            return Request.CreateResponse(res);
-        }
+        //[HttpGet, Route("GetAll")]
+        //public HttpResponseMessage GetAll()
+        //{
+        //    var res = new GenericResponse<List<Warehouse>>
+        //    {
+        //        Status = ResponseStatusEnum.sucess,
+        //        StatusCode = System.Net.HttpStatusCode.OK,
+        //        Message = "Success",
+        //        Data = UOW.Warehouses.Get().ToList(),
+        //    };
+        //    return Request.CreateResponse(res);
+        //}
 
-        [HttpPost, Route("AddStock")]
-        public HttpResponseMessage AddStockItems(List<WarehouseItem> stockItems )
-        {
+        //[HttpPost, Route("AddStock")]
+        //public HttpResponseMessage AddStockItems(List<WarehouseItem> stockItems )
+        //{
 
-            int result = WarehouseBll.UpdateStockItems(stockItems); 
-            return Request.CreateResponse(System.Net.HttpStatusCode.OK, "Update Compeleted."); 
-        }
+        //    int result = WarehouseBll.UpdateStockItems(stockItems); 
+        //    return Request.CreateResponse(System.Net.HttpStatusCode.OK, "Update Compeleted."); 
+        //}
 
     }
 }

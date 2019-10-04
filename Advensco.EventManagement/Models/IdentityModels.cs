@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using System.Data.Entity;
+using Advensco.EventManagement.Logger;
 
 namespace Advensco.EventManagement.Models
 {
@@ -20,6 +22,10 @@ namespace Advensco.EventManagement.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<ApiLog> ApiLogs{ get; set; }
+        public DbSet<CustomLog> CustomLogs{ get; set; }
+        public DbSet<TestModel> TestModels{ get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -30,4 +36,11 @@ namespace Advensco.EventManagement.Models
             return new ApplicationDbContext();
         }
     }
+
+    public class TestModel
+    {
+        public int Id { get; set; }
+        public string Message { get; set; }
+    }
+
 }

@@ -5,6 +5,8 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using System.Web.Http.ExceptionHandling;
+using Advensco.EventManagement.Logger;
 
 namespace Advensco.EventManagement
 {
@@ -26,6 +28,11 @@ namespace Advensco.EventManagement
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            // Logger 
+            config.MessageHandlers.Add(new LogRequestAndResponseHandler());
+            // Exception Handler     
+            config.Services.Replace(typeof(IExceptionHandler),
+                new GlobalExceptionHandler());
         }
     }
 }

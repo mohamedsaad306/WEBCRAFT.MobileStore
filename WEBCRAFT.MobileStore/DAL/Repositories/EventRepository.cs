@@ -18,12 +18,4 @@ namespace WEBCRAFT.MobileStore.DAL.Repositories
 }
 
 
-
-public class __EventRepository : Repository<__Event>
-{
-
-    public __EventRepository(ApplicationDbContext context)
-        : base(context)
-    {
-    }
-}
+ 

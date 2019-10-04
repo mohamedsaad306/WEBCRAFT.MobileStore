@@ -14,9 +14,13 @@ namespace Advensco.EventManagement.Controllers
         [HttpPost, Route("Create")]
         public HttpResponseMessage Create(Item item)
         {
+            Logger.Logger.Log("Message ");
+
+            //throw  new  Exception("Post Exception ");
+
             item.Id = Guid.NewGuid();
             var createdItem = UOW.Items.Add(item);
-            UOW.Complete();
+            ///UOW.Complete();
 
             return Request.CreateResponse(new GenericResponse<object>
             {
@@ -30,6 +34,7 @@ namespace Advensco.EventManagement.Controllers
         [HttpGet, Route("GetAll")]
         public HttpResponseMessage GetAll()
         {
+            throw new Exception("Custom Exception ");
             var res = new GenericResponse<List<Item>>
             {
                 Status = ResponseStatusEnum.sucess,

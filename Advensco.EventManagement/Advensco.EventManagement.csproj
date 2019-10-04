@@ -220,11 +220,25 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\WarehouseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logger\CustomErrorResult.cs" />
+    <Compile Include="Logger\GlobalExceptionHandler.cs" />
+    <Compile Include="Logger\LogModels.cs" />
+    <Compile Include="Logger\LogRequestAndResponseHandler.cs" />
+    <Compile Include="Migrations\201910041147104_LogModels.cs" />
+    <Compile Include="Migrations\201910041147104_LogModels.Designer.cs">
+      <DependentUpon>201910041147104_LogModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041153525_testModel.cs" />
+    <Compile Include="Migrations\201910041153525_testModel.Designer.cs">
+      <DependentUpon>201910041153525_testModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetRole.cs">
@@ -379,6 +393,7 @@
     <Folder Include="Views\Event\" />
     <Folder Include="Views\Item\" />
     <Folder Include="Views\SubCategory\" />
+    <Folder Include="Views\Test\" />
     <Folder Include="Views\Warehouse\" />
   </ItemGroup>
   <ItemGroup>
@@ -412,6 +427,14 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201910041147104_LogModels.resx">
+      <DependentUpon>201910041147104_LogModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041153525_testModel.resx">
+      <DependentUpon>201910041153525_testModel.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

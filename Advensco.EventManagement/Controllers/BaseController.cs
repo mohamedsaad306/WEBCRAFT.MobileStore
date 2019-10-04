@@ -1,4 +1,4 @@
-﻿using Advensco.EventManagement.Bll;
+﻿ 
 using Advensco.EventManagement.Models;
 using System.Web.Http;
 
@@ -8,7 +8,7 @@ namespace Advensco.EventManagement.Controllers
     {
         // GET: Base
         private UnitOfWork _uow;
-        private WarehouseBll _bll; 
+        //private WarehouseBll _bll; 
         public UnitOfWork UOW
         {
             get
@@ -19,14 +19,14 @@ namespace Advensco.EventManagement.Controllers
             }
         }
 
-        public WarehouseBll WarehouseBll
-        {
-            get
-            {
-                if (_bll == null) _bll = new WarehouseBll(_uow);
-                return _bll; 
-            }
-        }
+        //public WarehouseBll WarehouseBll
+        //{
+        //    get
+        //    {
+        //        if (_bll == null) _bll = new WarehouseBll(_uow);
+        //        return _bll; 
+        //    }
+        //}
 
     }
 }
